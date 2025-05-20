@@ -31,7 +31,7 @@ def get_user_info_from_token(request: Request):
 # --- Login para ambos roles ---
 @app.get("/", response_class=HTMLResponse)
 def home(request: Request):
-    return templates.TemplateResponse("login.html", {"request": request})
+    return templates.TemplateResponse("index.html", {"request": request})
 
 @app.post("/login")
 def login(request: Request, username: str = Form(...), password: str = Form(...)):
