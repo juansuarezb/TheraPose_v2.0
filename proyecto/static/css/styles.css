@@ -1,0 +1,128 @@
+body {
+    font-family: 'Montserrat', sans-serif;
+    background: #f7fafc;
+}
+
+.login-container {
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.login-card {
+    max-width: 400px;
+    width: 100%;
+    padding: 2.5rem 2rem;
+    border-radius: 18px;
+    box-shadow: 0 8px 32px rgba(26, 54, 93, 0.10);
+    background: #fff;
+}
+
+.login-logo {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 2rem;
+}
+
+.login-logo .icon {
+    width: 50px;
+    height: 50px;
+    background: linear-gradient(135deg, #5b6cb9 0%, #4a5689 100%);
+    border-radius: 12px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: white;
+    font-size: 1.7rem;
+    margin-right: 1rem;
+}
+
+.login-logo .text {
+    font-weight: 700;
+    font-size: 1.5rem;
+    color: #5b6cb9;
+}
+
+.one {
+    font-weight: 700;
+    font-size: 1.5rem;
+    color: rgb(236, 108, 108);
+    font-style: italic;
+}
+
+.form-label {
+    font-weight: 500;
+}
+
+.btn-primary {
+    background: linear-gradient(135deg, #5b6cb9 0%, #4a5689 100%);
+    border: none;
+    border-radius: 12px;
+    font-weight: 600;
+    width: 100%;
+    font-size: 1.1rem;
+    margin-top: 0.5rem;
+}
+
+.alert-danger {
+    border-radius: 12px;
+    border: none;
+    padding: 1rem;
+    margin-bottom: 1.5rem;
+    background-color: #fff5f5;
+    color: #e53e3e;
+}
+
+.register-link {
+    margin-top: 1.5rem;
+    text-align: center;
+}
+
+
+
+#app {
+    display: grid;
+    min-height: 100dvh;
+    grid-template-rows:
+        auto 1fr auto;
+}
+
+.container {
+    color: #5b6cb9;
+    font-style: oblique;
+}
+
+.form-label {
+    color: #5b6cb9;
+    font-weight: 600;
+    font-size: 1.3rem;
+}
+
+h2 {
+    text-align: center;
+    font-size: 1.4rem;
+    font-weight: 700;
+    color: #5b6cb9;
+
+}
+
+.main-layout {
+    display: flex;
+    justify-content: flex-end;
+    /* empuja el login hacia la derecha */
+    align-items: center;
+    /* lo centra verticalmente */
+    min-height: 100vh;
+    padding-right: 2rem;
+    /* margen derecho ajustable */
+}
+
+.login-aside {
+    width: 100%;
+    max-width: 400px;
+    background-color: #f5f7fa;
+    padding: 2rem;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
