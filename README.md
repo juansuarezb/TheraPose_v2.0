@@ -43,8 +43,8 @@ TheraPose es una plataforma de software para la gestión de clases de yoga terap
 
 ---
 
-![Imagen1](https://github.com/juansuarezb/TheraPose/raw/main/proyecto/static/images/imagen1.avif) <br>
-![Imagen2](https://github.com/juansuarezb/TheraPose/raw/main/proyecto/static/images/imagen2.avif)
+![Imagen1](https://github.com/juansuarezb/TheraPose/raw/main/images/imagen1.avif) <br>
+![Imagen2](https://github.com/juansuarezb/TheraPose/raw/main/images/imagen2.avif)
 ---
 
 ## Stack 
