@@ -38,6 +38,25 @@ TheraPose es una plataforma de software para la gestión de clases de yoga terap
 
 <h2>3. Levanta los contenedores </h2> 
 
+
+- Git (opcional, solo si clonas el repositorio)
+
+---
+
+## Instalación
+1. **Descargar la imagen de Keycloak**:
+```bash
+    docker pull bryanhert/keycloak-yoga:26.1.3
+```
+
+2. **Clonar el repositorio**
+```bash
+    git clone -b Documentos https://github.com/juansuarezb/TheraPose_v1.0.git
+    cd TheraPose_v1.0
+```
+
+3. **Iniciar los servicios**
+
 ```bash
     docker-compose up -d
 ```
@@ -52,3 +71,8 @@ TheraPose es una plataforma de software para la gestión de clases de yoga terap
 | **Frontend**    | ![Jinja2](https://img.shields.io/badge/Jinja2-3.1.2-informational?style=flat&logo=jinja&logoColor=white&color=6aa6f8) ![JavaScript](https://img.shields.io/badge/JavaScript-ES6-informational?style=flat&logo=javascript&logoColor=white&color=6aa6f8) ![Bootstrap](https://img.shields.io/badge/Bootstrap-5.3-informational?style=flat&logo=bootstrap&logoColor=white&color=6aa6f8)                         |
 | **Base de Datos** | ![SQLite](https://img.shields.io/badge/SQLite-3.42-informational?style=flat&logo=sqlite&logoColor=white&color=6aa6f8) ![SQLModel](https://img.shields.io/badge/SQLModel-0.0.14-informational?style=flat&logo=sqlalchemy&logoColor=white&color=6aa6f8) ![SQLAlchemy](https://img.shields.io/badge/SQLAlchemy-2.0-informational?style=flat&logo=sqlalchemy&logoColor=white&color=6aa6f8)                     |
 | **Autenticación** | ![Keycloak](https://img.shields.io/badge/Keycloak-22.0.1-informational?style=flat&logo=keycloak&logoColor=white&color=6aa6f8)  
+| **Autenticación** | ![Keycloak](https://img.shields.io/badge/Keycloak-22.0.1-informational?style=flat&logo=keycloak&logoColor=white&color=6aa6f8)                                                                                                                                                                                                               |
+| **DevOps**      | ![Docker](https://img.shields.io/badge/Docker-24.0-informational?style=flat&logo=docker&logoColor=white&color=6aa6f8) ![Docker Compose](https://img.shields.io/badge/Docker_Compose-2.22-informational?style=flat&logo=docker&logoColor=white&color=6aa6f8)                                                                                  |
+
+---
+
