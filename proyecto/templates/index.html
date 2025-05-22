@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="es">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Iniciar Sesión - Yoga Terapéutico</title>
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+    />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700&display=swap"
+      rel="stylesheet"
+    />
+    <link
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="/static/css/styles.css" />
+  </head>
+  <body>
+    <div id="app">
+      <header>
+        <nav class="navbar navbar-expand-lg navbar-light bg-light">
+          <div class="container-fluid">
+            <a class="navbar-brand" href="/">TheraPose</a>
+            <button
+              class="navbar-toggler"
+              type="button"
+              data-bs-toggle="collapse"
+              data-bs-target="#mainNav"
+            >
+              <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="mainNav">
+              <ul class="navbar-nav ms-auto">
+                <li class="nav-item">
+                  <a class="nav-link" href="/">Inicio</a>
+                </li>
+                <li class="nav-item">
+                  <a class="nav-link" href="/clases">Clases</a>
+                </li>
+                <li class="nav-item">
+                  <a class="nav-link" href="/instructores">Instructores</a>
+                </li>
+              </ul>
+            </div>
+          </div>
+        </nav>
+      </header>
+      <main class="main-layout">
+        <!-- Nuevo aside que envuelve todo el login -->
+        <aside class="login-aside">
+          <div class="login-container">
+            <div class="login-card">
+              <div class="login-logo">
+                <div class="icon"><i class="fas fa-spa"></i></div>
+                <div class="text two">Iniciar Sesión<br /></div>
+              </div>
+              {% if error %}
+              <div class="alert alert-danger">
+                <i class="fas fa-exclamation-circle me-2"></i>{{ error }}
+              </div>
+              {% endif %}
+              <form method="POST" action="/login">
+                <div class="mb-3">
+                  <label class="form-label" for="username">Usuario</label>
+                  <input
+                    type="text"
+                    class="form-control"
+                    id="username"
+                    name="username"
+                    required
+                    placeholder="Ingrese su usuario"
+                  />
+                </div>
+                <div class="mb-3">
+                  <label class="form-label" for="password">Contraseña</label>
+                  <input
+                    type="password"
+                    class="form-control"
+                    id="password"
+                    name="password"
+                    required
+                    placeholder="******************"
+                  />
+                </div>
+                <button type="submit" class="btn btn-primary">Entrar</button>
+              </form>
+              <div class="register-link">
+                <span>¿Eres instructor?</span>
+                <a href="/register-instructor">Regístrate aquí</a>
+              </div>
+            </div>
+          </div>
+          <audio id="audio" controls>
+            <source src="/static/audio/therapose.mp3" type="audio/mpeg" />
+          </audio>
+        </aside>
+      </main>
+      <footer>
+        <div class="container">
+          <p class="text-center">
+            &copy; CleanCoders - TheraPose. <br />
+            Todos los derechos reservados.
+          </p>
+        </div>
+      </footer>
+    </div>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+  </body>
+</html>
