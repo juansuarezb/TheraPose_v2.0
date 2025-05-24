@@ -19,49 +19,7 @@ TheraPose es una plataforma de software para la gestión de clases de yoga terap
 
 ---
 
-<h1>Instalación</h1> 
 
-<h2>1. Clona el repositorio en tu máquina local </h2>
-<p>Y navega hasta la ubicación del proyecto</p>
-
-```bash
-    git clone -b Documentos https://github.com/juansuarezb/TheraPose_v1.0.git
-    cd TheraPose_v1.0
-```
-
-<h2>2. Descargar la imagen personalizada de Keycloak</h2>
-
-```bash
-    docker pull bryanhert/keycloak-yoga:26.1.3
-```
-
-
-<h2>3. Levanta los contenedores </h2> 
-
-
-- Git (opcional, solo si clonas el repositorio)
-
----
-
-## Instalación
-1. **Descargar la imagen de Keycloak**:
-```bash
-    docker pull bryanhert/keycloak-yoga:26.1.3
-```
-
-2. **Clonar el repositorio**
-```bash
-    git clone -b Documentos https://github.com/juansuarezb/TheraPose_v1.0.git
-    cd TheraPose_v1.0
-```
-
-3. **Iniciar los servicios**
-
-```bash
-    docker-compose up -d
-```
-
----
 
 ## Stack 
 
