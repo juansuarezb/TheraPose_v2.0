@@ -81,7 +81,7 @@ pip install -r requirements.txt
 PYTHONPATH=proyecto uvicorn src.main:app --reload
 ```
 <img src="images/paso7.webp" alt="paso7" width="600" height="auto">
-<img src="images/paso7.webp" alt="paso8" width="600" height="auto">
+<img src="images/paso8.webp" alt="paso8" width="600" height="auto">
 ---
 
 ## Stack 
