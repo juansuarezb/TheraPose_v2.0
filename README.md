@@ -11,16 +11,19 @@ TheraPose es una plataforma de software para la gestión de clases de yoga terap
 
 ---
 
-## Prerrequisitos
+<details><summary><h1>Prerrequisitos</h1></summary>
+
 - <b>WSL 2</b> habilitado - Windows 10/11.
 - Tener <b> Ubuntu </b> instalado desde la Microsoft Store
 - <b> Docker </b> (Docker Desktop).
 - Git (Clonar el repositorio).
 - Python 3.11+. 
+</details>
 
 ---
 
-## Instalación 
+<details><summary><h1>Instalación</h1></summary>
+
 
 ### 1. Descargar imagen personalizada de Keycloak en el bash.
 
@@ -63,7 +66,7 @@ cd /mnt/d/EPN/2025-A/TheraPose_v1.0
 python3 -m venv venv
 source venv/bin/activate
 ```
-<img src="images/paso5.avif" alt="paso5" width="600" height="auto">
+<img src="images/paso5.webp" alt="paso5" width="600" height="auto">
 
 ### 5. Actualizar pip y herramientas básicas e instala las depedencias del proyecto.
 
@@ -81,7 +84,9 @@ pip install -r requirements.txt
 PYTHONPATH=proyecto uvicorn src.main:app --reload
 ```
 <img src="images/paso7.webp" alt="paso7" width="600" height="auto">
-<img src="images/paso8.webp" alt="paso8" width="600" height="auto">
+<img src="images/paso8.avif" alt="paso8" width="600" height="auto">
+</details>
+
 ---
 
 ## Stack 
