@@ -48,13 +48,15 @@ cd TheraPose_v1.0
 docker-compose up -d
 ```
 
-<img src="images/paso3.webp" alt="paso3" width="600" height="auto">
+<img src="images/paso3.webp" alt="paso3" width="600" height="auto"/> <br>
+
+---
 
 > [!IMPORTANT] 
 > Hasta este punto ya tenemos el entorno para el manejo de usuarios correctamente instalado.  
 > Dirígete a [http://localhost:8080](http://localhost:8080) para acceder a la consola de administración de Keycloak.
 > Ingresa con los credenciales "admin" y "admin" respectivamente y comprueba el acceso al keycloak.
-> Ahora, se procederá a utilizar Ubuntu desde windows para la instalación del backend de la aplicación.
+> <b>Ahora, se procederá a utilizar Ubuntu desde windows para la instalación del backend de la aplicación. </b>
 
 <img src="images/paso4.webp" alt="paso4" width="600" height="auto">
 
