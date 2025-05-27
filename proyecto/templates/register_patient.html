@@ -4,6 +4,7 @@
     <meta charset="UTF-8">
     <title>Registro Paciente - YogaApp</title>
     <link rel="stylesheet" href="/static/css/main.css">
+    <script src="/static/ccs/validaciones.js"></script>
 </head>
 <body>
     <h2>Registro de Paciente</h2>
@@ -14,8 +15,9 @@
         <label>Nombre: <input type="text" name="firstName" required></label><br>
         <label>Apellido: <input type="text" name="lastName" required></label><br>
         <label>Contraseña: <input type="password" name="password" required></label><br>
+        <label>Fecha de nacimiento: <input type="date" name="fecha_nac" required></label><br>
         <button type="submit">Registrar Paciente</button>
     </form>
     <p><a href="/">Volver al login</a></p>
 </body>
-</html> 
+</html>
