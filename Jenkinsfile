@@ -10,15 +10,11 @@ pipeline {
         stage('Deploy Keycloak with Docker Compose') {
             steps {
                 script {
-                    // Stop and remove existing containers
                     sh '''
+                        docker rm -f keycloak_postgres || true
                         docker-compose -f docker-compose.yml down || true
-                    '''
-
-                    // Start updated containers (with --build if images need rebuild)
-                    sh '''
                         docker-compose -f docker-compose.yml up -d
-                    '''
+                    ''' 
                 }
             }
         }
