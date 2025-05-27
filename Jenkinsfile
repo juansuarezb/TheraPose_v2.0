@@ -1,41 +1,23 @@
-pipeline {
-    agent any
+    pipeline {
+        agent any
 
-    environment {
-        PORT = '8001'
-        VENV_DIR = 'venv'
-    }
+        environment {
+            PORT = '8001'
+            VENV_DIR = 'venv'
+        }
 
-    stages {
-        stage('Deploy Keycloak with Docker Compose') {
-            steps {
-                script {
-                    sh '''
-                        docker rm -f keycloak_postgres || true
-                        docker-compose -f docker-compose.yml down || true
-                        docker-compose -f docker-compose.yml up -d
-                    ''' 
+        stages {
+            stage('Deploy Keycloak with Docker Compose') {
+                steps {
+                    script {
+                        sh '''
+                            docker-compose -f docker-compose.yml down || true
+
+                            # Build images (if needed) and start containers
+                            docker-compose -f docker-compose.yml up -d --build
+                        ''' 
+                    }
                 }
             }
         }
-        stage('Set up Virtual Environment') {
-            steps {
-                sh '''
-                    python3 -m venv ${VENV_DIR}
-                    . ${VENV_DIR}/bin/activate
-                    pip install --upgrade pip setuptools wheel
-                    pip install -r requirements.txt
-                '''
-            }
-        }
-
-        stage('Run FastAPI Server') {
-            steps {
-                sh '''
-                    . ${VENV_DIR}/bin/activate
-                    PYTHONPATH=proyecto uvicorn src.main:app --reload --host 0.0.0.0 --port ${PORT} &
-                '''
-            }
-        }
     }
-}
