@@ -144,4 +144,24 @@ def create_patient(request: Request,
         elif "401" in error_message:
             error_message = "Error de autenticación con el servidor. Por favor, intente nuevamente."
         patients = []
-        return templates.TemplateResponse("instructor_dashboard.html", {"request": request, "user": user_info, "patients": patients, "error": error_message}) 
+        return templates.TemplateResponse("instructor_dashboard.html", {"request": request, "user": user_info, "patients": patients, "error": error_message})
+
+
+@router.get("/partials/{section_name}", response_class=HTMLResponse)
+def load_partial(request: Request, section_name: str):
+    allowed = ["dashboard", "patients", "therapeutic-series", "settings", "help"]
+    if section_name not in allowed:
+        return HTMLResponse("<p>Sección no encontrada</p>", status_code=404)
+    
+    # Obtener info del usuario para filtrar datos (por ejemplo, instructores)
+    user_info = get_user_info_from_token(request)
+    context = {"request": request}
+
+    if section_name == "patients":
+        if not user_info or "instructor" not in user_info.get("realm_access", {}).get("roles", []):
+            return HTMLResponse("<p>No autorizado</p>", status_code=403)
+        instructor_id = user_info.get("sub")
+        patients = get_instructor_patients(instructor_id)
+        context["patients"] = patients
+
+    return templates.TemplateResponse(f"partials/{section_name}.html", context)

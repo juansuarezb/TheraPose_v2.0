@@ -1,9 +1,12 @@
 <!DOCTYPE html>
 <html lang="es">
   <head>
+    <title>Iniciar Sesión - Yoga Terapéutico</title>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Iniciar Sesión - Yoga Terapéutico</title>
+    <meta name="description" content="Página principal de inicio de sesión para Yoga Terapéutico">
+    <meta name="keywords" content="Yoga, Terapéutico, Iniciar Sesión, Registro, Beneficios, Quienes somos"/>
+    <meta name="author" content="CleanCoders"/>  
     <link
       href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css"
       rel="stylesheet"
@@ -16,33 +19,22 @@
       href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
       rel="stylesheet"
     />
-    <link rel="stylesheet" href="/static/ccs/styles.css" />
+    <link rel="stylesheet" href="/static/ccs/styles.css"/>
   </head>
   <body>
     <div id="app">
-      <header class="header">
-        <nav>
-          <ul>
-            <li>
-                      <h1>Hola Mundo</h1>
-              <a href="/"><i class="fas fa-spa"></i> TheraPose</a>
-            </li>
-            <li>
-              <a href="/about">Sobre Nosotros</a>
-            </li>
-            <li>
-              <a href="/contact">Contacto</a>
-            </li>
-            <li class="preselected">
-              <a href="/login" class="active">Iniciar Sesión</a>
-            </li>
-            <li>
-              <a href="/register">Registrarse</a>
-            </li>
+       <header>
+        <div class="izquierda">
+          <i class="fas fa-spa"></i>
+          <div class="nombre-app"><a href="#">TheraPose</a></div>
+        </div>
+        <div class="derecha">
+          <ul class="nav-menu">
+            <li><a href="#beneficios">Beneficios</a></li>
+            <li><a href="#testimonios">Testimonios</a></li>
           </ul>
-        </nav>
+        </div>
       </header>
-
       <main class="main-layout">
         <!-- Columna izquierda: Carrusel -->
         <div class="carousel-column">
@@ -79,7 +71,6 @@
             <div class="login-container">
               <div class="login-card">
                 <div class="login-logo">
-                  <div class="icon"><i class="fas fa-spa"></i></div>
                   <div class="text">Iniciar Sesión</div>
                 </div>
 
@@ -116,18 +107,28 @@
                   <button type="submit" class="btn btn-primary">Entrar</button>
                 </form>
 
+                <div class="mt-3 text-center">
+                  <a href="http://localhost:8080/realms/yoga-realm/login-actions/reset-credentials?client_id=yoga-client" target="_blank">
+                    ¿Olvidaste tu contraseña?
+                  </a>
+                </div>
+
                 <div class="register-link">
                   <span>¿Eres instructor?</span>
                   <a href="/register-instructor">Regístrate aquí</a>
                 </div>
               </div>
             </div>
-
-            <audio id="audio" controls>
-              <source src="/static/audio/therapose.mp3" type="audio/mpeg" />
-            </audio>
           </aside>
+          <div class="canciones">
+            <h2 class="titulo-canciones">Escucha música mientras meditas</h2> 
+            <audio id="audio" controls>
+                <source src="/static/audio/therapose.mp3" type="audio/mpeg"/>
+            </audio>
+          </div>
         </section>
+
+
       </main>
 
       <!-- Beneficios -->
