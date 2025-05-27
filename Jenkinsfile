@@ -1,11 +1,6 @@
     pipeline {
         agent any
 
-        environment {
-            PORT = '8001'
-            VENV_DIR = 'venv'
-        }
-
         stages {
             stage('Deploy Keycloak with Docker Compose') {
                 steps {

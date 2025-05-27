@@ -41,9 +41,9 @@ services:
       context: .
       dockerfile: Dockerfile.fastapi  # your FastAPI Dockerfile
     container_name: fastapi
-    command: uvicorn proyecto.src.main:app --host 0.0.0.0 --port 8001
+    command: uvicorn proyecto.src.main:app --host 0.0.0.0 --port 8002
     ports:
-      - "8001:8001"
+      - "8002:8002"
     depends_on:
       - keycloak
       - postgres
