@@ -12,12 +12,12 @@ pipeline {
                 script {
                     // Stop and remove existing containers
                     sh '''
-                        docker-compose -f TheraPose_v1.0/docker-compose.yml down || true
+                        docker-compose -f docker-compose.yml down || true
                     '''
 
                     // Start updated containers (with --build if images need rebuild)
                     sh '''
-                        docker-compose -f TheraPose_v1.0/docker-compose.yml up -d
+                        docker-compose -f docker-compose.yml up -d
                     '''
                 }
             }
