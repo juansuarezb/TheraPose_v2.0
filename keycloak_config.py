@@ -6,7 +6,7 @@ from keycloak import KeycloakOpenID, KeycloakAdmin
 load_dotenv()
 
 # Configuración de Keycloak
-KEYCLOAK_SERVER_URL = os.getenv("KEYCLOAK_SERVER_URL", "http://localhost:8081/")
+KEYCLOAK_SERVER_URL = os.getenv("KEYCLOAK_SERVER_URL", "http://keycloak:8080/")
 KEYCLOAK_CLIENT_ID = os.getenv("KEYCLOAK_CLIENT_ID", "yoga-client")
 KEYCLOAK_CLIENT_SECRET = os.getenv("KEYCLOAK_CLIENT_SECRET", "ZwdSdvqdylUikyYMdsGAOWnuIzl7B9Tl")
 KEYCLOAK_REALM = os.getenv("KEYCLOAK_REALM", "yoga-realm")
