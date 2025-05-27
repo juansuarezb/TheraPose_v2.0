@@ -13,17 +13,16 @@ TheraPose es una plataforma de software para la gestión de clases de yoga terap
 
 <details><summary><h1>Prerrequisitos</h1></summary>
 
-- <b>WSL 2</b> habilitado - Windows 10/11.
-- Tener <b> Ubuntu </b> instalado desde la Microsoft Store
-- <b> Docker </b> (Docker Desktop).
-- Git (Clonar el repositorio).
-- Python 3.11+. 
+-   <b>WSL 2</b> habilitado - Windows 10/11.
+-   Tener <b> Ubuntu </b> instalado desde la Microsoft Store
+-   <b> Docker </b> (Docker Desktop).
+-   Git (Clonar el repositorio).
+-   Python 3.11+.
 </details>
 
 ---
 
 <details><summary><h1>Instalación</h1></summary>
-
 
 ### 1. Descargar imagen personalizada de Keycloak en el bash.
 
@@ -32,7 +31,7 @@ docker pull bryanhert/keycloak-yoga:26.1.3
 
 ```
 
-<img src="images/paso1.avif" alt="paso1" width="600" height="auto">
+<img src="https://raw.githubusercontent.com/juansuarezb/TheraPose_v1.0/refs/heads/feature/jenkins/images/paso1.avif" alt="paso1" width="600" height="auto">
 
 ### 2. Navega al directorio donde quieres descargar el proyecto y clona el repositorio en tu máquina local. Finalmente, dirígete al proyecto descargado.
 
@@ -40,67 +39,45 @@ docker pull bryanhert/keycloak-yoga:26.1.3
 git clone https://github.com/juansuarezb/TheraPose_v1.0.git
 cd TheraPose_v1.0
 ```
-<img src="images/paso2.webp" alt="paso2" width="600" height="auto">
+
+<img src="https://raw.githubusercontent.com/juansuarezb/TheraPose_v1.0/refs/heads/feature/jenkins/images/paso2.webp" alt="paso2" width="600" height="auto">
 
 ### 3. Levantar los servicios con Docker Compose (dentro del proyecto descargado).
+
+```bash
+docker compose -f docker-compose.yml up -d --build
+```
+
+o
 
 ```bash
 docker-compose up -d
 ```
 
-<img src="images/paso3.webp" alt="paso3" width="600" height="auto"/> <br>
+<img src="https://raw.githubusercontent.com/juansuarezb/TheraPose_v1.0/refs/heads/feature/jenkins/images/paso3.webp" alt="paso3" width="600" height="auto"/> <br>
+<img src="https://raw.githubusercontent.com/juansuarezb/TheraPose_v1.0/refs/heads/feature/jenkins/images/paso8.avif" alt="paso8" width="600" height="auto">
+
+</details>
 
 ---
 
-> [!IMPORTANT] 
+> [!IMPORTANT]
 > Hasta este punto ya tenemos el entorno para el manejo de usuarios correctamente instalado.  
 > Dirígete a [http://localhost:8080](http://localhost:8080) para acceder a la consola de administración de Keycloak.
 > Ingresa con los credenciales "admin" y "admin" respectivamente y comprueba el acceso al keycloak.
 > <b>Ahora, se procederá a utilizar Ubuntu desde windows para la instalación del backend de la aplicación. </b>
 
-<img src="images/paso4.webp" alt="paso4" width="600" height="auto">
+## <img src="https://raw.githubusercontent.com/juansuarezb/TheraPose_v1.0/refs/heads/feature/jenkins/images/paso4.webp" alt="paso4" width="600" height="auto">
 
-### 4. Dirígete al proyecto descargado y crea un entorno virtual luego, activalo. 
-### Verás un (venv - Virtual Environment) en la línea de comandos que verifica la correcta creación del ambiente.
+## Stack
 
-```bash
-cd /mnt/d/EPN/2025-A/TheraPose_v1.0
-python3 -m venv venv
-source venv/bin/activate
-```
-<img src="images/paso5.webp" alt="paso5" width="600" height="auto">
-
-### 5. Actualizar pip y herramientas básicas e instala las depedencias del proyecto.
-
-```bash
-pip install --upgrade pip setuptools wheel
-pip install -r requirements.txt
-```
-
-<img src="images/paso6.avif" alt="paso6" width="600" height="auto">
-
-### 6. Establecer el PYTHONPATH y ejecutar la app con recarga automática
-### Dirígete a [http://localhost:8000](http://localhost:8000) para acceder al index de la página web.
-
-```bash
-PYTHONPATH=proyecto uvicorn src.main:app --reload
-```
-<img src="images/paso7.webp" alt="paso7" width="600" height="auto">
-<img src="images/paso8.avif" alt="paso8" width="600" height="auto">
-</details>
+| Categoría         | Tecnologías                                                                                                                                                                                                                                                                                                                                                                            |
+| ----------------- | -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| **Backend**       | ![FastAPI](https://img.shields.io/badge/FastAPI-0.103.1-informational?style=flat&logo=fastapi&logoColor=white&color=6aa6f8) ![Python](https://img.shields.io/badge/Python-3.11-informational?style=flat&logo=python&logoColor=white&color=6aa6f8)                                                                                                                                      |
+| **Frontend**      | ![Jinja2](https://img.shields.io/badge/Jinja2-3.1.2-informational?style=flat&logo=jinja&logoColor=white&color=6aa6f8) ![JavaScript](https://img.shields.io/badge/JavaScript-ES6-informational?style=flat&logo=javascript&logoColor=white&color=6aa6f8) ![Bootstrap](https://img.shields.io/badge/Bootstrap-5.3-informational?style=flat&logo=bootstrap&logoColor=white&color=6aa6f8)   |
+| **Base de Datos** | ![SQLite](https://img.shields.io/badge/SQLite-3.42-informational?style=flat&logo=sqlite&logoColor=white&color=6aa6f8) ![SQLModel](https://img.shields.io/badge/SQLModel-0.0.14-informational?style=flat&logo=sqlalchemy&logoColor=white&color=6aa6f8) ![SQLAlchemy](https://img.shields.io/badge/SQLAlchemy-2.0-informational?style=flat&logo=sqlalchemy&logoColor=white&color=6aa6f8) |
+| **Autenticación** | ![Keycloak](https://img.shields.io/badge/Keycloak-22.0.1-informational?style=flat&logo=keycloak&logoColor=white&color=6aa6f8)                                                                                                                                                                                                                                                          |
+| **Autenticación** | ![Keycloak](https://img.shields.io/badge/Keycloak-22.0.1-informational?style=flat&logo=keycloak&logoColor=white&color=6aa6f8)                                                                                                                                                                                                                                                          |
+| **DevOps**        | ![Docker](https://img.shields.io/badge/Docker-24.0-informational?style=flat&logo=docker&logoColor=white&color=6aa6f8) ![Docker Compose](https://img.shields.io/badge/Docker_Compose-2.22-informational?style=flat&logo=docker&logoColor=white&color=6aa6f8)                                                                                                                            |
 
 ---
-
-## Stack 
-
-| Categoría       | Tecnologías                                                                                                                                                                                 |
-|-----------------|---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
-| **Backend**     | ![FastAPI](https://img.shields.io/badge/FastAPI-0.103.1-informational?style=flat&logo=fastapi&logoColor=white&color=6aa6f8) ![Python](https://img.shields.io/badge/Python-3.11-informational?style=flat&logo=python&logoColor=white&color=6aa6f8)                                                                                           |
-| **Frontend**    | ![Jinja2](https://img.shields.io/badge/Jinja2-3.1.2-informational?style=flat&logo=jinja&logoColor=white&color=6aa6f8) ![JavaScript](https://img.shields.io/badge/JavaScript-ES6-informational?style=flat&logo=javascript&logoColor=white&color=6aa6f8) ![Bootstrap](https://img.shields.io/badge/Bootstrap-5.3-informational?style=flat&logo=bootstrap&logoColor=white&color=6aa6f8)                         |
-| **Base de Datos** | ![SQLite](https://img.shields.io/badge/SQLite-3.42-informational?style=flat&logo=sqlite&logoColor=white&color=6aa6f8) ![SQLModel](https://img.shields.io/badge/SQLModel-0.0.14-informational?style=flat&logo=sqlalchemy&logoColor=white&color=6aa6f8) ![SQLAlchemy](https://img.shields.io/badge/SQLAlchemy-2.0-informational?style=flat&logo=sqlalchemy&logoColor=white&color=6aa6f8)                     |
-| **Autenticación** | ![Keycloak](https://img.shields.io/badge/Keycloak-22.0.1-informational?style=flat&logo=keycloak&logoColor=white&color=6aa6f8)  
-| **Autenticación** | ![Keycloak](https://img.shields.io/badge/Keycloak-22.0.1-informational?style=flat&logo=keycloak&logoColor=white&color=6aa6f8)                                                                                                                                                                                                               |
-| **DevOps**      | ![Docker](https://img.shields.io/badge/Docker-24.0-informational?style=flat&logo=docker&logoColor=white&color=6aa6f8) ![Docker Compose](https://img.shields.io/badge/Docker_Compose-2.22-informational?style=flat&logo=docker&logoColor=white&color=6aa6f8)                                                                                  |
-
----
-
