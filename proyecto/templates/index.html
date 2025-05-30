@@ -1,167 +1,154 @@
 <!DOCTYPE html>
 <html lang="es">
-  <head>
-    <title>Iniciar Sesión - Yoga Terapéutico</title>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <meta name="description" content="Página principal de inicio de sesión para Yoga Terapéutico">
-    <meta name="keywords" content="Yoga, Terapéutico, Iniciar Sesión, Registro, Beneficios, Quienes somos"/>
-    <meta name="author" content="CleanCoders"/>  
-    <link
-      href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css"
-      rel="stylesheet"
-    />
-    <link
-      href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700&display=swap"
-      rel="stylesheet"
-    />
-    <link
-      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
-      rel="stylesheet"
-    />
-    <link rel="stylesheet" href="/static/ccs/styles.css"/>
-  </head>
-  <body>
-    <div id="app">
-       <header>
-        <div class="izquierda">
-          <i class="fas fa-spa"></i>
-          <div class="nombre-app"><a href="#">TheraPose</a></div>
-        </div>
-        <div class="derecha">
-          <ul class="nav-menu">
-            <li><a href="#beneficios">Beneficios</a></li>
-            <li><a href="#testimonios">Testimonios</a></li>
-          </ul>
-        </div>
-      </header>
-      <main class="main-layout">
-        <!-- Columna izquierda: Carrusel -->
-        <div class="carousel-column">
-          <div id="carouselYoga" class="carousel slide" data-bs-ride="carousel">
-            <div class="carousel-inner">
-              <div class="carousel-item active">
-                <img
-                  src="/static/images/imagen1.webp"
-                  class="d-block w-100"
-                  alt="Yoga 1"
-                />
-              </div>
-              <div class="carousel-item">
-                <img
-                  src="/static/images/imagen2.webp"
-                  class="d-block w-100"
-                  alt="Yoga 2"
-                />
-              </div>
-              <div class="carousel-item">
-                <img
-                  src="/static/images/imagen3.avif"
-                  class="d-block w-100"
-                  alt="Yoga 3"
-                />
-              </div>
+
+<head>
+  <title>Iniciar Sesión - Yoga Terapéutico</title>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="Página principal de inicio de sesión para Yoga Terapéutico">
+  <meta name="keywords" content="Yoga, Terapéutico, Iniciar Sesión, Registro, Beneficios, Quienes somos" />
+  <meta name="author" content="CleanCoders" />
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700&display=swap"
+    rel="stylesheet" />
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet" />
+  <link rel="stylesheet" href="../static/ccs/styles.css" />
+</head>
+
+<body>
+  <div id="app">
+    <header>
+      <div class="izquierda">
+        <i class="fas fa-spa"></i>
+        <div class="nombre-app"><a href="#">TheraPose</a></div>
+      </div>
+      <div class="derecha">
+        <ul class="nav-menu">
+          <li><a href="#beneficios">Beneficios</a></li>
+          <li><a href="#testimonios">Testimonios</a></li>
+        </ul>
+      </div>
+    </header>
+    <main class="main-layout">
+      <!-- Columna izquierda: Carrusel -->
+      <div class="carousel-column">
+        <div id="carouselYoga" class="carousel slide" data-bs-ride="carousel">
+          <div class="carousel-inner">
+            <div class="carousel-item active">
+              <img src="../static/images/imagen1.webp" class="d-block w-100" alt="Yoga 1" />
+            </div>
+            <div class="carousel-item">
+              <img src="../static/images/imagen2.webp" class="d-block w-100" alt="Yoga 2" />
+            </div>
+            <div class="carousel-item">
+              <img src="../static/images/imagen3.avif" class="d-block w-100" alt="Yoga 3" />
             </div>
           </div>
         </div>
+      </div>
 
-        <!-- Columna derecha: Login -->
-        <section class="login-section">
-          <aside class="login-aside">
-            <div class="login-container">
-              <div class="login-card">
-                <div class="login-logo">
-                  <div class="text">Iniciar Sesión</div>
+      <!-- Columna derecha: Login -->
+      <section class="login-section">
+        <aside class="login-aside">
+          <div class="login-container">
+            <div class="login-card">
+              <div class="login-logo">
+                <div class="text">Iniciar Sesión</div>
+              </div>
+
+              {% if error %}
+              <div class="alert alert-danger">
+                <i class="fas fa-exclamation-circle me-2"></i>{{ error }}
+              </div>
+              {% endif %}
+
+              <form method="POST" action="/login">
+                <div class="mb-3">
+                  <label class="form-label" for="username">Usuario</label>
+                  <input type="text" class="form-control" id="username" name="username" required
+                    placeholder="Ingrese su usuario" autofocus />
                 </div>
-
-                {% if error %}
-                <div class="alert alert-danger">
-                  <i class="fas fa-exclamation-circle me-2"></i>{{ error }}
+                <div class="mb-3">
+                  <label class="form-label" for="password">Contraseña</label>
+                  <input type="password" class="form-control" id="password" name="password" required
+                    placeholder="******************" />
                 </div>
-                {% endif %}
+                <button type="submit" class="btn btn-primary">Entrar</button>
+              </form>
 
-                <form method="POST" action="/login">
-                  <div class="mb-3">
-                    <label class="form-label" for="username">Usuario</label>
-                    <input
-                      type="text"
-                      class="form-control"
-                      id="username"
-                      name="username"
-                      required
-                      placeholder="Ingrese su usuario"
-                      autofocus
-                    />
-                  </div>
-                  <div class="mb-3">
-                    <label class="form-label" for="password">Contraseña</label>
-                    <input
-                      type="password"
-                      class="form-control"
-                      id="password"
-                      name="password"
-                      required
-                      placeholder="******************"
-                    />
-                  </div>
-                  <button type="submit" class="btn btn-primary">Entrar</button>
-                </form>
+              <div class="mt-3 text-center">
+                <a href="http://localhost:8081/realms/yoga-realm/login-actions/reset-credentials?client_id=yoga-client"
+                  target="_blank">
+                  ¿Olvidaste tu contraseña?
+                </a>
+              </div>
 
-                <div class="mt-3 text-center">
-                  <a href="http://localhost:8081/realms/yoga-realm/login-actions/reset-credentials?client_id=yoga-client" target="_blank">
-                    ¿Olvidaste tu contraseña?
-                  </a>
-                </div>
-
-                <div class="register-link">
-                  <span>¿Eres instructor?</span>
-                  <a href="/register-instructor">Regístrate aquí</a>
-                </div>
+              <div class="register-link">
+                <span>¿Eres instructor?</span>
+                <a href="/register-instructor">Regístrate aquí</a>
               </div>
             </div>
-          </aside>
-          <div class="canciones">
-            <h2 class="titulo-canciones">Escucha música mientras meditas</h2> 
-            <audio id="audio" controls>
-                <source src="/static/audio/therapose.mp3" type="audio/mpeg"/>
-            </audio>
           </div>
-        </section>
-
-
-      </main>
-
-      <!-- Beneficios -->
-      <section class="benefits-section py-5 bg-light">
-        <div class="container">
-          <h2 class="mb-4">Beneficios del Yoga Terapéutico</h2>
-          <p>
-            El yoga terapéutico ayuda a mejorar la postura, la respiración y reduce el estrés.
-          </p>
-        </div>
+        </aside>
       </section>
 
-      <!-- Testimonios -->
-      <section class="testimonials-section py-5">
-        <div class="container">
-          <h2 class="mb-4">Testimonios</h2>
-          <blockquote class="blockquote">
-            <p>"Desde que empecé yoga terapéutico, mi dolor de espalda ha disminuido notablemente."</p>
-            <footer class="blockquote-footer">Paciente satisfecho</footer>
-          </blockquote>
-        </div>
-      </section>
 
-      <footer>
-        <div class="container">
-          <p class="text-center">
-            &copy; CleanCoders - TheraPose. <br />
-            Todos los derechos reservados.
-          </p>
-        </div>
-      </footer>
-    </div>
+    </main>
 
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
-  </body>
+    <!-- Beneficios -->
+    <section id="beneficios" class="benefits-section py-5 bg-light">
+      <div class="container">
+        <h2 class="mb-4">Beneficios del Yoga Terapéutico</h2>
+        <p>
+          El yoga terapéutico ayuda a mejorar la postura, la respiración y reduce el estrés.
+        </p>
+      </div>
+    </section>
+
+    <!-- Testimonios -->
+    <section id="testimonios" class="testimonials-section py-5">
+      <div class="container">
+        <h2 class="mb-4">Testimonios</h2>
+        <blockquote class="blockquote">
+          <p>"Desde que empecé yoga terapéutico, mi dolor de espalda ha disminuido notablemente."</p>
+          <footer class="blockquote-footer">Paciente satisfecho</footer>
+        </blockquote>
+      </div>
+    </section>
+
+    <footer class="footer">
+      <div class="izquierda">
+        <h3>CleanCoders</h3>
+        <p>Transformamos ideas de negocio en productos tangibles aplicando los mejores estándares de calidad</p>
+      </div>
+      <div class="enlaces">
+        <h3>Enlaces rápidos</h3>
+        <ul class="menu">
+          <li><a href="http://">Inicio</a></li>
+          <li><a href="http://">Terapias</a></li>
+        </ul>
+      </div>
+      <div class="contacto">
+        <h3>Contacto</h3>
+        <p>
+          <i class="fas fa-envelope"></i>
+          <a href="mailto:cleancoders.therapose@gmail.com">cleancoders.therapose@gmail.com</a>
+        </p>
+
+      </div>
+      <div class="github">
+        <h3>GITHUB</h3>
+        <p>
+          <i class="fab fa-github"></i>
+          <a href="https://github.com/juansuarezb/TheraPose_v1.0" target="_blank">
+            Repositorio
+          </a>
+        </p>
+      </div>
+    </footer>
+  </div>
+
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+
 </html>

@@ -207,13 +207,6 @@ blockquote {
   color: var(--color-text);
 }
 
-/* Footer */
-footer {
-  background-color: var(--color-primary);
-  color: rgb(7, 7, 7);
-  text-align: center;
-  padding: 1rem 0;
-}
 
 .canciones{
   width: 70%;
@@ -248,5 +241,19 @@ footer {
 
 .canciones :hover {
   background-color: rgba(0, 0, 0, 0.1);
+}
+
+.footer{
+  display: grid;
+  border: 1px solid red;
+  grid-template-columns: repeat(3, 1fr);
+  grid-gap: 10px 10px;
+  background-color: rgb(215, 91, 111);
+  color: rgb(45, 62, 53)  
+
+}
+
+.footer > .izquierda, .footer > .enlaces, .footer > .contacto, .footer > .github{
+  border: 1px solid red;
 }
 
