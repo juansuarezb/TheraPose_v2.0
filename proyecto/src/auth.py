@@ -29,6 +29,10 @@ def login(request: Request, username: str = Form(...), password: str = Form(...)
             dashboard_url = "/patient/dashboard"
         else:
             return templates.TemplateResponse("index.html", {"request": request, "error": "Tu usuario no tiene un rol válido asignado."})
+
+@router.get("/login")
+def login_form(request: Request):
+    return templates.TemplateResponse("index.html", {"request": request}) 
         response = RedirectResponse(url=dashboard_url, status_code=status.HTTP_302_FOUND)
         response.set_cookie(key="access_token", value=token["access_token"], httponly=True, max_age=7600)
         return response
