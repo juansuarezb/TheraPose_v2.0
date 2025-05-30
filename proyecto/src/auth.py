@@ -35,6 +35,12 @@ def login(request: Request, username: str = Form(...), password: str = Form(...)
     except Exception:
         return templates.TemplateResponse("index.html", {"request": request, "error": "Usuario o contraseña incorrectos"})
 
-@router.get("/login")
+@router.get("/login")   
 def login_form(request: Request):
-    return templates.TemplateResponse("index.html", {"request": request}) 
+    return templates.TemplateResponse("index.html", {"request": request})
+
+@router.get("/logout")
+def logout(request: Request):
+    response = RedirectResponse(url="/login", status_code=status.HTTP_302_FOUND)
+    response.delete_cookie(key="access_token")
+    return response 
