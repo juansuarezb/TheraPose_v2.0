@@ -60,6 +60,8 @@ services:
         condition: service_healthy
     networks:
       - mynetwork
+    extra_hosts:
+      - "host.docker.internal:host-gateway"
 
 networks:
   mynetwork:
