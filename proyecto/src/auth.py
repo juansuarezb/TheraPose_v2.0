@@ -43,4 +43,5 @@ def login_form(request: Request):
 def logout(request: Request):
     response = RedirectResponse(url="/login", status_code=status.HTTP_302_FOUND)
     response.delete_cookie(key="access_token")
+    response.delete_cookie(key="refresh_token")
     return response 

@@ -151,4 +151,83 @@ def get_patient(patient_id: str) -> Dict:
     patient = dict(zip(columns, row)) if row else None
     
     conn.close()
-    return patient 
+    return patient
+
+def update_patient(patient_id: str, username: str = None, email: str = None, 
+                  first_name: str = None, last_name: str = None,
+                  fecha_nac: str = None, genero: str = None, celular: str = None):
+    """
+    Actualiza la información de un paciente en la base de datos
+    """
+    conn = sqlite3.connect('proyecto/instructor_patients.db')
+    c = conn.cursor()
+    
+    # Construir la consulta  basada en los campos proporcionados
+    update_fields = []
+    params = []
+    
+    if username is not None:
+        update_fields.append("username = ?")
+        params.append(username)
+    if email is not None:
+        update_fields.append("email = ?")
+        params.append(email)
+    if first_name is not None:
+        update_fields.append("first_name = ?")
+        params.append(first_name)
+    if last_name is not None:
+        update_fields.append("last_name = ?")
+        params.append(last_name)
+    if fecha_nac is not None:
+        update_fields.append("fecha_nac = ?")
+        params.append(fecha_nac)
+    if genero is not None:
+        update_fields.append("genero = ?")
+        params.append(genero)
+    if celular is not None:
+        update_fields.append("celular = ?")
+        params.append(celular)
+    
+    if not update_fields:
+        return
+    
+    query = f"UPDATE patients SET {', '.join(update_fields)} WHERE id = ?"
+    params.append(patient_id)
+    
+    c.execute(query, params)
+    conn.commit()
+    conn.close()
+
+def delete_patient(patient_id: str):
+    """
+    Elimina un paciente de la base de datos SQLite.
+    
+    Args:
+        patient_id (str): ID del paciente a eliminar
+        
+    Returns:
+        tuple: (keycloak_id, success) - ID de Keycloak del paciente y si se eliminó correctamente
+    """
+    conn = sqlite3.connect('proyecto/instructor_patients.db')
+    cursor = conn.cursor()
+    try:
+        # Obtener el keycloak_id antes de eliminar
+        cursor.execute("SELECT id FROM patients WHERE id = ?", (patient_id,))
+        patient = cursor.fetchone()
+        
+        if not patient:
+            return None, False
+            
+        # Primero eliminar la relación instructor-paciente
+        cursor.execute("DELETE FROM instructor_patients WHERE patient_id = ?", (patient_id,))
+        
+        # Luego eliminar el paciente
+        cursor.execute("DELETE FROM patients WHERE id = ?", (patient_id,))
+        
+        conn.commit()
+        return patient[0], True
+    except Exception as e:
+        conn.rollback()
+        raise e
+    finally:
+        conn.close() 

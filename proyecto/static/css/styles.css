@@ -1,14 +1,13 @@
-/* === THERAPOSE LOGIN - DISEÑO PREMIUM === */
 
 :root {
-  /* Colores principales - Paleta tierra tranquila expandida */
+  /* Colores principales - Paleta tierra */
   --color-primary: #8B7355;
   --color-primary-dark: #6B5943;
   --color-primary-light: #A0906B;
   --color-secondary: #F5F2ED;
   --color-accent: #D4C4A8;
   
-  /* Nuevos colores para gradientes */
+  /*  colores para gradientes */
   --color-warm-gold: #E6D7B8;
   --color-soft-beige: #F8F5F0;
   --color-deep-earth: #5A4C3D;
@@ -67,7 +66,7 @@
   --shadow-medium: 0 16px 64px rgba(58, 53, 41, 0.16), 0 4px 16px rgba(58, 53, 41, 0.12);
   --shadow-floating: 0 24px 80px rgba(58, 53, 41, 0.2), 0 8px 32px rgba(58, 53, 41, 0.15);
   
-  /* Transiciones mejoradas */
+  /* Transiciones  */
   --transition-fast: all 0.15s cubic-bezier(0.4, 0, 0.2, 1);
   --transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
   --transition-slow: all 0.5s cubic-bezier(0.4, 0, 0.2, 1);
@@ -96,7 +95,7 @@ body {
   position: relative;
 }
 
-/* Overlay de fondo sutil */
+/* Overlay */
 body::before {
   content: '';
   position: fixed;
@@ -116,7 +115,7 @@ body::before {
   min-height: 100vh;
 }
 
-/* Header mejorado */
+/* Header  */
 header {
   width: 100%;
   height: 80px;
@@ -243,14 +242,14 @@ header > * {
   transform: none;
 }
 
-/* Layout principal mejorado */
+/* Layout principal  */
 .main-layout {
   display: flex;
   flex-grow: 1;
   min-height: calc(100vh - 80px);
 }
 
-/* Carrusel mejorado */
+/* Carrusel  */
 .carousel-column {
   flex: 1;
   max-width: 55%;
@@ -307,7 +306,7 @@ header > * {
   transform: scale(1.05);
 }
 
-/* Sección de login premium */
+/* Sección de login  */
 .login-section {
   flex: 0 0 45%;
   display: flex;
@@ -335,7 +334,7 @@ header > * {
   z-index: 1;
 }
 
-/* Login card premium */
+/* Login card  */
 .login-aside {
   background: var(--color-surface-card);
   border: 1px solid var(--color-border-light);
@@ -390,7 +389,7 @@ header > * {
   box-shadow: none;
 }
 
-/* Logo del login mejorado */
+/* Logo del login  */
 .login-logo {
   display: flex;
   flex-direction: column;
@@ -426,7 +425,7 @@ header > * {
   animation: float 3s ease-in-out infinite;
 }
 
-/* Formulario mejorado */
+/* Formulario  */
 form {
   margin-bottom: var(--spacing-xl);
 }
@@ -472,7 +471,7 @@ form {
   transform: translateY(-2px);
 }
 
-/* Botón principal mejorado */
+/* Botón principal  */
 .btn-primary {
   width: 100%;
   background: var(--gradient-primary);
@@ -514,7 +513,7 @@ form {
   box-shadow: var(--shadow-floating);
 }
 
-/* Alertas mejoradas */
+/* Alertas  */
 .alert-danger {
   background: var(--color-error);
   color: white;
@@ -541,7 +540,7 @@ form {
   animation: shimmer 2s infinite;
 }
 
-/* Enlaces mejorados */
+/* Enlaces  */
 .register-link {
   margin-top: var(--spacing-xl);
   text-align: center;
@@ -593,7 +592,7 @@ form {
   text-align: center;
 }
 
-/* Sección de música mejorada */
+/* Sección de música  */
 .canciones {
   width: 85%;
   margin-top: var(--spacing-2xl);
@@ -649,7 +648,7 @@ form {
   box-shadow: var(--shadow-soft);
 }
 
-/* Secciones mejoradas */
+/* Secciones  */
 .benefits-section,
 .testimonials-section {
   background: var(--color-surface-elevated);
@@ -740,7 +739,7 @@ form {
   content: "— ";
 }
 
-/* Footer mejorado */
+/* Footer  */
 footer {
   background: var(--gradient-primary);
   color: white;
@@ -909,7 +908,7 @@ footer p {
   }
 }
 
-/* Beneficios mejorados */
+/* Beneficios  */
 .benefits-grid {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
@@ -972,7 +971,7 @@ footer p {
   line-height: 1.6;
 }
 
-/* Testimonios mejorados */
+/* Testimonios  */
 .testimonials-grid {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));

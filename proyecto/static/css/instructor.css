@@ -1,12 +1,12 @@
 :root {
-  /* Colores principales - Paleta tierra tranquila expandida */
+  /* Colores principales */
   --color-primary: #8B7355;
   --color-primary-dark: #6B5943;
   --color-primary-light: #A0906B;
   --color-secondary: #F5F2ED;
   --color-accent: #D4C4A8;
   
-  /* Nuevos colores para gradientes */
+  /*  colores para gradientes */
   --color-warm-gold: #E6D7B8;
   --color-soft-beige: #F8F5F0;
   --color-deep-earth: #5A4C3D;
@@ -53,7 +53,7 @@
   --spacing-xl: 2rem;
   --spacing-2xl: 3rem;
   
-  /* Bordes y sombras mejoradas */
+  /* Bordes y sombras  */
   --radius: 16px;
   --radius-sm: 12px;
   --radius-lg: 24px;
@@ -65,7 +65,7 @@
   --shadow-medium: 0 16px 64px rgba(58, 53, 41, 0.16), 0 4px 16px rgba(58, 53, 41, 0.12);
   --shadow-floating: 0 24px 80px rgba(58, 53, 41, 0.2), 0 8px 32px rgba(58, 53, 41, 0.15);
   
-  /* Transiciones mejoradas */
+  /* Transiciones  */
   --transition-fast: all 0.15s cubic-bezier(0.4, 0, 0.2, 1);
   --transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
   --transition-slow: all 0.5s cubic-bezier(0.4, 0, 0.2, 1);
@@ -94,7 +94,7 @@ body {
   position: relative;
 }
 
-/* Overlay de fondo sutil */
+/* Overlay de fondo  */
 body::before {
   content: '';
   position: fixed;
@@ -114,7 +114,7 @@ body::before {
   position: relative;
 }
 
-/* Sidebar mejorada */
+/* Sidebar  */
 .sidebar {
   width: 280px;
   background: var(--color-surface-elevated);
@@ -250,7 +250,7 @@ body::before {
   position: relative;
 }
 
-/* Header mejorado */
+/* Header  */
 .header {
   background: var(--color-surface-elevated);
   backdrop-filter: blur(20px);
@@ -323,7 +323,7 @@ body::before {
   box-shadow: var(--shadow-soft);
 }
 
-/* Grid de cards mejorado */
+/* Grid de cards  */
 .dashboard-cards {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
@@ -333,7 +333,7 @@ body::before {
   position: relative;
 }
 
-/* Cards con efectos premium */
+/* Cards  */
 .card {
   background: var(--color-surface-card);
   border: 1px solid var(--color-border-light);
@@ -428,7 +428,7 @@ body::before {
   box-shadow: var(--shadow-soft);
 }
 
-/* Lista de información mejorada */
+/* Lista de información  */
 .info-list {
   list-style: none;
   padding: 0;
@@ -483,7 +483,7 @@ body::before {
   color: white;
 }
 
-/* Botones mejorados SOLO PARA TABLA */
+/* Botones  PARA TABLA */
 .btn-table {
   padding: 18px 38px;
   background: linear-gradient(135deg, #d4c4a8 0%, #b49a74 100%);
@@ -516,28 +516,8 @@ body::before {
   transform: translateY(-4px) scale(1.04);
 }
 
-/* Contenedor de tabla mejorado */
-/* .table-container {
-  background: var(--color-surface-card);
-  border: 1px solid var(--color-border-light);
-  border-radius: var(--radius-lg);
-  overflow: hidden;
-  box-shadow: var(--shadow-soft);
-  margin-top: var(--spacing-xl);
-  position: relative;
-  overflow-x: auto;
-} */
-/* .table-container::before {
-  content: '';
-  position: absolute;
-  top: 0;
-  left: 0;
-  right: 0;
-  height: 3px;
-  background: var(--gradient-accent);
-} */
 
-/* Tabla mejorada */
+/* Tabla  */
 table {
   width: 100%;
   border-collapse: separate;
@@ -741,7 +721,7 @@ tr:hover td {
   transform: translateY(-2px) scale(1.01);
 }
 
-/* Alertas modernas */
+/* Alertas  */
 .alert-modern {
   padding: var(--spacing-lg) var(--spacing-xl);
   background: var(--color-warning);
@@ -1017,4 +997,67 @@ tr:hover td {
   box-shadow: 0 2px 16px 0 rgba(139, 115, 85, 0.08) inset;
   pointer-events: none;
   z-index: 0;
+}
+
+/* --- Estilos de botones de acciones de la tabla --- */
+.tabla-boton-editar, .tabla-boton-eliminar {
+  background: linear-gradient(90deg, #E5C07B 0%, #FFDFA0 100%) !important;
+  color: #3a2c06 !important;
+  min-width: unset;
+  width: auto;
+  padding: 16px 32px !important;
+  font-size: 1.2rem !important;
+  display: inline-flex;
+  align-items: center;
+  gap: 12px;
+  border-radius: 24px !important;
+  height: 54px !important;
+  box-shadow: 0 2px 8px rgba(229,192,123,0.15);
+  border: none !important;
+  font-weight: 600;
+  transition: background 0.2s, box-shadow 0.2s;
+}
+.tabla-boton-editar:hover, .tabla-boton-eliminar:hover {
+  background: linear-gradient(90deg, #D4B06A 0%, #E5C07B 100%) !important;
+  color: #2a1d00 !important;
+  box-shadow: 0 4px 16px rgba(229,192,123,0.25);
+}
+.celda-acciones-tabla {
+  display: flex;
+  gap: 18px;
+  justify-content: flex-start;
+}
+/* --- Estilos para botones de Acciones Rápidas --- */
+.boton-accion-rapida {
+  background: linear-gradient(90deg, #E5C07B 0%, #FFDFA0 100%);
+  color: #3a2c06;
+  padding: 16px 32px;
+  font-size: 1.15rem;
+  border-radius: 24px;
+  border: none;
+  font-weight: 600;
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  box-shadow: 0 2px 8px rgba(229,192,123,0.12);
+  margin-right: 12px;
+  cursor: pointer;
+  transition: background 0.2s, box-shadow 0.2s;
+}
+.boton-accion-rapida-serie {
+  background: linear-gradient(90deg, #D6C3A5 0%, #F5E9DA 100%);
+  color: #3a2c06;
+}
+.boton-accion-rapida:hover {
+  background: linear-gradient(90deg, #D4B06A 0%, #E5C07B 100%);
+  box-shadow: 0 4px 16px rgba(229,192,123,0.22);
+}
+.boton-accion-rapida-serie:hover {
+  background: linear-gradient(90deg, #BFA77A 0%, #E5D3B3 100%);
+}
+.contenedor-tabla-pacientes {
+  max-height: 420px;
+  overflow-y: auto;
+  border-radius: 18px;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.04);
 }
