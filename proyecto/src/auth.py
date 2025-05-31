@@ -2,6 +2,8 @@ from fastapi import APIRouter, Request, Form, status
 from fastapi.responses import RedirectResponse
 from fastapi.templating import Jinja2Templates
 from keycloak_config import keycloak_openid
+from keycloak.exceptions import KeycloakAuthenticationError
+from .admin import  keycloak_admin_call, keycloak_admin
 
 router = APIRouter()
 templates = Jinja2Templates(directory="proyecto/templates")
@@ -16,6 +18,7 @@ def get_user_info_from_token(request: Request):
     except Exception:
         return None
 
+# Ruta de login - Maneja la autenticación de usuarios
 # Ruta de login - Maneja la autenticación de usuarios
 @router.post("/login")
 def login(request: Request, username: str = Form(...), password: str = Form(...)):
@@ -35,3 +38,13 @@ def login(request: Request, username: str = Form(...), password: str = Form(...)
     except Exception:
         return templates.TemplateResponse("index.html", {"request": request, "error": "Usuario o contraseña incorrectos"})
 
+@router.get("/login")   
+def login_form(request: Request):
+    return templates.TemplateResponse("index.html", {"request": request})
+
+@router.get("/logout")
+def logout(request: Request):
+    response = RedirectResponse(url="/login", status_code=status.HTTP_302_FOUND)
+    response.delete_cookie(key="access_token")
+    response.delete_cookie(key="refresh_token")
+    return response 
