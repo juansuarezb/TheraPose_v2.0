@@ -36,7 +36,6 @@ def keycloak_admin_call(method_name, *args, **kwargs):
     Función auxiliar para llamadas seguras a la API de Keycloak:
     1. Intenta ejecutar el método solicitado
     2. Si falla por autenticación, refresca el token y reintenta una vez
-    3. Propaga otros errores
     """
     global keycloak_admin
     method = getattr(keycloak_admin, method_name)
