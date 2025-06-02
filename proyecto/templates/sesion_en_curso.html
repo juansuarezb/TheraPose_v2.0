@@ -163,12 +163,28 @@
             color: var(--color-text);
             border: 1px solid var(--color-border);
         }
+        .volver-atras-btn {
+            border-radius: 8px;
+            font-weight: 600;
+            border-width: 2px;
+            transition: background 0.2s, color 0.2s, border 0.2s;
+            margin-left: auto;
+        }
+        .volver-atras-btn:hover, .volver-atras-btn:focus {
+            background: #fff !important;
+            color: var(--color-primary) !important;
+            border-color: #fff !important;
+            text-decoration: none;
+        }
     </style>
 </head>
 <body>
     <nav class="navbar navbar-expand-lg navbar-dark">
         <div class="container-fluid">
             <a class="navbar-brand" href="#"><i class="fas fa-spa"></i>Yoga Terapéutico</a>
+            <a href="/patient/dashboard" class="btn btn-outline-light ms-auto volver-atras-btn">
+                <i class="fas fa-arrow-left me-1"></i> Volver atrás
+            </a>
         </div>
     </nav>
 
@@ -311,4 +327,4 @@
 
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
 </body>
-</html> 
+</html>
