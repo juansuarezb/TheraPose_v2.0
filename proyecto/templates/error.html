@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Error - Yoga Terapéutico</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="/static/css/main.css">
+    <style>
+        body {
+            font-family: 'Montserrat', sans-serif;
+            min-height: 100vh;
+            background: #f7fafc;
+        }
+        .navbar {
+            background: #4a5689;
+            color: #fff;
+            font-weight: 600;
+            box-shadow: 0 2px 8px rgba(26,54,93,0.10);
+        }
+        .navbar-brand {
+            font-weight: 700;
+            font-size: 1.3rem;
+            color: #fff !important;
+            letter-spacing: 1px;
+        }
+        .navbar .fa-spa {
+            margin-right: 0.5rem;
+        }
+        .error-container {
+            max-width: 600px;
+            margin: 3rem auto;
+        }
+        .error-card {
+            background: #fff;
+            border-radius: 18px;
+            box-shadow: 0 8px 32px rgba(26,54,93,0.10);
+            padding: 2rem;
+            text-align: center;
+        }
+        .error-icon {
+            font-size: 4rem;
+            color: #dc3545;
+            margin-bottom: 1rem;
+        }
+        .error-message {
+            color: #4a5568;
+            font-size: 1.1rem;
+            margin-bottom: 2rem;
+        }
+    </style>
+</head>
+<body>
+    <nav class="navbar navbar-expand-lg navbar-dark">
+        <div class="container-fluid">
+            <a class="navbar-brand" href="#"><i class="fas fa-spa"></i>Yoga Terapéutico</a>
+        </div>
+    </nav>
+
+    <div class="error-container">
+        <div class="error-card">
+            <i class="fas fa-exclamation-circle error-icon"></i>
+            <h2 class="mb-4">¡Ups! Ha ocurrido un error</h2>
+            <p class="error-message">{{ error }}</p>
+            <a href="/patient/dashboard" class="btn btn-primary">
+                <i class="fas fa-home me-2"></i>Volver al Dashboard
+            </a>
+        </div>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html> 

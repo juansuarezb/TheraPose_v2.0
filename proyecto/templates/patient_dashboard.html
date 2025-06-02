@@ -145,6 +145,52 @@
             color: var(--color-primary);
             font-size: 1.2rem;
         }
+        .serie-card {
+            padding: 1.5rem;
+            border-bottom: 1px solid var(--color-border);
+        }
+        .serie-card:last-child {
+            border-bottom: none;
+        }
+        .progress {
+            height: 20px;
+            background-color: var(--color-secondary);
+            border-radius: 10px;
+        }
+        .progress-bar {
+            background: linear-gradient(90deg, var(--color-primary-light) 0%, var(--color-primary) 100%);
+            border-radius: 10px;
+        }
+        .btn-primary {
+            background: linear-gradient(90deg, var(--color-primary) 0%, var(--color-primary-dark) 100%);
+            border: none;
+            padding: 0.75rem 1.5rem;
+            font-weight: 600;
+            transition: all 0.3s ease;
+        }
+        .btn-primary:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 4px 12px rgba(139, 115, 85, 0.2);
+        }
+        .btn-secondary {
+            background: var(--color-secondary);
+            border: 1px solid var(--color-border);
+            color: var(--color-text);
+            padding: 0.75rem 1.5rem;
+            font-weight: 600;
+        }
+        .table {
+            color: var(--color-text);
+        }
+        .table th {
+            font-weight: 600;
+            color: var(--color-text-secondary);
+            border-bottom-color: var(--color-border);
+        }
+        .table td {
+            vertical-align: middle;
+            border-bottom-color: var(--color-border);
+        }
         @media (min-width: 992px) {
             .columna-info-paciente {
                 max-width: 350px;
@@ -193,10 +239,77 @@
                     <span class="titulo-tarjeta"><i class="fas fa-spa"></i>Mi Serie Terapéutica</span>
                 </div>
                 <div class="p-4">
-                    <div class="alerta-info mb-0">
-                        <i class="fas fa-info-circle"></i>
-                        No tienes una serie terapéutica asignada actualmente.
-                    </div>
+                    {% if series %}
+                        {% for serie in series %}
+                        <div class="serie-card mb-4">
+                            <h4 class="mb-3">{{ serie.nombre }}</h4>
+                            <div class="row mb-3">
+                                <div class="col-md-6">
+                                    <p><strong>Tipo de Terapia:</strong> {{ serie.tipo_terapia }}</p>
+                                </div>
+                                <div class="col-md-6">
+                                    <p><strong>Sesiones Recomendadas:</strong> {{ serie.sesiones_recomendadas }}</p>
+                                </div>
+                            </div>
+                            
+                            <div class="progress mb-3" style="height: 20px; background-color: var(--color-secondary); border-radius: 10px;">
+                                {% set progreso = (serie.sesiones_completadas / serie.sesiones_recomendadas * 100) | round %}
+                                <div class="progress-bar" role="progressbar" 
+                                     style="width: {{ progreso }}%; background: linear-gradient(90deg, var(--color-primary-light) 0%, var(--color-primary) 100%); border-radius: 10px;"
+                                     aria-valuenow="{{ progreso }}" 
+                                     aria-valuemin="0" 
+                                     aria-valuemax="100">
+                                    {{ serie.sesiones_completadas }}/{{ serie.sesiones_recomendadas }} sesiones
+                                </div>
+                            </div>
+
+                            <div class="d-grid gap-2 mb-4">
+                                {% if serie.serie_completa %}
+                                    <button class="btn btn-secondary" disabled>
+                                        <i class="fas fa-check-circle me-2"></i>Serie Completada
+                                    </button>
+                                {% else %}
+                                    <a href="/patient/iniciar-sesion/{{ serie.id_serie }}" class="btn btn-primary">
+                                        <i class="fas fa-play-circle me-2"></i>Iniciar Sesión
+                                    </a>
+                                {% endif %}
+                            </div>
+
+                            <h5 class="mb-3">Posturas:</h5>
+                            <div class="table-responsive">
+                                <table class="table table-hover">
+                                    <thead>
+                                        <tr>
+                                            <th>Orden</th>
+                                            <th>Postura</th>
+                                            <th>Nombre en Sánscrito</th>
+                                            <th>Duración (min)</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        {% for postura in serie.posturas %}
+                                        <tr>
+                                            <td>{{ postura[3] }}</td>
+                                            <td>{{ postura[1] }}</td>
+                                            <td><em>{{ postura[2] }}</em></td>
+                                            <td>
+                                                {% set minutos = postura[4] | int %}
+                                                {% set segundos = ((postura[4] - minutos) * 60) | round | int %}
+                                                {{ minutos }} min {% if segundos > 0 %}{{ segundos }} seg{% endif %}
+                                            </td>
+                                        </tr>
+                                        {% endfor %}
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+                        {% endfor %}
+                    {% else %}
+                        <div class="alerta-info mb-0">
+                            <i class="fas fa-info-circle"></i>
+                            No tienes una serie terapéutica asignada actualmente.
+                        </div>
+                    {% endif %}
                 </div>
             </div>
         </div>

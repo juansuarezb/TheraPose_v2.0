@@ -1,0 +1,314 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sesión en Curso - Yoga Terapéutico</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="/static/css/main.css">
+    <style>
+        :root {
+            --color-primary: #8B7355;
+            --color-primary-dark: #6B5943;
+            --color-primary-light: #A0906B;
+            --color-secondary: #F5F2ED;
+            --color-accent: #D4C4A8;
+            --color-text: #3A3529;
+            --color-text-secondary: #6B6455;
+            --color-border: #E8E3D8;
+            --color-background: #F8F5F0;
+            --gradient-primary: linear-gradient(135deg, var(--color-primary) 0%, var(--color-primary-light) 100%);
+            --gradient-secondary: linear-gradient(135deg, var(--color-secondary) 0%, #E6D7B8 100%);
+        }
+        body {
+            font-family: 'Inter', sans-serif;
+            min-height: 100vh;
+            background: var(--color-background);
+            color: var(--color-text);
+        }
+        .navbar {
+            background: var(--gradient-primary);
+            color: #fff;
+            font-weight: 600;
+            box-shadow: 0 2px 8px rgba(58, 53, 41, 0.12);
+        }
+        .navbar-brand {
+            font-weight: 700;
+            font-size: 1.3rem;
+            color: #fff !important;
+            letter-spacing: 1px;
+        }
+        .main-container {
+            max-width: 1200px;
+            margin: 3rem auto;
+            padding: 0 1rem;
+        }
+        .card {
+            background: #fff;
+            border-radius: 16px;
+            box-shadow: 0 8px 32px rgba(58, 53, 41, 0.12);
+            border: none;
+            transition: all 0.3s ease;
+        }
+        .card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 12px 48px rgba(58, 53, 41, 0.16);
+        }
+        .card-header {
+            background: var(--gradient-primary);
+            color: #fff;
+            border-radius: 16px 16px 0 0 !important;
+            padding: 1.3rem 1.5rem;
+            border: none;
+        }
+        .card-title {
+            font-size: 1.25rem;
+            font-weight: 600;
+            margin: 0;
+        }
+        .timer {
+            font-size: 4rem;
+            font-weight: 600;
+            text-align: center;
+            color: var(--color-primary);
+            text-shadow: 0 2px 4px rgba(139, 115, 85, 0.1);
+        }
+        .postura-actual {
+            background: var(--color-secondary);
+            border-radius: 16px;
+            padding: 2rem;
+            margin-bottom: 2rem;
+            text-align: center;
+            border: 1px solid var(--color-border);
+        }
+        .postura-actual h3 {
+            color: var(--color-primary);
+            font-weight: 600;
+            margin-bottom: 1rem;
+        }
+        .postura-actual .nombre-sanscrito {
+            color: var(--color-text-secondary);
+            font-style: italic;
+            margin-bottom: 1rem;
+        }
+        .btn-primary {
+            background: var(--gradient-primary);
+            border: none;
+            border-radius: 12px;
+            font-weight: 600;
+            padding: 0.75rem 1.5rem;
+            transition: all 0.3s ease;
+        }
+        .btn-primary:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 4px 12px rgba(139, 115, 85, 0.2);
+        }
+        .btn-secondary {
+            background: var(--color-secondary);
+            border: 1px solid var(--color-border);
+            color: var(--color-text);
+            border-radius: 12px;
+            font-weight: 600;
+            padding: 0.75rem 1.5rem;
+            transition: all 0.3s ease;
+        }
+        .btn-secondary:hover {
+            background: var(--color-accent);
+            transform: translateY(-2px);
+        }
+        .form-label {
+            color: var(--color-text-secondary);
+            font-weight: 500;
+            margin-bottom: 0.5rem;
+        }
+        .form-control {
+            border: 1px solid var(--color-border);
+            border-radius: 12px;
+            padding: 0.75rem 1rem;
+            transition: all 0.3s ease;
+        }
+        .form-control:focus {
+            border-color: var(--color-primary);
+            box-shadow: 0 0 0 0.2rem rgba(139, 115, 85, 0.25);
+        }
+        .cerrar-sesion {
+            color: #fff;
+            text-decoration: none;
+            font-weight: 500;
+            transition: all 0.3s ease;
+        }
+        .cerrar-sesion:hover {
+            color: var(--color-secondary);
+            text-decoration: none;
+        }
+        .progress {
+            height: 8px;
+            background-color: var(--color-secondary);
+            border-radius: 4px;
+            margin: 1rem 0;
+        }
+        .progress-bar {
+            background: var(--gradient-primary);
+            border-radius: 4px;
+        }
+        .alert {
+            border-radius: 12px;
+            border: none;
+            padding: 1rem;
+        }
+        .alert-info {
+            background-color: var(--color-secondary);
+            color: var(--color-text);
+            border: 1px solid var(--color-border);
+        }
+    </style>
+</head>
+<body>
+    <nav class="navbar navbar-expand-lg navbar-dark">
+        <div class="container-fluid">
+            <a class="navbar-brand" href="#"><i class="fas fa-spa"></i>Yoga Terapéutico</a>
+        </div>
+    </nav>
+
+    <div class="container mt-5">
+        <div class="row justify-content-center">
+            <div class="col-md-8">
+                <div class="card shadow">
+                    <div class="card-header bg-primary text-white">
+                        <h4 class="mb-0"><i class="fas fa-clock me-2"></i>Sesión en Curso</h4>
+                    </div>
+                    <div class="card-body">
+                        <div class="postura-actual">
+                            <h3 id="nombrePostura"></h3>
+                            <p class="text-muted" id="nombreSans"></p>
+                            <div class="timer" id="timer">00:00</div>
+                            <div class="progress">
+                                <div class="progress-bar" role="progressbar" style="width: 0%"></div>
+                            </div>
+                        </div>
+
+                        <div class="text-center mb-4">
+                            <h5>Progreso de la Sesión</h5>
+                            <p><span id="posturaActual">0</span> de <span id="posturasTotal">0</span> posturas</p>
+                        </div>
+
+                        <form id="finalizarForm" method="POST" action="/patient/finalizar-sesion/{{ id_serie }}" style="display: none;">
+                            <input type="hidden" name="intensidad_inicio" value="{{ intensidad_inicio }}">
+                            <input type="hidden" name="hora_inicio" id="horaInicio">
+                            <input type="hidden" name="hora_fin" id="horaFin">
+                            
+                            <div class="mb-4">
+                                <h5>¿Cuál es tu nivel de molestia después de la sesión?</h5>
+                                <div class="row g-3">
+                                    {% for i in range(5) %}
+                                    <div class="col">
+                                        <div class="form-check">
+                                            <input class="form-check-input" type="radio" name="intensidad_final" 
+                                                   value="{{ i }}" id="intensidadFinal{{ i }}" required>
+                                            <label class="form-check-label" for="intensidadFinal{{ i }}">
+                                                {{ niveles_intensidad[i] }}
+                                            </label>
+                                        </div>
+                                    </div>
+                                    {% endfor %}
+                                </div>
+                            </div>
+
+                            <div class="mb-4">
+                                <label for="comentario" class="form-label">Comentarios sobre la sesión:</label>
+                                <textarea class="form-control" id="comentario" name="comentario" rows="3" required></textarea>
+                            </div>
+
+                            <div class="d-grid gap-2">
+                                <button type="submit" class="btn btn-primary">
+                                    <i class="fas fa-check-circle me-2"></i>Finalizar Sesión
+                                </button>
+                                <a href="/patient/dashboard" class="btn btn-secondary">
+                                    <i class="fas fa-arrow-left me-2"></i>Volver al Dashboard
+                                </a>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            let posturas = [];
+            let posturaActual = 0;
+            let timer;
+            let tiempoRestante;
+            
+            // Función para formatear la hora en HH:MM:SS
+            function formatTime(date) {
+                return date.toTimeString().split(' ')[0];
+            }
+            
+            const horaInicio = new Date();
+            document.getElementById('horaInicio').value = formatTime(horaInicio);
+
+            // Cargar posturas
+            fetch(`/api/posturas-sesion/{{ id_serie }}`)
+                .then(response => response.json())
+                .then(data => {
+                    posturas = data.posturas;
+                    document.getElementById('posturasTotal').textContent = posturas.length;
+                    iniciarPostura();
+                });
+
+            function iniciarPostura() {
+                if (posturaActual >= posturas.length) {
+                    finalizarSesion();
+                    return;
+                }
+
+                const postura = posturas[posturaActual];
+                document.getElementById('nombrePostura').textContent = postura[1];
+                document.getElementById('nombreSans').textContent = postura[2];
+                document.getElementById('posturaActual').textContent = posturaActual + 1;
+
+                // Convertir minutos a segundos y redondear para tener un número exacto de segundos
+                tiempoRestante = Math.round(postura[4] * 60);
+                actualizarTimer();
+                timer = setInterval(actualizarTimer, 1000);
+            }
+
+            function actualizarTimer() {
+                if (tiempoRestante <= 0) {
+                    clearInterval(timer);
+                    posturaActual++;
+                    iniciarPostura();
+                    return;
+                }
+
+                const minutos = Math.floor(tiempoRestante / 60);
+                const segundos = tiempoRestante % 60;
+                
+                document.getElementById('timer').textContent = 
+                    `${minutos.toString().padStart(2, '0')}:${segundos.toString().padStart(2, '0')}`;
+                
+                const postura = posturas[posturaActual];
+                const tiempoTotal = Math.round(postura[4] * 60);
+                const progreso = 100 - (tiempoRestante / tiempoTotal * 100);
+                document.querySelector('.progress-bar').style.width = `${progreso}%`;
+                
+                tiempoRestante--;
+            }
+
+            function finalizarSesion() {
+                const horaFin = new Date();
+                document.getElementById('horaFin').value = formatTime(horaFin);
+                document.querySelector('.postura-actual').style.display = 'none';
+                document.querySelector('.text-center').style.display = 'none';
+                document.getElementById('finalizarForm').style.display = 'block';
+            }
+        });
+    </script>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html> 
