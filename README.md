@@ -10,11 +10,7 @@
 TheraPose es una plataforma de software para la gestión de clases de yoga terapéutico. El sistema permitirá a los instructores gestionar a sus pacientes, crear y asignar series terapéuticas, y realizar un seguimiento detallado del progreso de cada paciente en su práctica de yoga. Los pacientes podrán acceder a las sesiones asignadas y llevar un registro de su experiencia, incluyendo la intensidad del dolor o molestia durante las sesiones.
 
 ---
-
 <details><summary><h1>Prerrequisitos</h1></summary>
-
--   <b>WSL 2</b> habilitado - Windows 10/11.
--   Tener <b> Ubuntu </b> instalado desde la Microsoft Store
 -   <b> Docker </b> (Docker Desktop).
 -   Git (Clonar el repositorio).
 -   Python 3.11+.
@@ -75,8 +71,7 @@ docker-compose up -d
 | **Backend**       | ![FastAPI](https://img.shields.io/badge/FastAPI-0.103.1-informational?style=flat&logo=fastapi&logoColor=white&color=6aa6f8) ![Python](https://img.shields.io/badge/Python-3.11-informational?style=flat&logo=python&logoColor=white&color=6aa6f8)                                                                                                                                      |
 | **Frontend**      | ![Jinja2](https://img.shields.io/badge/Jinja2-3.1.2-informational?style=flat&logo=jinja&logoColor=white&color=6aa6f8) ![JavaScript](https://img.shields.io/badge/JavaScript-ES6-informational?style=flat&logo=javascript&logoColor=white&color=6aa6f8) ![Bootstrap](https://img.shields.io/badge/Bootstrap-5.3-informational?style=flat&logo=bootstrap&logoColor=white&color=6aa6f8)   |
 | **Base de Datos** | ![SQLite](https://img.shields.io/badge/SQLite-3.42-informational?style=flat&logo=sqlite&logoColor=white&color=6aa6f8) ![SQLModel](https://img.shields.io/badge/SQLModel-0.0.14-informational?style=flat&logo=sqlalchemy&logoColor=white&color=6aa6f8) ![SQLAlchemy](https://img.shields.io/badge/SQLAlchemy-2.0-informational?style=flat&logo=sqlalchemy&logoColor=white&color=6aa6f8) |
-| **Autenticación** | ![Keycloak](https://img.shields.io/badge/Keycloak-22.0.1-informational?style=flat&logo=keycloak&logoColor=white&color=6aa6f8)                                                                                                                                                                                                                                                          |
-| **Autenticación** | ![Keycloak](https://img.shields.io/badge/Keycloak-22.0.1-informational?style=flat&logo=keycloak&logoColor=white&color=6aa6f8)                                                                                                                                                                                                                                                          |
+| **Autenticación** | ![Keycloak](https://img.shields.io/badge/Keycloak-22.0.1-informational?style=flat&logo=keycloak&logoColor=white&color=6aa6f8) |
 | **DevOps**        | ![Docker](https://img.shields.io/badge/Docker-24.0-informational?style=flat&logo=docker&logoColor=white&color=6aa6f8) ![Docker Compose](https://img.shields.io/badge/Docker_Compose-2.22-informational?style=flat&logo=docker&logoColor=white&color=6aa6f8)                                                                                                                            |
 
 ---
