@@ -1,0 +1,267 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Crear Serie Terapéutica - Yoga Terapéutico</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="/static/css/main.css">
+    <style>
+        :root {
+            --color-primary: #8B7355;
+            --color-primary-dark: #6B5943;
+            --color-primary-light: #A0906B;
+            --color-secondary: #F5F2ED;
+            --color-accent: #D4C4A8;
+            --color-text: #3A3529;
+            --color-text-secondary: #6B6455;
+            --color-border: #E8E3D8;
+            --color-background: #F8F5F0;
+            --gradient-primary: linear-gradient(135deg, var(--color-primary) 0%, var(--color-primary-light) 100%);
+            --gradient-secondary: linear-gradient(135deg, var(--color-secondary) 0%, #E6D7B8 100%);
+        }
+        body {
+            font-family: 'Inter', sans-serif;
+            min-height: 100vh;
+            background: var(--color-background);
+            color: var(--color-text);
+        }
+        .navbar {
+            background: var(--gradient-primary);
+            color: #fff;
+            font-weight: 600;
+            box-shadow: 0 2px 8px rgba(26,54,93,0.10);
+        }
+        .navbar-brand {
+            font-weight: 700;
+            font-size: 1.3rem;
+            color: #fff !important;
+            letter-spacing: 1px;
+        }
+        .main-card {
+            max-width: 800px;
+            margin: 3rem auto;
+            background: #fff;
+            border-radius: 16px;
+            box-shadow: 0 8px 32px rgba(58, 53, 41, 0.12);
+            padding: 2.5rem 2rem;
+        }
+        .dashboard-header {
+            background: var(--gradient-primary);
+            color: #fff;
+            border-radius: 16px 16px 0 0;
+            padding: 1.3rem 1.5rem;
+            margin-bottom: 2rem;
+        }
+        .dashboard-title {
+            font-size: 1.45rem;
+            font-weight: 600;
+        }
+        .postura-card {
+            border: 1px solid var(--color-border);
+            border-radius: 12px;
+            padding: 1rem;
+            margin-bottom: 1rem;
+            background: #fff;
+            transition: all 0.3s ease;
+        }
+        .postura-card.selected {
+            border-color: var(--color-primary);
+            background: var(--color-secondary);
+        }
+        .btn-primary {
+            background: var(--gradient-primary);
+            border: none;
+            border-radius: 12px;
+            font-weight: 600;
+            padding: 0.75rem 1.5rem;
+            transition: all 0.3s ease;
+        }
+        .btn-primary:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 4px 12px rgba(139, 115, 85, 0.2);
+        }
+        .alert-danger {
+            border-radius: 12px;
+            border: none;
+            padding: 1rem;
+            margin-bottom: 1.5rem;
+            background-color: #FFF5F5;
+            color: #E53E3E;
+        }
+        .cerrar-sesion {
+            color: #fff;
+            text-decoration: none;
+            font-weight: 500;
+            transition: all 0.3s ease;
+        }
+        .cerrar-sesion:hover {
+            color: var(--color-secondary);
+            text-decoration: none;
+        }
+    </style>
+</head>
+<body>
+    <nav class="navbar navbar-expand-lg navbar-dark">
+        <div class="container-fluid">
+            <a class="navbar-brand" href="#"><i class="fas fa-spa"></i>Yoga Terapéutico</a>
+            <a href="/" class="cerrar-sesion"><i class="fas fa-sign-out-alt me-2"></i>Cerrar Sesión</a>
+        </div>
+    </nav>
+
+    <div class="main-card">
+        <div class="dashboard-header">
+            <span class="dashboard-title"><i class="fas fa-plus-circle me-2"></i>Crear Serie Terapéutica</span>
+        </div>
+
+        {% if error %}
+        <div class="alert alert-danger" role="alert">
+            <i class="fas fa-exclamation-circle me-2"></i>{{ error }}
+        </div>
+        {% endif %}
+
+        <form id="serieForm" method="POST" action="/instructor/create-serie">
+            <div class="mb-3">
+                <label class="form-label" for="patient_id">Paciente</label>
+                <select class="form-control" id="patient_id" name="patient_id" required>
+                    <option value="">Seleccione un paciente</option>
+                    {% for patient in patients %}
+                    <option value="{{ patient.id }}">{{ patient.first_name }} {{ patient.last_name }}</option>
+                    {% endfor %}
+                </select>
+            </div>
+
+            <div class="mb-3">
+                <label class="form-label" for="nombre">Nombre de la Serie</label>
+                <input type="text" class="form-control" id="nombre" name="nombre" required>
+            </div>
+
+            <div class="mb-3">
+                <label class="form-label" for="tipo_terapia">Tipo de Terapia</label>
+                <select class="form-control" id="tipo_terapia" name="tipo_terapia" required>
+                    <option value="">Seleccione un tipo de terapia</option>
+                    {% for tipo in tipos_terapia %}
+                    <option value="{{ tipo }}">{{ tipo }}</option>
+                    {% endfor %}
+                </select>
+            </div>
+
+            <div class="mb-3">
+                <label class="form-label" for="sesiones_recomendadas">Sesiones Recomendadas</label>
+                <input type="number" class="form-control" id="sesiones_recomendadas" name="sesiones_recomendadas" min="1" required>
+            </div>
+
+            <div class="mb-3">
+                <label class="form-label">Posturas</label>
+                <div id="posturasContainer" class="row">
+                    <!-- Las posturas se cargarán aquí dinámicamente -->
+                </div>
+            </div>
+
+            <input type="hidden" name="posturas" id="posturas">
+            
+            <div class="d-grid gap-2">
+                <button type="submit" class="btn btn-primary">Crear Serie Terapéutica</button>
+                <a href="/instructor/dashboard" class="btn btn-secondary">Cancelar</a>
+            </div>
+        </form>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <script>
+        document.getElementById('tipo_terapia').addEventListener('change', function() {
+            const tipoTerapia = this.value;
+            if (tipoTerapia) {
+                fetch(`/api/posturas/${encodeURIComponent(tipoTerapia)}`)
+                    .then(response => response.json())
+                    .then(data => {
+                        const container = document.getElementById('posturasContainer');
+                        container.innerHTML = '';
+                        
+                        data.posturas.forEach((postura, index) => {
+                            const card = document.createElement('div');
+                            card.className = 'col-md-6 mb-3';
+                            card.innerHTML = `
+                                <div class="postura-card" data-id="${postura[0]}">
+                                    <div class="d-flex justify-content-between align-items-center mb-2">
+                                        <h5 class="mb-0">${postura[1]}</h5>
+                                        <small class="text-muted">${postura[2] || ''}</small>
+                                    </div>
+                                    <div class="mb-2">
+                                        <label class="form-label">Orden en la serie</label>
+                                        <input type="number" class="form-control orden" min="1" value="${index + 1}">
+                                    </div>
+                                    <div class="mb-2">
+                                        <label class="form-label">Duración</label>
+                                        <div class="row g-2">
+                                            <div class="col">
+                                                <div class="input-group">
+                                                    <input type="number" class="form-control duracion-min" min="0" value="5">
+                                                    <span class="input-group-text">min</span>
+                                                </div>
+                                            </div>
+                                            <div class="col">
+                                                <div class="input-group">
+                                                    <input type="number" class="form-control duracion-seg" min="0" max="59" value="0">
+                                                    <span class="input-group-text">seg</span>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="form-check">
+                                        <input class="form-check-input postura-check" type="checkbox" value="${postura[0]}" id="postura${postura[0]}">
+                                        <label class="form-check-label" for="postura${postura[0]}">
+                                            Incluir en la serie
+                                        </label>
+                                    </div>
+                                </div>
+                            `;
+                            container.appendChild(card);
+                        });
+                    });
+            }
+        });
+
+        document.getElementById('serieForm').addEventListener('submit', function(e) {
+            e.preventDefault();
+            
+            const posturas = [];
+            const posturasSeleccionadas = document.querySelectorAll('.postura-check:checked');
+            
+            posturasSeleccionadas.forEach((checkbox) => {
+                const card = checkbox.closest('.postura-card');
+                const minutos = parseInt(card.querySelector('.duracion-min').value) || 0;
+                const segundos = parseInt(card.querySelector('.duracion-seg').value) || 0;
+                const duracionTotal = minutos + (segundos / 60); // Convertir a minutos decimales
+                const orden = card.querySelector('.orden').value;
+                posturas.push([
+                    parseInt(checkbox.value),
+                    parseInt(orden),
+                    parseFloat(duracionTotal.toFixed(2)) // Redondear a 2 decimales
+                ]);
+            });
+
+            if (posturas.length === 0) {
+                alert('Por favor, seleccione al menos una postura');
+                return;
+            }
+
+            // Verificar que no haya órdenes duplicados
+            const ordenes = posturas.map(p => p[1]);
+            const ordenesUnicos = new Set(ordenes);
+            if (ordenes.length !== ordenesUnicos.size) {
+                alert('Por favor, asigne un orden único a cada postura');
+                return;
+            }
+
+            // Ordenar las posturas por el orden especificado
+            posturas.sort((a, b) => a[1] - b[1]);
+
+            document.getElementById('posturas').value = JSON.stringify(posturas);
+            this.submit();
+        });
+    </script>
+</body>
+</html> 

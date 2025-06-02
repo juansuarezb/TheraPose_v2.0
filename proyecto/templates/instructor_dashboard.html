@@ -16,6 +16,7 @@
         <a href="#" id="nav-dashboard" class="active"><i class="fas fa-home"></i> Dashboard</a>
         <a href="#" id="nav-pacientes"><i class="fas fa-users"></i> Pacientes</a>
         <a href="#" id="nav-crear"><i class="fas fa-user-plus"></i> Registrar Paciente</a>
+        <a href="/instructor/gestionar-series"><i class="fas fa-tasks"></i> Gestión de Series</a>
       </nav>
     </aside>
     
@@ -39,12 +40,17 @@
         </div>
         <div class="card">
           <div class="card-title"><i class="fas fa-bolt"></i> Acciones Rápidas</div>
-          <button class="boton-accion-rapida" onclick="showSection('crear')">
-            <i class="fas fa-user-plus"></i> Registrar Paciente
-          </button>
-          <button class="boton-accion-rapida boton-accion-rapida-serie" style="margin-top: 10px;" onclick="window.location.href='/instructor/create-series'">
-            <i class="fas fa-dumbbell"></i> Crear Serie Terapéutica
-          </button>
+          <div class="acciones-rapidas-container">
+            <button class="boton-accion-rapida" onclick="showSection('crear')">
+              <i class="fas fa-user-plus"></i> Registrar Paciente
+            </button>
+            <button class="boton-accion-rapida boton-accion-rapida-serie" onclick="window.location.href='/instructor/create-serie'">
+              <i class="fas fa-spa"></i> Crear Serie Terapéutica
+            </button>
+            <button class="boton-accion-rapida" onclick="window.location.href='/instructor/gestionar-series'">
+              <i class="fas fa-tasks"></i> Gestión de Series
+            </button>
+          </div>
         </div>
       </section>
       
@@ -352,6 +358,39 @@
     @keyframes popIn {
       0% { opacity: 0; transform: scale(0.9); }
       100% { opacity: 1; transform: scale(1); }
+    }
+    .acciones-rapidas-container {
+      display: flex;
+      flex-direction: column;
+      gap: 15px;
+    }
+    
+    .boton-accion-rapida {
+      width: 100%;
+      padding: 12px 20px;
+      border-radius: 12px;
+      border: none;
+      background: var(--gradient-primary, linear-gradient(135deg, #8B7355 0%, #A0906B 100%));
+      color: white;
+      font-weight: 600;
+      cursor: pointer;
+      transition: all 0.3s ease;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+
+    .boton-accion-rapida i {
+      font-size: 1.1em;
+    }
+
+    .boton-accion-rapida:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+    }
+
+    .boton-accion-rapida-serie {
+      background: var(--gradient-accent, linear-gradient(135deg, #D4C4A8 0%, #D4A574 100%));
     }
   </style>
 </body>
