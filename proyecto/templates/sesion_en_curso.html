@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="es">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -22,29 +23,34 @@
             --gradient-primary: linear-gradient(135deg, var(--color-primary) 0%, var(--color-primary-light) 100%);
             --gradient-secondary: linear-gradient(135deg, var(--color-secondary) 0%, #E6D7B8 100%);
         }
+
         body {
             font-family: 'Inter', sans-serif;
             min-height: 100vh;
             background: var(--color-background);
             color: var(--color-text);
         }
+
         .navbar {
             background: var(--gradient-primary);
             color: #fff;
             font-weight: 600;
             box-shadow: 0 2px 8px rgba(58, 53, 41, 0.12);
         }
+
         .navbar-brand {
             font-weight: 700;
             font-size: 1.3rem;
             color: #fff !important;
             letter-spacing: 1px;
         }
+
         .main-container {
             max-width: 1200px;
             margin: 3rem auto;
             padding: 0 1rem;
         }
+
         .card {
             background: #fff;
             border-radius: 16px;
@@ -52,10 +58,12 @@
             border: none;
             transition: all 0.3s ease;
         }
+
         .card:hover {
             transform: translateY(-5px);
             box-shadow: 0 12px 48px rgba(58, 53, 41, 0.16);
         }
+
         .card-header {
             background: var(--gradient-primary);
             color: #fff;
@@ -63,11 +71,13 @@
             padding: 1.3rem 1.5rem;
             border: none;
         }
+
         .card-title {
             font-size: 1.25rem;
             font-weight: 600;
             margin: 0;
         }
+
         .timer {
             font-size: 4rem;
             font-weight: 600;
@@ -75,6 +85,7 @@
             color: var(--color-primary);
             text-shadow: 0 2px 4px rgba(139, 115, 85, 0.1);
         }
+
         .postura-actual {
             background: var(--color-secondary);
             border-radius: 16px;
@@ -83,16 +94,19 @@
             text-align: center;
             border: 1px solid var(--color-border);
         }
+
         .postura-actual h3 {
             color: var(--color-primary);
             font-weight: 600;
             margin-bottom: 1rem;
         }
+
         .postura-actual .nombre-sanscrito {
             color: var(--color-text-secondary);
             font-style: italic;
             margin-bottom: 1rem;
         }
+
         .btn-primary {
             background: var(--gradient-primary);
             border: none;
@@ -101,10 +115,12 @@
             padding: 0.75rem 1.5rem;
             transition: all 0.3s ease;
         }
+
         .btn-primary:hover {
             transform: translateY(-2px);
             box-shadow: 0 4px 12px rgba(139, 115, 85, 0.2);
         }
+
         .btn-secondary {
             background: var(--color-secondary);
             border: 1px solid var(--color-border);
@@ -114,77 +130,72 @@
             padding: 0.75rem 1.5rem;
             transition: all 0.3s ease;
         }
+
         .btn-secondary:hover {
             background: var(--color-accent);
             transform: translateY(-2px);
         }
+
         .form-label {
             color: var(--color-text-secondary);
             font-weight: 500;
             margin-bottom: 0.5rem;
         }
+
         .form-control {
             border: 1px solid var(--color-border);
             border-radius: 12px;
             padding: 0.75rem 1rem;
             transition: all 0.3s ease;
         }
+
         .form-control:focus {
             border-color: var(--color-primary);
             box-shadow: 0 0 0 0.2rem rgba(139, 115, 85, 0.25);
         }
+
         .cerrar-sesion {
             color: #fff;
             text-decoration: none;
             font-weight: 500;
             transition: all 0.3s ease;
         }
+
         .cerrar-sesion:hover {
             color: var(--color-secondary);
             text-decoration: none;
         }
+
         .progress {
             height: 8px;
             background-color: var(--color-secondary);
             border-radius: 4px;
             margin: 1rem 0;
         }
+
         .progress-bar {
             background: var(--gradient-primary);
             border-radius: 4px;
         }
+
         .alert {
             border-radius: 12px;
             border: none;
             padding: 1rem;
         }
+
         .alert-info {
             background-color: var(--color-secondary);
             color: var(--color-text);
             border: 1px solid var(--color-border);
         }
-        .volver-atras-btn {
-            border-radius: 8px;
-            font-weight: 600;
-            border-width: 2px;
-            transition: background 0.2s, color 0.2s, border 0.2s;
-            margin-left: auto;
-        }
-        .volver-atras-btn:hover, .volver-atras-btn:focus {
-            background: #fff !important;
-            color: var(--color-primary) !important;
-            border-color: #fff !important;
-            text-decoration: none;
-        }
     </style>
 </head>
+
 <body>
     <nav class="navbar navbar-expand-lg navbar-dark">
         <div class="container-fluid">
             <a class="navbar-brand" href="#"><i class="fas fa-spa"></i>Yoga Terapéutico</a>
-            <a href="/patient/dashboard" class="btn btn-outline-light ms-auto volver-atras-btn">
-                <i class="fas fa-arrow-left me-1"></i> Volver atrás
-            </a>
         </div>
     </nav>
 
@@ -203,6 +214,13 @@
                             <div class="progress">
                                 <div class="progress-bar" role="progressbar" style="width: 0%"></div>
                             </div>
+                            <div class="video-container mb-4" id="videoContainer">
+                                <div class="ratio ratio-16x9">
+                                    <iframe id="youtubeVideo" src="" frameborder="0"
+                                        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                                        allowfullscreen></iframe>
+                                </div>
+                            </div>
                         </div>
 
                         <div class="text-center mb-4">
@@ -210,19 +228,20 @@
                             <p><span id="posturaActual">0</span> de <span id="posturasTotal">0</span> posturas</p>
                         </div>
 
-                        <form id="finalizarForm" method="POST" action="/patient/finalizar-sesion/{{ id_serie }}" style="display: none;">
+                        <form id="finalizarForm" method="POST" action="/patient/finalizar-sesion/{{ id_serie }}"
+                            style="display: none;">
                             <input type="hidden" name="intensidad_inicio" value="{{ intensidad_inicio }}">
                             <input type="hidden" name="hora_inicio" id="horaInicio">
                             <input type="hidden" name="hora_fin" id="horaFin">
-                            
+
                             <div class="mb-4">
                                 <h5>¿Cuál es tu nivel de molestia después de la sesión?</h5>
                                 <div class="row g-3">
                                     {% for i in range(5) %}
                                     <div class="col">
                                         <div class="form-check">
-                                            <input class="form-check-input" type="radio" name="intensidad_final" 
-                                                   value="{{ i }}" id="intensidadFinal{{ i }}" required>
+                                            <input class="form-check-input" type="radio" name="intensidad_final"
+                                                value="{{ i }}" id="intensidadFinal{{ i }}" required>
                                             <label class="form-check-label" for="intensidadFinal{{ i }}">
                                                 {{ niveles_intensidad[i] }}
                                             </label>
@@ -234,7 +253,8 @@
 
                             <div class="mb-4">
                                 <label for="comentario" class="form-label">Comentarios sobre la sesión:</label>
-                                <textarea class="form-control" id="comentario" name="comentario" rows="3" required></textarea>
+                                <textarea class="form-control" id="comentario" name="comentario" rows="3"
+                                    required></textarea>
                             </div>
 
                             <div class="d-grid gap-2">
@@ -253,17 +273,29 @@
     </div>
 
     <script>
-        document.addEventListener('DOMContentLoaded', function() {
+        const videosPosturas = {
+            "Cat Pose": "https://www.youtube.com/embed/-LApKrv3T0E?autoplay=1&mute=1",
+            "Cobra Pose": "https://www.youtube.com/embed/9WVwe4gJlQc?autoplay=1&mute=1",
+            "Bound Angle Pose": "https://www.youtube.com/embed/lStL1Y_Tevo?autoplay=1&mute=1",
+            "Boat Pose": "https://www.youtube.com/embed/AdWcouSrzpQ?autoplay=1&mute=1",
+            "Corpse Pose": "https://www.youtube.com/embed/7URRFJP9i5U?autoplay=1&mute=1",
+            "Easy Pose": "https://www.youtube.com/embed/izfyJ_j-0Xo?autoplay=1&mute=1",
+            "Chair Pose": "https://www.youtube.com/embed/erVDp3WBlfo?autoplay=1&mute=1",
+            "Dolphin Plank Pose": "https://www.youtube.com/embed/98FVbpHw8RU?autoplay=1&mute=1",
+            "Downward Facing Dog": "https://www.youtube.com/embed/nQFMmhprrGg?autoplay=1&mute=1"
+        };
+
+        document.addEventListener('DOMContentLoaded', function () {
             let posturas = [];
             let posturaActual = 0;
             let timer;
             let tiempoRestante;
-            
+
             // Función para formatear la hora en HH:MM:SS
             function formatTime(date) {
                 return date.toTimeString().split(' ')[0];
             }
-            
+
             const horaInicio = new Date();
             document.getElementById('horaInicio').value = formatTime(horaInicio);
 
@@ -285,7 +317,22 @@
                 const postura = posturas[posturaActual];
                 document.getElementById('nombrePostura').textContent = postura[1];
                 document.getElementById('nombreSans').textContent = postura[2];
+
                 document.getElementById('posturaActual').textContent = posturaActual + 1;
+
+                // Cargar video
+                const videoUrl = videosPosturas[postura[1]];
+                const videoContainer = document.getElementById('videoContainer');
+                const iframe = document.getElementById('youtubeVideo');
+
+
+                if (videoUrl) {
+                    iframe.src = videoUrl;
+                    videoContainer.style.display = 'block';
+                } else {
+                    iframe.src = "";
+                    videoContainer.style.display = 'none';
+                }
 
                 // Convertir minutos a segundos y redondear para tener un número exacto de segundos
                 tiempoRestante = Math.round(postura[4] * 60);
@@ -303,15 +350,15 @@
 
                 const minutos = Math.floor(tiempoRestante / 60);
                 const segundos = tiempoRestante % 60;
-                
-                document.getElementById('timer').textContent = 
+
+                document.getElementById('timer').textContent =
                     `${minutos.toString().padStart(2, '0')}:${segundos.toString().padStart(2, '0')}`;
-                
+
                 const postura = posturas[posturaActual];
                 const tiempoTotal = Math.round(postura[4] * 60);
                 const progreso = 100 - (tiempoRestante / tiempoTotal * 100);
                 document.querySelector('.progress-bar').style.width = `${progreso}%`;
-                
+
                 tiempoRestante--;
             }
 
@@ -327,4 +374,5 @@
 
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
 </body>
+
 </html>
