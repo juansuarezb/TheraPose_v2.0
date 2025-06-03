@@ -272,33 +272,35 @@
                             </div>
                         </form>
 
-                        <!-- Modal de información -->
-                        <div class="modal fade" id="modalInfoPostura" tabindex="-1" aria-labelledby="modalInfoLabel" aria-hidden="true">
-                            <div class="modal-dialog modal-lg">
-                                <div class="modal-content">
-                                    <div class="modal-header">
-                                        <h5 class="modal-title" id="modalInfoLabel">Información adicional de la postura</h5>
-                                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Cerrar"></button>
-                                    </div>
-                                    <div class="modal-body">
-                                        <h6>Beneficios</h6>
-                                        <ul id="beneficiosPostura"></ul>
-                                        <h6>Contraindicaciones</h6>
-                                        <p id="contraindicacionesPostura"></p>
-                                        <h6>Variaciones</h6>
-                                        <ul id="variacionesPostura"></ul>
-                                    </div>
-                                    <div class="modal-footer">
-                                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cerrar</button>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
                     </div> <!-- card-body -->
                 </div> <!-- card shadow -->
             </div> <!-- col-md-8 -->
         </div> <!-- row -->
     </div> <!-- container -->
+
+    <!-- Modal de información (ahora fuera del container y card) -->
+    <div class="modal fade" id="modalInfoPostura" tabindex="-1" aria-labelledby="modalInfoLabel" aria-hidden="true">
+        <div class="modal-dialog modal-lg">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="modalInfoLabel">Información adicional de la postura</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Cerrar"></button>
+                </div>
+                <div class="modal-body">
+                    <h6>Beneficios</h6>
+                    <ul id="beneficiosPostura"></ul>
+                    <h6>Contraindicaciones</h6>
+                    <p id="contraindicacionesPostura"></p>
+                    <h6>Variaciones</h6>
+                    <ul id="variacionesPostura"></ul>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cerrar</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
     <script>
 const detallesPosturas = {
     "Cat Pose": {
@@ -502,6 +504,8 @@ const detallesPosturas = {
             "Downward Facing Dog": "https://www.youtube.com/embed/nQFMmhprrGg?autoplay=1&mute=1"
         };
 
+        let modalInfoPostura;
+
         document.addEventListener('DOMContentLoaded', function () {
             let posturas = [];
             let posturaActual = 0;
@@ -524,6 +528,8 @@ const detallesPosturas = {
                     document.getElementById('posturasTotal').textContent = posturas.length;
                     iniciarPostura();
                 });
+
+            modalInfoPostura = new bootstrap.Modal(document.getElementById('modalInfoPostura'));
 
             function iniciarPostura() {
                 if (posturaActual >= posturas.length) {
@@ -622,13 +628,11 @@ const detallesPosturas = {
         }
 
         function mostrarDialogo() {
-            const modal = new bootstrap.Modal(document.getElementById('modalInfoPostura'));
-            modal.show();
+            modalInfoPostura.show();
         }
 
 
     </script>
-
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
 </body>
 
