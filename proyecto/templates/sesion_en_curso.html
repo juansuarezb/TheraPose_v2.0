@@ -232,33 +232,6 @@
                                 <ol id="pasosPostura">
                                 </ol>
                             </div>
-    <!-- Botón para mostrar más información -->
-                            <div class="text-center mb-4">
-                                <button class="btn btn-info" onclick="mostrarDialogo()">Ver más información</button>
-                            </div>
-                        </div>
-
-                        <!-- Modal de información -->
-                        <div class="modal fade" id="modalInfoPostura" tabindex="-1" aria-labelledby="modalInfoLabel" aria-hidden="true">
-                            <div class="modal-dialog modal-lg">
-                                <div class="modal-content">
-                                    <div class="modal-header">
-                                        <h5 class="modal-title" id="modalInfoLabel">Información adicional de la postura</h5>
-                                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Cerrar"></button>
-                                    </div>
-                                    <div class="modal-body">
-                                        <h6>Beneficios</h6>
-                                        <ul id="beneficiosPostura"></ul>
-                                        <h6>Contraindicaciones</h6>
-                                        <p id="contraindicacionesPostura"></p>
-                                        <h6>Variaciones</h6>
-                                        <ul id="variacionesPostura"></ul>
-                                    </div>
-                                        <div class="modal-footer">
-                                            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cerrar</button>
-                                        </div>
-                                </div>
-
                                 <form id="finalizarForm" method="POST" action="/patient/finalizar-sesion/{{ id_serie }}"
                                     style="display: none;">
                                     <input type="hidden" name="intensidad_inicio" value="{{ intensidad_inicio }}">
@@ -299,33 +272,230 @@
                                 </form>
                             </div>
                         </div>
+                                                <!-- Botón para mostrar más información -->
+                            <div class="text-center mb-4">
+                                <button type= "button" class="btn btn-info" onclick="mostrarDialogo()">Ver más información</button>
+                            </div>
+                        </div>
+
+                        <!-- Modal de información -->
+                        <div class="modal fade" id="modalInfoPostura" tabindex="-1" aria-labelledby="modalInfoLabel" aria-hidden="true">
+                            <div class="modal-dialog modal-lg">
+                                <div class="modal-content">
+                                    <div class="modal-header">
+                                        <h5 class="modal-title" id="modalInfoLabel">Información adicional de la postura</h5>
+                                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Cerrar"></button>
+                                    </div>
+                                    <div class="modal-body">
+                                        <h6>Beneficios</h6>
+                                        <ul id="beneficiosPostura"></ul>
+                                        <h6>Contraindicaciones</h6>
+                                        <p id="contraindicacionesPostura"></p>
+                                        <h6>Variaciones</h6>
+                                        <ul id="variacionesPostura"></ul>
+                                    </div>
+                                        <div class="modal-footer">
+                                            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cerrar</button>
+                                        </div>
+                                </div>
+                            </div>
+                        </div>
                     </div>
                 </div>
             </div>
-        </div>
-    </div>
+
+
 
             <script>
-        const detallesPosturas = {
-            "Cat Pose": {
-                pasos: [
-                    "Colócate en cuatro patas con las muñecas debajo de los hombros y las rodillas debajo de las caderas.",
-                    "Inhala mientras arqueas la espalda bajando el abdomen hacia el suelo y levantando la cabeza y el coxis.",
-                    "Exhala mientras redondeas la columna hacia arriba y metes la barbilla hacia el pecho."
-                ],
-                beneficios: [
-                    "Mejora la flexibilidad de la columna.",
-                    "Alivia el estrés.",
-                    "Estimula los órganos abdominales."
-                ],
-                contraindicaciones: "Evita si tienes lesiones en muñecas o cuello sin supervisión médica.",
-                imagen: "Cat_Pose.jpg",
-                variaciones: [
-                    "Haz el movimiento más lento y sostenido para una versión restaurativa.",
-                    "Agrega movimientos circulares con la cadera para mayor movilidad."
-                ]
-            }
-        };
+const detallesPosturas = {
+    "Cat Pose": {
+        pasos: [
+            "Comienza en posición de cuatro puntos, con las manos y rodillas alineadas con los hombros y caderas respectivamente.",
+            "Inhala profundamente, arqueando la espalda hacia abajo como una vaca, levantando la cabeza y el pecho hacia arriba.",
+            "Exhala profundamente, arqueando la espalda hacia arriba como un gato, redondeando la columna, bajando la cabeza hacia el pecho y empujando con las manos hacia el suelo.",
+            "Repite este movimiento varias veces, alternando entre la postura de la vaca y el gato, sincronizando el movimiento con la respiración.",
+            "Al finalizar, regresa a la posición inicial (cuatro puntos) y desciende a la postura de la infancia (Balasana) para relajarse."
+        ],
+        beneficios: [
+            "Mejora la movilidad de la columna vertebral.",
+            "Alivia el estrés y la tensión.",
+            "Favorece la coordinación entre movimiento y respiración."
+        ],
+        contraindicaciones: "Evita esta postura si tienes lesiones recientes en las muñecas, hombros o cuello.",
+        imagen: "Cat_Pose.jpg",
+        variaciones: [
+            "Agrega movimiento circular de la pelvis para mayor movilidad en la cadera.",
+            "Mantén cada fase (gato/vaca) durante más respiraciones para un efecto restaurativo."
+        ]
+    },
+    "Cobra Pose": {
+        pasos: [
+            "Acuéstate boca abajo con las piernas estiradas y juntas, los pies apoyados en el suelo.",
+            "Coloca las manos debajo de los hombros, con los dedos apuntando hacia adelante.",
+            "Inhala y comienza a levantar el pecho del suelo, manteniendo los hombros relajados y los codos ligeramente flexionados.",
+            "Estira los brazos y eleva el pecho, manteniendo la mirada al frente o hacia arriba, dependiendo de la flexibilidad del cuello."
+        ],
+        beneficios: [
+            "Fortalece los músculos de la espalda.",
+            "Abre el pecho y los pulmones.",
+            "Estimula los órganos abdominales."
+        ],
+        contraindicaciones: "Evita esta postura si tienes lesiones graves en la espalda baja o si estás embarazada.",
+        imagen: "Cobra_Pose.jpg",
+        variaciones: [
+            "Realiza una versión baja apoyando los antebrazos (Sphinx Pose).",
+            "Mantén los pies más separados si sientes presión en la zona lumbar."
+        ]
+    },
+    "Boat Pose": {
+        pasos: [
+                "Siéntate en el suelo con las piernas extendidas hacia adelante y la espalda recta, con las manos apoyadas ligeramente detrás de ti.",
+            "Flexiona las rodillas y lleva los pies al suelo, manteniéndolos juntos.",
+            "Inhala y, manteniendo la espalda recta, inclínate suavemente hacia atrás, manteniendo el equilibrio sobre los isquiones.",
+            "Exhala y levanta los pies, manteniendo las rodillas flexionadas o estiradas, y los brazos hacia adelante, paralelos a las piernas.",
+            "Mantén la postura durante varias respiraciones, asegurándote de mantener el abdomen contraído y la espalda recta.",
+            "Inhala y, suavemente, baja los pies al suelo y regresa a la posición inicial."
+        ],
+        beneficios: [
+            "Fortalece los abdominales, la espalda y la zona lumbar.",
+            "Mejora el equilibrio y la estabilidad.",
+            "Estimula la digestión."
+        ],
+        contraindicaciones: "Evita si sufres de dolor crónico en la espalda baja o hernias abdominales.",
+        imagen: "Boat_Pose.jpg",
+        variaciones: [
+            "Sujeta la parte posterior de los muslos si es difícil mantener el equilibrio.",
+            "Practica con una pierna levantada a la vez si estás comenzando."
+        ]
+    },
+    "Bound Angle Pose": {
+        pasos: [
+            "Comienza sentado en la postura del bastón (Dandasana): extiende las piernas frente a ti.",
+            "Flexiona las rodillas y acerca los talones a la pelvis: junta las plantas de los pies, permitiendo que las rodillas se abran hacia los lados.",
+            "Sujeta los pies con las manos: si es posible, sostén los pies con las palmas de las manos.",
+            "Relaja las rodillas hacia el suelo: deja que la gravedad te guíe mientras las rodillas bajan hacia el suelo.",
+            "Mantén la espalda recta: evita doblar la cabeza hacia los pies, en su lugar, alarga la columna y lleva el pecho hacia adelante.",
+            "Respiración: inhala para estirar la columna y exhala para relajarte más.",
+            "Mantén la postura: respirando profundamente y relajándote en la postura.",
+            "Para salir de la postura: junta las rodillas y luego gira hacia un lado para volver a la postura del bastón."
+        ],
+        beneficios: [
+            "Aumenta la flexibilidad de las caderas y la ingle.",
+            "Estimula los órganos abdominales y la circulación.",
+            "Promueve la relajación física y mental."
+        ],
+        contraindicaciones: "Evita si tienes lesiones en las rodillas o caderas sin supervisión.",
+        imagen: "Bound_Angle_Pose.jpg",
+        variaciones: [
+            "Coloca bloques bajo las rodillas si no bajan cómodamente.",
+            "Realiza la postura recostado (Supta Baddha Konasana) para una versión restaurativa."
+        ]
+    },
+    "Corpse Pose": {
+        pasos: [
+            "Acuéstese boca arriba: coloque su espalda en la alfombrilla de yoga.",
+            "Estire sus piernas: separe las piernas ligeramente y deje que los pies se abran.",
+            "Coloque sus brazos: extienda los brazos a los lados del cuerpo, con las palmas hacia arriba.",
+            "Cierre sus ojos: relaje su cuerpo y permita que se hunda en la alfombrilla.",
+            "Respiración natural: respire profundamente y observe sus pensamientos, sin forzarlos.",
+            "Mantenga la postura: permanezca en esta postura durante 5 a 10 minutos o más."
+        ],
+        beneficios: [
+            "Relaja profundamente el cuerpo y la mente.",
+            "Reduce el estrés, la fatiga y la ansiedad.",
+            "Mejora la conciencia corporal."
+        ],
+        contraindicaciones: "Evitar si hay incomodidad al estar acostado boca arriba por largos periodos.",
+        imagen: "Corpse_Pose.jpg",
+        variaciones: [
+            "Usa una manta bajo las rodillas para aliviar la tensión lumbar.",
+            "Coloca un paño sobre los ojos para favorecer la relajación."
+        ]
+    },
+        "Easy Pose": {
+        pasos: [
+            "Siéntate en el suelo con las piernas extendidas frente a ti (postura del bastón).",
+            "Flexiona las rodillas y cruza las piernas, colocando los pies debajo de las rodillas opuestas.",
+            "Distribuye el peso uniformemente sobre los isquiones, mantén la espalda recta y los hombros relajados.",
+            "Coloca las manos sobre las rodillas o el regazo.",
+            "Relaja el rostro y cierra los ojos si lo deseas.",
+            "Respira profunda y conscientemente."
+        ],
+        beneficios: [
+            "Promueve la calma y la introspección.",
+            "Fortalece la espalda y mejora la postura.",
+            "Aumenta la concentración para la meditación."
+        ],
+        contraindicaciones: "Evita si tienes molestias en las caderas o rodillas sin soporte adicional.",
+        imagen: "Easy_Pose.jpg",
+        variaciones: [
+            "Si las rodillas quedan muy elevadas, siéntate sobre una manta o cojín.",
+            "Apoya la espalda contra una pared para mayor estabilidad."
+        ]
+    },
+    "Chair Pose": {
+        pasos: [
+            "Ponte de pie en Tadasana, con los pies juntos o ligeramente separados.",
+            "Inhala y levanta los brazos hacia el cielo, manteniéndolos paralelos entre sí o con las palmas juntas.",
+            "Exhala y flexiona las rodillas, bajando las caderas como si te sentaras en una silla imaginaria.",
+            "Mantén el torso ligeramente inclinado hacia adelante, sin colapsar el pecho.",
+            "Mantén la postura varias respiraciones, con el peso en los talones."
+        ],
+        beneficios: [
+            "Fortalece piernas, glúteos y espalda.",
+            "Estimula el corazón, diafragma y órganos abdominales.",
+            "Mejora el equilibrio y la resistencia."
+        ],
+        contraindicaciones: "Evita si tienes problemas graves en las rodillas o la espalda baja.",
+        imagen: "Chair_Pose.jpg",
+        variaciones: [
+            "Realiza la postura con la espalda apoyada en una pared para mayor soporte.",
+            "Levanta solo los talones para trabajar el equilibrio."
+        ]
+    },
+    "Dolphin Plank Pose": {
+        pasos: [
+            "Comienza en posición de plancha alta.",
+            "Desciende los antebrazos al suelo, con los codos debajo de los hombros.",
+            "Alinea el cuerpo desde la cabeza hasta los talones, manteniendo la espalda recta.",
+            "Activa el abdomen y los músculos del suelo pélvico.",
+            "Dirige la mirada entre las manos o hacia el suelo.",
+            "Mantén la postura de 5 respiraciones hasta varios minutos según capacidad.",
+            "Sal de la postura bajando las rodillas y descansando en Balasana."
+        ],
+        beneficios: [
+            "Fortalece brazos, hombros y core.",
+            "Mejora la estabilidad y la resistencia muscular.",
+            "Favorece la postura corporal general."
+        ],
+        contraindicaciones: "Evita si tienes lesiones en hombros, cuello o muñecas.",
+        imagen: "Dolphin_Plank_Pose.jpg",
+        variaciones: [
+            "Apoya las rodillas para disminuir la intensidad.",
+            "Aumenta el tiempo gradualmente para mejorar la resistencia."
+        ]
+    },
+    "Downward Facing Dog": {
+        pasos: [
+            "Comienza en posición de cuatro patas con las manos debajo de los hombros y rodillas bajo las caderas.",
+            "Enrosca los dedos de los pies y exhala levantando las caderas hacia arriba y atrás, formando una V invertida.",
+            "Extiende los brazos y piernas tanto como sea posible sin bloquear las articulaciones.",
+            "Mantén los talones acercándose al suelo sin forzarlos.",
+            "Relaja el cuello y dirige la mirada hacia los pies o las rodillas."
+        ],
+        beneficios: [
+            "Estira y fortalece todo el cuerpo.",
+            "Alivia la fatiga y mejora la circulación.",
+            "Ayuda a calmar la mente y reducir el estrés."
+        ],
+        contraindicaciones: "Evita si tienes presión arterial muy alta, síndrome del túnel carpiano o lesiones en hombros y muñecas.",
+        imagen: "Downward_Facing_Dog.jpg",
+        variaciones: [
+            "Dobla ligeramente las rodillas si tienes isquiotibiales tensos.",
+            "Apoya las manos en bloques o la pared si necesitas alivio en las muñecas."
+        ]
+    }
+};
 
         const videosPosturas = {
             "Cat Pose": "https://www.youtube.com/embed/-LApKrv3T0E?autoplay=1&mute=1",
@@ -388,15 +558,6 @@
                     iframe.src = "";
                     videoContainer.style.display = 'none';
                 }
-
-                // Convertir minutos a segundos y redondear para tener un número exacto de segundos
-                tiempoRestante = Math.round(postura[4] * 60);
-                actualizarTimer();
-                timer = setInterval(actualizarTimer, 1000);
-
-                // // Imagen
-                // document.getElementById('imagenPostura').src = detalles.imagen ? `/static/images/${detalles.imagen}` : "";
-
                 // Pasos
                 const pasosList = document.getElementById('pasosPostura');
                 pasosList.innerHTML = "";
@@ -407,6 +568,14 @@
                 });
                 // Guardar detalles para el modal
                 llenarModal(detalles);
+
+                // Convertir minutos a segundos y redondear para tener un número exacto de segundos
+                tiempoRestante = Math.round(postura[4] * 60);
+                actualizarTimer();
+                timer = setInterval(actualizarTimer, 1000);
+
+                // // Imagen
+                // document.getElementById('imagenPostura').src = detalles.imagen ? `/static/images/${detalles.imagen}` : "";
             }
 
             function actualizarTimer() {
