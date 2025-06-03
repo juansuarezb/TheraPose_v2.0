@@ -207,6 +207,11 @@
                         <h4 class="mb-0"><i class="fas fa-clock me-2"></i>Sesión en Curso</h4>
                     </div>
                     <div class="card-body">
+                        <div class="text-center mb-4">
+                            <h5>Progreso de la Sesión</h5>
+                            <p><span id="posturaActual">0</span> de <span id="posturasTotal">0</span> posturas</p>
+                        </div>
+
                         <div class="postura-actual">
                             <h3 id="nombrePostura"></h3>
                             <p class="text-muted" id="nombreSans"></p>
@@ -217,15 +222,36 @@
                             <div class="video-container mb-4" id="videoContainer">
                                 <div class="ratio ratio-16x9">
                                     <iframe id="youtubeVideo" src="" frameborder="0"
-                                        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-                                        allowfullscreen></iframe>
+                                            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                                            allowfullscreen></iframe>
                                 </div>
                             </div>
-                        </div>
+                            <!-- -->
+<!--                            <div class="mb-4">-->
+<!--                                <h5>Beneficios</h5>-->
+<!--                                <ul id="beneficiosPostura"></ul>-->
+<!--                            </div>-->
 
-                        <div class="text-center mb-4">
-                            <h5>Progreso de la Sesión</h5>
-                            <p><span id="posturaActual">0</span> de <span id="posturasTotal">0</span> posturas</p>
+                            <div class="mb-4">
+                                <h5>Paso a paso para realizar la postura</h5>
+                                <ol id="pasosPostura">
+                                </ol>
+                            </div>
+
+<!--                            <div class="mb-4">-->
+<!--                                <h5>Contraindicaciones</h5>-->
+<!--                                <p id="contraindicacionesPostura"></p>-->
+<!--                            </div>-->
+
+<!--                            <div class="mb-4 text-center">-->
+<!--                                <img id="imagenPostura" src="" alt="Imagen de la postura" class="img-fluid rounded shadow">-->
+<!--                            </div>-->
+
+<!--                            <div class="mb-4">-->
+<!--                                <h5>Variaciones</h5>-->
+<!--                                <ul id="variacionesPostura">-->
+<!--                                </ul>-->
+<!--                            </div>-->
                         </div>
 
                         <form id="finalizarForm" method="POST" action="/patient/finalizar-sesion/{{ id_serie }}"
@@ -273,6 +299,27 @@
     </div>
 
     <script>
+        const detallesPosturas = {
+            "Cat Pose": {
+                pasos: [
+                    "Colócate en cuatro patas con las muñecas debajo de los hombros y las rodillas debajo de las caderas.",
+                    "Inhala mientras arqueas la espalda bajando el abdomen hacia el suelo y levantando la cabeza y el coxis.",
+                    "Exhala mientras redondeas la columna hacia arriba y metes la barbilla hacia el pecho."
+                ],
+                beneficios: [
+                    "Mejora la flexibilidad de la columna.",
+                    "Alivia el estrés.",
+                    "Estimula los órganos abdominales."
+                ],
+                contraindicaciones: "Evita si tienes lesiones en muñecas o cuello sin supervisión médica.",
+                imagen: "Cat_Pose.jpg",
+                variaciones: [
+                    "Haz el movimiento más lento y sostenido para una versión restaurativa.",
+                    "Agrega movimientos circulares con la cadera para mayor movilidad."
+                ]
+            }
+        };
+
         const videosPosturas = {
             "Cat Pose": "https://www.youtube.com/embed/-LApKrv3T0E?autoplay=1&mute=1",
             "Cobra Pose": "https://www.youtube.com/embed/9WVwe4gJlQc?autoplay=1&mute=1",
@@ -322,6 +369,7 @@
 
                 // Cargar video
                 const videoUrl = videosPosturas[postura[1]];
+                const detalles = detallesPosturas[postura[1]] || {};
                 const videoContainer = document.getElementById('videoContainer');
                 const iframe = document.getElementById('youtubeVideo');
 
@@ -338,6 +386,38 @@
                 tiempoRestante = Math.round(postura[4] * 60);
                 actualizarTimer();
                 timer = setInterval(actualizarTimer, 1000);
+
+                // // Imagen
+                // document.getElementById('imagenPostura').src = detalles.imagen ? `/static/images/${detalles.imagen}` : "";
+
+                // Pasos
+                const pasosList = document.getElementById('pasosPostura');
+                pasosList.innerHTML = "";
+                (detalles.pasos || []).forEach(p => {
+                    const li = document.createElement('li');
+                    li.textContent = p;
+                    pasosList.appendChild(li);
+                });
+
+                // // Beneficios
+                // const beneficiosList = document.getElementById('beneficiosPostura');
+                // beneficiosList.innerHTML = "";
+                // (detalles.beneficios || []).forEach(b => {
+                //     const li = document.createElement('li');
+                //     li.textContent = b;
+                //     beneficiosList.appendChild(li);
+                // });
+                // // Contraindicaciones
+                // document.getElementById('contraindicacionesPostura').textContent = detalles.contraindicaciones || "";
+                //
+                // // Variaciones
+                // const variacionesList = document.getElementById('variacionesPostura');
+                // variacionesList.innerHTML = "";
+                // (detalles.variaciones || []).forEach(v => {
+                //     const li = document.createElement('li');
+                //     li.textContent = v;
+                //     variacionesList.appendChild(li);
+                // });
             }
 
             function actualizarTimer() {
