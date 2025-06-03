@@ -207,76 +207,70 @@
                         <h4 class="mb-0"><i class="fas fa-clock me-2"></i>Sesión en Curso</h4>
                     </div>
                     <div class="card-body">
-                        <div class="text-center mb-4">
-                            <h5>Progreso de la Sesión</h5>
-                            <p><span id="posturaActual">0</span> de <span id="posturasTotal">0</span> posturas</p>
-                        </div>
-
-                        <div class="postura-actual">
-                            <h3 id="nombrePostura"></h3>
-                            <p class="text-muted" id="nombreSans"></p>
-                            <div class="timer" id="timer">00:00</div>
-                            <div class="progress">
-                                <div class="progress-bar" role="progressbar" style="width: 0%"></div>
+                        <div id="sesionEnCurso">
+                            <div class="text-center mb-4">
+                                <h5>Progreso de la Sesión</h5>
+                                <p><span id="posturaActual">0</span> de <span id="posturasTotal">0</span> posturas</p>
                             </div>
-                            <div class="video-container mb-4" id="videoContainer">
-                                <div class="ratio ratio-16x9">
-                                    <iframe id="youtubeVideo" src="" frameborder="0"
-                                            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-                                            allowfullscreen></iframe>
+                            <div class="postura-actual">
+                                <h3 id="nombrePostura"></h3>
+                                <p class="text-muted" id="nombreSans"></p>
+                                <div class="timer" id="timer">00:00</div>
+                                <div class="progress">
+                                    <div class="progress-bar" role="progressbar" style="width: 0%"></div>
+                                </div>
+                                <div class="video-container mb-4" id="videoContainer">
+                                    <div class="ratio ratio-16x9">
+                                        <iframe id="youtubeVideo" src="" frameborder="0"
+                                                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                                                allowfullscreen></iframe>
+                                    </div>
+                                </div>
+                                <div class="mb-4">
+                                    <h5>Paso a paso para realizar la postura</h5>
+                                    <ol id="pasosPostura"></ol>
                                 </div>
                             </div>
-                            <!-- -->
-                            <div class="mb-4">
-                                <h5>Paso a paso para realizar la postura</h5>
-                                <ol id="pasosPostura">
-                                </ol>
+                            <div class="text-center mb-4">
+                                <button type="button" class="btn btn-info" onclick="mostrarDialogo()">Ver más información</button>
                             </div>
-                                <form id="finalizarForm" method="POST" action="/patient/finalizar-sesion/{{ id_serie }}"
-                                    style="display: none;">
-                                    <input type="hidden" name="intensidad_inicio" value="{{ intensidad_inicio }}">
-                                    <input type="hidden" name="hora_inicio" id="horaInicio">
-                                    <input type="hidden" name="hora_fin" id="horaFin">
+                        </div>
+                        <form id="finalizarForm" method="POST" action="/patient/finalizar-sesion/{{ id_serie }}" style="display: none;">
+                            <input type="hidden" name="intensidad_inicio" value="{{ intensidad_inicio }}">
+                            <input type="hidden" name="hora_inicio" id="horaInicio">
+                            <input type="hidden" name="hora_fin" id="horaFin">
 
-                                    <div class="mb-4">
-                                        <h5>¿Cuál es tu nivel de molestia después de la sesión?</h5>
-                                        <div class="row g-3">
-                                            {% for i in range(5) %}
-                                            <div class="col">
-                                                <div class="form-check">
-                                                    <input class="form-check-input" type="radio" name="intensidad_final"
-                                                           value="{{ i }}" id="intensidadFinal{{ i }}" required>
-                                                    <label class="form-check-label" for="intensidadFinal{{ i }}">
-                                                        {{ niveles_intensidad[i] }}
-                                                    </label>
-                                                </div>
-                                            </div>
-                                            {% endfor %}
+                            <div class="mb-4">
+                                <h5>¿Cuál es tu nivel de molestia después de la sesión?</h5>
+                                <div class="row g-3">
+                                    {% for i in range(5) %}
+                                    <div class="col">
+                                        <div class="form-check">
+                                            <input class="form-check-input" type="radio" name="intensidad_final"
+                                                   value="{{ i }}" id="intensidadFinal{{ i }}" required>
+                                            <label class="form-check-label" for="intensidadFinal{{ i }}">
+                                                {{ niveles_intensidad[i] }}
+                                            </label>
                                         </div>
                                     </div>
-
-                                    <div class="mb-4">
-                                        <label for="comentario" class="form-label">Comentarios sobre la sesión:</label>
-                                            <textarea class="form-control" id="comentario" name="comentario" rows="3"
-                                                      required></textarea>
-                                    </div>
-
-                                    <div class="d-grid gap-2">
-                                        <a href="/patient/dashboard" class="btn btn-secondary">
-                                            <i class="fas fa-arrow-left me-2"></i>Volver al Dashboard
-                                        </a>
-                                        <button type="submit" class="btn btn-primary">
-                                            <i class="fas fa-check-circle me-2"></i>Finalizar Sesión
-                                        </button>
-                                    </div>
-                                </form>
+                                    {% endfor %}
+                                </div>
                             </div>
-                        </div>
-                                                <!-- Botón para mostrar más información -->
-                            <div class="text-center mb-4">
-                                <button type= "button" class="btn btn-info" onclick="mostrarDialogo()">Ver más información</button>
+
+                            <div class="mb-4">
+                                <label for="comentario" class="form-label">Comentarios sobre la sesión:</label>
+                                <textarea class="form-control" id="comentario" name="comentario" rows="3" required></textarea>
                             </div>
-                        </div>
+
+                            <div class="d-grid gap-2">
+                                <a href="/patient/dashboard" class="btn btn-secondary">
+                                    <i class="fas fa-arrow-left me-2"></i>Volver al Dashboard
+                                </a>
+                                <button type="submit" class="btn btn-primary">
+                                    <i class="fas fa-check-circle me-2"></i>Finalizar Sesión
+                                </button>
+                            </div>
+                        </form>
 
                         <!-- Modal de información -->
                         <div class="modal fade" id="modalInfoPostura" tabindex="-1" aria-labelledby="modalInfoLabel" aria-hidden="true">
@@ -294,19 +288,18 @@
                                         <h6>Variaciones</h6>
                                         <ul id="variacionesPostura"></ul>
                                     </div>
-                                        <div class="modal-footer">
-                                            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cerrar</button>
-                                        </div>
+                                    <div class="modal-footer">
+                                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cerrar</button>
+                                    </div>
                                 </div>
                             </div>
                         </div>
-                    </div>
-                </div>
-            </div>
-
-
-
-            <script>
+                    </div> <!-- card-body -->
+                </div> <!-- card shadow -->
+            </div> <!-- col-md-8 -->
+        </div> <!-- row -->
+    </div> <!-- container -->
+    <script>
 const detallesPosturas = {
     "Cat Pose": {
         pasos: [
@@ -603,8 +596,7 @@ const detallesPosturas = {
             function finalizarSesion() {
                 const horaFin = new Date();
                 document.getElementById('horaFin').value = formatTime(horaFin);
-                document.querySelector('.postura-actual').style.display = 'none';
-                document.querySelector('.text-center').style.display = 'none';
+                document.getElementById('sesionEnCurso').style.display = 'none';
                 document.getElementById('finalizarForm').style.display = 'block';
             }
         });
