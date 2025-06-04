@@ -77,9 +77,7 @@
 }
 
 /* Reset y base */
-* {
-  margin: 0;
-  padding: 0;
+*, *::before, *::after {
   box-sizing: border-box;
 }
 
@@ -242,68 +240,40 @@ header > * {
   transform: none;
 }
 
-/* Layout principal  */
+
 .main-layout {
   display: flex;
   flex-grow: 1;
   min-height: calc(100vh - 80px);
-}
-
-/* Carrusel  */
-.carousel-column {
-  flex: 1;
-  max-width: 55%;
-  position: relative;
-  overflow: hidden;
-}
-
-.carousel-column::before {
-  content: '';
-  position: absolute;
-  top: 0;
-  right: 0;
-  width: 100px;
-  height: 100%;
-  background: linear-gradient(90deg, transparent 0%, rgba(0,0,0,0.3) 100%);
-  z-index: 10;
-  pointer-events: none;
-}
-
-.carousel {
-  height: 100%;
-}
-
-.carousel-inner {
-  height: 100%;
-}
-
-.carousel-item {
-  height: 100%;
+  background-image: url('../images/main.webp'); /* usa la ruta correcta */
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
   position: relative;
 }
 
-.carousel-item::before {
+.main-layout::before {
   content: '';
   position: absolute;
-  top: 0;
-  left: 0;
-  right: 0;
-  bottom: 0;
-  background: var(--overlay-glow);
+  top: 0; left: 0; right: 0; bottom: 0;
+  background: rgba(0, 0, 0, 0.3); /* oscurece un poco */
+  z-index: 0;
+}
+
+.main-layout > * {
+  position: relative;
   z-index: 1;
-  pointer-events: none;
 }
 
-.carousel-column img {
+.image-section {
   width: 100%;
-  height: 100%;
-  object-fit: cover;
-  filter: brightness(0.9) saturate(1.1);
-  transition: var(--transition-slow);
-}
-
-.carousel-item.active img {
-  transform: scale(1.05);
+  height: calc(100vh - 70px);
+  display: flex;
+  justify-content: flex-start;
+  align-items: flex-start;
+  padding-left: 180px;
+  padding-top: 140px;
+  /* Ya NO pongas background-image aquí */
 }
 
 /* Sección de login  */
@@ -312,10 +282,11 @@ header > * {
   display: flex;
   justify-content: center;
   align-items: center;
-  background: var(--color-surface-elevated);
+  background: transparent;
   flex-direction: column;
   padding: var(--spacing-2xl);
   position: relative;
+  height: auto;
 }
 
 .login-section::before {
@@ -334,18 +305,19 @@ header > * {
   z-index: 1;
 }
 
-/* Login card  */
+
 .login-aside {
   background: var(--color-surface-card);
   border: 1px solid var(--color-border-light);
-  padding: var(--spacing-2xl);
+  padding: var(--spacing-xl); /* Reduce el padding para menos altura */
   border-radius: var(--radius-xl);
   box-shadow: var(--shadow-floating);
-  max-width: 450px;
+  max-width: 550px; /* Aumenta el ancho */
   width: 100%;
   position: relative;
   overflow: hidden;
   animation: fadeInUp 0.8s ease-out;
+  transition: var(--transition);
 }
 
 .login-aside::before {
@@ -383,11 +355,10 @@ header > * {
 }
 
 .login-card {
-  background: transparent;
-  padding: 0;
-  border-radius: 0;
-  box-shadow: none;
+  padding: 10px 0; /* Elimina espacios verticales innecesarios */
 }
+
+
 
 /* Logo del login  */
 .login-logo {
@@ -693,6 +664,9 @@ footer {
   padding: var(--spacing-2xl) var(--spacing-xl);
   position: relative;
   overflow: hidden;
+  display: flex;
+  justify-content: space-between;
+  height: 140px;
 }
 
 footer::before {
@@ -971,4 +945,131 @@ footer p {
   .blockquote {
     padding: var(--spacing-lg);
   }
+}
+
+
+.footer-inner {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  height: 100%;
+  width: 100%;
+}
+
+.icono-grande {
+  font-size: 45px;
+  color:#FEFCF8;
+  transition: transform 0.3s ease;
+  cursor: pointer;
+  margin: 0 10px;
+}
+
+.container-izquierda,
+.container-derecha {
+  flex: 1;
+  text-align: center;
+}
+
+.container-derecha p{
+  font-size: 1.2rem;
+  color: #FEFCF8;
+  margin: 0;
+  font-weight: bold;
+}
+
+.container-izquierda p{
+    font-size: 1.2rem;
+    color: #FEFCF8;
+    margin: 0;
+    font-weight: bold;
+}
+
+.linea-vertical {
+  width: 3px;
+  height: 100px;
+  background-color: #ccc;
+}
+
+.text-color{
+  color: #E6D7B8;
+  font-size: 2.2rem;
+  font-weight: bold;
+  margin: 0;
+  transition: color 0.3s ease;
+}
+
+ /* Modal container (oculto por defecto) */
+.modal {
+  display: none; /* oculto */
+  position: fixed; /* fijo en pantalla */
+  z-index: 1000; /* encima de todo */
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  overflow: auto; /* scroll si hace falta */
+  background-color: rgba(0, 0, 0, 0.6); /* fondo semi-transparente */
+}
+
+/* Contenido del modal */
+.modal-content {
+  background-color: #fff;
+  margin: 10% auto;
+  padding: 20px 30px;
+  border-radius: 8px;
+  max-width: 400px;
+  box-shadow: 0 5px 15px rgba(0,0,0,0.3);
+  color: #333;
+}
+
+/* Botón cerrar */
+.close {
+  color: #aaa;
+  float: right;
+  font-size: 28px;
+  font-weight: bold;
+  cursor: pointer;
+  user-select: none;
+}
+
+.close:hover,
+.close:focus {
+  color: #000;
+  text-decoration: none;
+}
+
+/* Formulario dentro del modal */
+.modal-content form {
+  display: flex;
+  flex-direction: column;
+}
+
+.modal-content label {
+  margin-top: 10px;
+  font-weight: 600;
+}
+
+.modal-content input,
+.modal-content textarea {
+  margin-top: 5px;
+  padding: 8px;
+  border-radius: 4px;
+  border: 1px solid #ccc;
+  font-size: 1rem;
+}
+
+.modal-content button {
+  margin-top: 15px;
+  padding: 10px;
+  background-color: #4a90e2;
+  border: none;
+  border-radius: 4px;
+  color: white;
+  font-weight: bold;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.modal-content button:hover {
+  background-color: #357ABD;
 }

@@ -4,9 +4,15 @@
     <title>Iniciar Sesión - Yoga Terapéutico</title>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <meta name="description" content="Página principal de inicio de sesión para Yoga Terapéutico">
-    <meta name="keywords" content="Yoga, Terapéutico, Iniciar Sesión, Registro, Beneficios, Quienes somos"/>
-    <meta name="author" content="CleanCoders"/>  
+    <meta
+      name="description"
+      content="Página principal de inicio de sesión para Yoga Terapéutico"
+    />
+    <meta
+      name="keywords"
+      content="Yoga, Terapéutico, Iniciar Sesión, Registro, Beneficios, Quienes somos"
+    />
+    <meta name="author" content="CleanCoders" />
     <link
       href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css"
       rel="stylesheet"
@@ -16,10 +22,10 @@
       rel="stylesheet"
     />
     <link
-      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
       rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css"
     />
-    <link rel="stylesheet" href="../static/css/styles.css"/>
+    <link rel="stylesheet" href="../static/css/styles.css" />
   </head>
   <body>
     <div id="app">
@@ -32,12 +38,21 @@
           <ul class="nav-menu">
             <li><a href="#beneficios">Beneficios</a></li>
             <li><a href="#testimonios">Testimonios</a></li>
+            <li><a href="#about">Contáctanos</a></li>
           </ul>
         </div>
       </header>
 
       <main class="main-layout">
-
+        <!-- Columna izquierda: Imagen de fondo -->
+        <section class="image-section">
+          <div class="image-container"></div>
+          <div class="overlay"></div>
+          <div class="text-overlay text-center text-color">
+            <h1>Bienvenido a TheraPose</h1>
+            <p>Tu espacio para la sanación y el bienestar a través del yoga.</p>
+          </div>
+        </section>
         <!-- Columna derecha: Login -->
         <section class="login-section">
           <aside class="login-aside">
@@ -80,7 +95,10 @@
               </form>
 
               <div class="mt-3">
-                <a href="http://localhost:8080/realms/yoga-realm/login-actions/reset-credentials?client_id=yoga-client" target="_blank">
+                <a
+                  href="http://localhost:8080/realms/yoga-realm/login-actions/reset-credentials?client_id=yoga-client"
+                  target="_blank"
+                >
                   ¿Olvidaste tu contraseña?
                 </a>
               </div>
@@ -102,7 +120,10 @@
             <div class="benefit-item">
               <i class="fas fa-heart"></i>
               <h3>Mejora la Salud</h3>
-              <p>Fortalece el sistema cardiovascular y mejora la circulación sanguínea.</p>
+              <p>
+                Fortalece el sistema cardiovascular y mejora la circulación
+                sanguínea.
+              </p>
             </div>
             <div class="benefit-item">
               <i class="fas fa-brain"></i>
@@ -124,31 +145,107 @@
           <h2>Testimonios</h2>
           <div class="testimonials-grid">
             <blockquote class="blockquote">
-              <p>"Desde que empecé yoga terapéutico, mi dolor de espalda ha disminuido notablemente. La combinación de posturas y respiración ha transformado mi calidad de vida."</p>
-              <footer class="blockquote-footer">María González - Paciente desde 2023</footer>
+              <p>
+                "Desde que empecé yoga terapéutico, mi dolor de espalda ha
+                disminuido notablemente. La combinación de posturas y
+                respiración ha transformado mi calidad de vida."
+              </p>
+              <footer class="blockquote-footer">
+                María González - Paciente desde 2023
+              </footer>
             </blockquote>
             <blockquote class="blockquote">
-              <p>"Los ejercicios personalizados han sido importantes en mi recuperación. El instructor adapta cada sesión a mis necesidades específicas."</p>
-              <footer class="blockquote-footer">Carlos Rodríguez - Paciente desde 2022</footer>
+              <p>
+                "Los ejercicios personalizados han sido importantes en mi
+                recuperación. El instructor adapta cada sesión a mis necesidades
+                específicas."
+              </p>
+              <footer class="blockquote-footer">
+                Carlos Rodríguez - Paciente desde 2022
+              </footer>
             </blockquote>
             <blockquote class="blockquote">
-              <p>"La atención personalizada y el ambiente tranquilo hacen que cada sesión sea una experiencia única y rejuvenecedora."</p>
-              <footer class="blockquote-footer">Ana Martínez - Paciente desde 2023</footer>
+              <p>
+                "La atención personalizada y el ambiente tranquilo hacen que
+                cada sesión sea una experiencia única y rejuvenecedora."
+              </p>
+              <footer class="blockquote-footer">
+                Ana Martínez - Paciente desde 2023
+              </footer>
             </blockquote>
           </div>
         </div>
       </section>
 
-      <footer>
-        <div class="container">
-          <p>
-            &copy; CleanCoders - TheraPose. <br />
-            Todos los derechos reservados.
-          </p>
+      <footer id="about" class="footer">
+        <div class="footer-inner">
+          <div class="container-izquierda">
+            <p>© 2025 TheraPose - CleanCoders</p>
+          </div>
+
+          <div class="linea-vertical"></div>
+
+          <div class="container-derecha">
+            <p>ABOUT US</p>
+            <a
+              href="https://github.com/juansuarezb/TheraPose_v1.0/tree/main"
+              target="_blank"
+            >
+              <i class="fa-brands fa-github icono-grande"></i>
+            </a>
+            <a href="#" id="openEmailDialog">
+              <i class="fa-solid fa-envelope icono-grande"></i>
+            </a>
+          </div>
+        </div>
+
+        <!-- Modal -->
+        <div id="emailDialog" class="modal">
+          <div class="modal-content">
+            <span id="closeEmailDialog" class="close">&times;</span>
+            <h2>Contacto</h2>
+            <form action="https://formspree.io/f/manjnezg" method="POST">
+              <label>
+                Your email:
+                <input type="email" name="email" />
+              </label>
+              <label>
+                Your message:
+                <textarea name="message"></textarea>
+              </label>
+              <!-- your other form fields go here -->
+              <button type="submit">Send</button>
+            </form>
+          </div>
         </div>
       </footer>
     </div>
 
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <script>
+      document.addEventListener("DOMContentLoaded", function () {
+        const openDialogBtn = document.getElementById("openEmailDialog");
+        const modal = document.getElementById("emailDialog");
+        const closeBtn = document.getElementById("closeEmailDialog");
+
+        // Abrir modal al hacer clic en el ícono de email
+        openDialogBtn.addEventListener("click", function (e) {
+          e.preventDefault();
+          modal.style.display = "block";
+        });
+
+        // Cerrar modal al hacer clic en la X
+        closeBtn.addEventListener("click", function () {
+          modal.style.display = "none";
+        });
+
+        // Cerrar modal si se hace clic fuera del contenido
+        window.addEventListener("click", function (e) {
+          if (e.target === modal) {
+            modal.style.display = "none";
+          }
+        });
+      });
+    </script>
   </body>
 </html>
