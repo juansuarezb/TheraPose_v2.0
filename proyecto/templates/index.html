@@ -26,6 +26,7 @@
       href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css"
     />
     <link rel="stylesheet" href="../static/css/styles.css" />
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Sofia">
   </head>
   <body>
     <div id="app">
@@ -49,8 +50,8 @@
           <div class="image-container"></div>
           <div class="overlay"></div>
           <div class="text-overlay text-center text-color">
-            <h1>Bienvenido a TheraPose</h1>
-            <p>Tu espacio para la sanación y el bienestar a través del yoga.</p>
+            <h1 class="Titulo-Saludo">TheraPose</h1>
+            <p>"Tu espacio para la sanación y el bienestar a través del yoga."</p>
           </div>
         </section>
         <!-- Columna derecha: Login -->
@@ -211,13 +212,15 @@
             <span id="closeEmailDialog" class="close">&times;</span>
             <h2>Contacto</h2>
             <form action="https://formspree.io/f/manjnezg" method="POST">
-              <label>
-                Tu correo:
-                <input type="email" name="email" />
+              <label for="email">
+                <i class="fa-solid fa-envelope"></i>
+                Tu correo: <br>
+                <input id="email" type="email" name="email" required/>
               </label>
-              <label>
+              <label for="message">
+                <i class="fa-solid fa-comment"></i>
                 Mensaje (Sugerencia, Error, etc.) :
-                <textarea name="message"></textarea>
+                <textarea id="message" name="message" required></textarea>
               </label>
               <!-- your other form fields go here -->
               <button type="submit">Send</button>
