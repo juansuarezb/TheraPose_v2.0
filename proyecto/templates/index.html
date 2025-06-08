@@ -26,7 +26,10 @@
       href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css"
     />
     <link rel="stylesheet" href="../static/css/styles.css" />
-    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Sofia">
+    <link
+      rel="stylesheet"
+      href="https://fonts.googleapis.com/css?family=Sofia"
+    />
   </head>
   <body>
     <div id="app">
@@ -51,7 +54,9 @@
           <div class="overlay"></div>
           <div class="text-overlay text-center text-color">
             <h1 class="Titulo-Saludo">TheraPose</h1>
-            <p>"Tu espacio para la sanación y el bienestar a través del yoga."</p>
+            <p>
+              "Tu espacio para la sanación y el bienestar a través del yoga."
+            </p>
           </div>
         </section>
         <!-- Columna derecha: Login -->
@@ -71,15 +76,22 @@
               <form method="POST" action="/login">
                 <div class="mb-3">
                   <label class="form-label" for="username">Usuario</label>
-                  <input
-                    type="text"
-                    class="form-control"
-                    id="username"
-                    name="username"
-                    required
-                    placeholder="Ingrese su usuario"
-                    autofocus
-                  />
+                   <input
+      type="text"
+      class="form-control"
+      id="username"
+      name="username"
+      required
+      placeholder="Ingrese su usuario"
+      autofocus
+      pattern="(?=.*[A-Z])(?=.*\d).{5,}"
+      autocomplete="off"
+    />
+    <ul id="validation-list" style="color: red; padding-left: 0; margin-top: 5px;">
+      <li id="length" style="color: red;">Debe tener al menos 5 caracteres</li>
+      <li id="uppercase" style="color: red;">Debe tener al menos una letra mayúscula</li>
+      <li id="number" style="color: red;">Debe tener al menos un número</li>
+    </ul>
                 </div>
                 <div class="mb-3">
                   <label class="form-label" for="password">Contraseña</label>
@@ -197,10 +209,7 @@
             <a href="#" class="openEmailDialog">
               <i class="fa-solid fa-envelope icono-grande"></i>
             </a>
-            <a
-              href="https://www.youtube.com/@TheraPose"
-              target="_blank"
-            >
+            <a href="https://www.youtube.com/@TheraPose" target="_blank">
               <i class="fa-brands fa-youtube icono-grande"></i>
             </a>
           </div>
@@ -214,8 +223,8 @@
             <form action="https://formspree.io/f/manjnezg" method="POST">
               <label for="email">
                 <i class="fa-solid fa-envelope"></i>
-                Tu correo: <br>
-                <input id="email" type="email" name="email" required/>
+                Tu correo: <br />
+                <input id="email" type="email" name="email" required />
               </label>
               <label for="message">
                 <i class="fa-solid fa-comment"></i>
@@ -269,6 +278,33 @@
           }
         });
       });
+    </script>
+    <script>
+       const input = document.getElementById('username');
+  const lengthLi = document.getElementById('length');
+  const uppercaseLi = document.getElementById('uppercase');
+  const numberLi = document.getElementById('number');
+
+  function checkValidation(value) {
+    lengthLi.style.color = value.length >= 5 ? 'green' : 'red';
+    uppercaseLi.style.color = /[A-Z]/.test(value) ? 'green' : 'red';
+    numberLi.style.color = /\d/.test(value) ? 'green' : 'red';
+  }
+
+  input.addEventListener('input', (e) => {
+    checkValidation(e.target.value);
+  });
+
+  // Validar inicialmente si hay valor en el input
+  checkValidation(input.value);
+
+  document.querySelector('form').addEventListener('submit', (e) => {
+    if (!input.checkValidity()) {
+      e.preventDefault();
+      alert('El usuario no cumple con los requisitos mínimos.');
+      input.focus();
+    }
+  });
     </script>
   </body>
 </html>
