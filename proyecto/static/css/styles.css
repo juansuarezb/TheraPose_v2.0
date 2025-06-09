@@ -1147,3 +1147,54 @@ footer p {
   font-weight: bold;
   
 }
+
+
+@media (max-width: 768px) {
+  .nav-menu {
+    display: none; /* Oculta el menú normal */
+    flex-direction: column;
+    position: absolute;
+    top: 80px;
+    left: 0;
+    width: 100%;
+    background: var(--color-surface-elevated);
+    padding: var(--spacing-md);
+  }
+  
+  .nav-menu.active {
+    display: flex;
+  }
+  
+  /* Añade un botón hamburguesa */
+  .menu-toggle {
+    display: block;
+    background: none;
+    border: none;
+    color: var(--color-primary);
+    font-size: 1.5rem;
+    cursor: pointer;
+  }
+}
+
+@media (max-width: 1024px) {
+  .main-layout {
+    flex-direction: column;
+  }
+  
+  .image-section {
+    padding-left: var(--spacing-md);
+    padding-top: var(--spacing-xl);
+    height: auto;
+    min-height: 40vh;
+    justify-content: center;
+  }
+  
+  .login-section {
+    flex: 1;
+    padding: var(--spacing-xl);
+  }
+  
+  .Titulo-Saludo {
+    font-size: 2rem; /* Reduce el tamaño en móviles */
+  }
+}

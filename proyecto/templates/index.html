@@ -26,7 +26,10 @@
       href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css"
     />
     <link rel="stylesheet" href="../static/css/styles.css" />
-    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Sofia">
+    <link
+      rel="stylesheet"
+      href="https://fonts.googleapis.com/css?family=Sofia"
+    />
   </head>
   <body>
     <div id="app">
@@ -51,7 +54,9 @@
           <div class="overlay"></div>
           <div class="text-overlay text-center text-color">
             <h1 class="Titulo-Saludo">TheraPose</h1>
-            <p>"Tu espacio para la sanación y el bienestar a través del yoga."</p>
+            <p>
+              "Tu espacio para la sanación y el bienestar a través del yoga."
+            </p>
           </div>
         </section>
         <!-- Columna derecha: Login -->
@@ -79,6 +84,9 @@
                     required
                     placeholder="Ingrese su usuario"
                     autofocus
+                    pattern="^[a-zA-Z0-9_]{4,15}$"
+                    title="El nombre de usuario debe tener entre 4 y 15 caracteres. Solo se permiten letras, números y guión bajo (_), sin espacios ni símbolos especiales."
+                    autocomplete="off"
                   />
                 </div>
                 <div class="mb-3">
@@ -90,6 +98,8 @@
                     name="password"
                     required
                     placeholder="******************"
+                    pattern="^(?=.*[A-Z])(?=.*\d)(?=.*[^a-zA-Z0-9])\S{8,}$"
+                    title="La contraseña debe tener al menos 8 caracteres, incluyendo una letra mayúscula, un número y un carácter especial. No se permiten espacios."
                   />
                 </div>
                 <button type="submit" class="btn btn-primary">Entrar</button>
@@ -197,10 +207,7 @@
             <a href="#" class="openEmailDialog">
               <i class="fa-solid fa-envelope icono-grande"></i>
             </a>
-            <a
-              href="https://www.youtube.com/@TheraPose"
-              target="_blank"
-            >
+            <a href="https://www.youtube.com/@TheraPose" target="_blank">
               <i class="fa-brands fa-youtube icono-grande"></i>
             </a>
           </div>
@@ -214,8 +221,8 @@
             <form action="https://formspree.io/f/manjnezg" method="POST">
               <label for="email">
                 <i class="fa-solid fa-envelope"></i>
-                Tu correo: <br>
-                <input id="email" type="email" name="email" required/>
+                Tu correo: <br />
+                <input id="email" type="email" name="email" required />
               </label>
               <label for="message">
                 <i class="fa-solid fa-comment"></i>
