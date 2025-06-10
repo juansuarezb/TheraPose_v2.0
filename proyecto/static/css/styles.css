@@ -687,7 +687,7 @@ form {
 
 .blockquote-footer {
   font-size: 0.9rem;
-  color: #e6d7b8;
+  color: #f0ede6 !important;
   font-weight: 600;
   font-style: normal;
 }
@@ -955,6 +955,10 @@ footer p {
   grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
   gap: var(--spacing-xl);
   margin-top: var(--spacing-xl);
+}
+
+.testimonials-section > .container > h2{
+  display: flex;
 }
 
 .blockquote {
