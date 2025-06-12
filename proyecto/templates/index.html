@@ -1,0 +1,275 @@
+<!DOCTYPE html>
+<html lang="es">
+  <head>
+    <title>Iniciar Sesión - Yoga Terapéutico</title>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta
+      name="description"
+      content="Página principal de inicio de sesión para Yoga Terapéutico"
+    />
+    <meta
+      name="keywords"
+      content="Yoga, Terapéutico, Iniciar Sesión, Registro, Beneficios, Quienes somos"
+    />
+    <meta name="author" content="CleanCoders" />
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+    />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700&display=swap"
+      rel="stylesheet"
+    />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css"
+    />
+    <link rel="stylesheet" href="../static/css/styles.css" />
+    <link
+      rel="stylesheet"
+      href="https://fonts.googleapis.com/css?family=Sofia"
+    />
+  </head>
+  <body>
+    <div id="app">
+      <header>
+        <div class="izquierda">
+          <i class="fas fa-spa"></i>
+          <div class="nombre-app"><a href="#">TheraPose</a></div>
+        </div>
+        <div class="derecha">
+          <ul class="nav-menu">
+            <li><a href="#beneficios">Beneficios</a></li>
+            <li><a href="#testimonios">Testimonios</a></li>
+            <li><a href="#" class="openEmailDialog">Contáctanos</a></li>
+          </ul>
+        </div>
+      </header>
+
+      <main class="main-layout">
+        <!-- Columna izquierda: Imagen de fondo -->
+        <section class="image-section">
+          <div class="image-container"></div>
+          <div class="overlay"></div>
+          <div class="text-overlay text-center text-color">
+            <h1 class="Titulo-Saludo">TheraPose</h1>
+            <p>
+              "Tu espacio para la sanación y el bienestar a través del yoga."
+            </p>
+          </div>
+        </section>
+        <!-- Columna derecha: Login -->
+        <section class="login-section">
+          <aside class="login-aside">
+            <div class="login-card">
+              <div class="login-logo">
+                <div class="text">Iniciar Sesión</div>
+              </div>
+
+              {% if error %}
+              <div class="alert alert-danger">
+                <i class="fas fa-exclamation-circle me-2"></i>{{ error }}
+              </div>
+              {% endif %}
+
+              <form method="POST" action="/login">
+                <div class="mb-3">
+                  <label class="form-label" for="username">Usuario</label>
+                  <input
+                    type="text"
+                    class="form-control"
+                    id="username"
+                    name="username"
+                    required
+                    placeholder="Ingrese su usuario"
+                    autofocus
+                    pattern="^[a-zA-Z0-9]{4,15}$"
+                    title="El nombre de usuario debe tener entre 4 y 15 caracteres. Solo se permiten letras y números, sin espacios ni símbolos especiales."
+                    autocomplete="username"
+                    minlength="4"
+                    maxlength="15"
+                    style="cursor: pointer"
+                  />
+                </div>
+                <div class="mb-3">
+                  <label class="form-label" for="password">Contraseña</label>
+                  <input
+                    type="password"
+                    class="form-control"
+                    id="password"
+                    name="password"
+                    required
+                    placeholder="******************"
+                    pattern="^(?=.*[A-Z])(?=.*\d)(?=.*[^a-zA-Z0-9])\S{8,}$"
+                    title="La contraseña debe tener al menos 8 caracteres, incluyendo una letra mayúscula, un número y un carácter especial. No se permiten espacios."
+                    style="cursor: pointer"
+                  />
+                </div>
+                <button type="submit" class="btn btn-primary">Entrar</button>
+              </form>
+              <div class="register-link">
+                <span>¿Eres instructor?</span>
+                <a href="/register-instructor">Regístrate aquí</a>
+              </div>
+            </div>
+          </aside>
+        </section>
+      </main>
+
+      <!-- Beneficios -->
+      <section id="beneficios" class="benefits-section">
+        <div class="container">
+          <h2>Beneficios del Yoga Terapéutico</h2>
+          <div class="benefits-grid">
+            <div class="benefit-item">
+              <i class="fas fa-heart"></i>
+              <h3>Mejora la Salud</h3>
+              <p>
+                Fortalece el sistema cardiovascular y mejora la circulación
+                sanguínea.
+              </p>
+            </div>
+            <div class="benefit-item">
+              <i class="fas fa-brain"></i>
+              <h3>Reduce el Estrés</h3>
+              <p>Ayuda a calmar la mente y reducir los niveles de ansiedad.</p>
+            </div>
+            <div class="benefit-item">
+              <i class="fas fa-bone"></i>
+              <h3>Mejora la Postura</h3>
+              <p>Fortalece los músculos y corrige problemas de alineación.</p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- Testimonios -->
+      <section id="testimonios" class="testimonials-section">
+        <div class="container">
+          <h2>Testimonios</h2>
+          <div class="testimonials-grid">
+            <blockquote class="blockquote">
+              <p>
+                "Desde que empecé yoga terapéutico, mi dolor de espalda ha
+                disminuido notablemente. La combinación de posturas y
+                respiración ha transformado mi calidad de vida."
+              </p>
+              <footer class="blockquote-footer">
+                María González - Paciente desde 2023
+              </footer>
+            </blockquote>
+            <blockquote class="blockquote">
+              <p>
+                "Los ejercicios personalizados han sido importantes en mi
+                recuperación. El instructor adapta cada sesión a mis necesidades
+                específicas."
+              </p>
+              <footer class="blockquote-footer">
+                Carlos Rodríguez - Paciente desde 2022
+              </footer>
+            </blockquote>
+            <blockquote class="blockquote">
+              <p>
+                "La atención personalizada y el ambiente tranquilo hacen que
+                cada sesión sea una experiencia única y rejuvenecedora."
+              </p>
+              <footer class="blockquote-footer">
+                Ana Martínez - Paciente desde 2023
+              </footer>
+            </blockquote>
+          </div>
+        </div>
+      </section>
+
+      <footer id="about" class="footer">
+        <div class="footer-inner">
+          <div class="container-izquierda">
+            <p>© 2025 TheraPose - CleanCoders</p>
+          </div>
+
+          <div class="linea-vertical"></div>
+
+          <div class="container-derecha">
+            <p>ABOUT US</p>
+            <a
+              href="https://github.com/juansuarezb/TheraPose_v1.0/tree/main"
+              target="_blank"
+            >
+              <i class="fa-brands fa-github icono-grande"></i>
+            </a>
+            <a href="#" class="openEmailDialog">
+              <i class="fa-solid fa-envelope icono-grande"></i>
+            </a>
+            <a href="https://www.youtube.com/@TheraPose" target="_blank">
+              <i class="fa-brands fa-youtube icono-grande"></i>
+            </a>
+          </div>
+        </div>
+
+        <!-- Modal -->
+        <div id="emailDialog" class="modal">
+          <div class="modal-content">
+            <span id="closeEmailDialog" class="close">&times;</span>
+            <h2>Contacto</h2>
+            <form action="https://formspree.io/f/manjnezg" method="POST">
+              <label for="email">
+                <i class="fa-solid fa-envelope"></i>
+                Tu correo: <br />
+                <input id="email" type="email" name="email" required />
+              </label>
+              <label for="message">
+                <i class="fa-solid fa-comment"></i>
+                Mensaje (Sugerencia, Error, etc.) :
+                <textarea id="message" name="message" required></textarea>
+              </label>
+              <!-- your other form fields go here -->
+              <button type="submit">Send</button>
+            </form>
+          </div>
+        </div>
+      </footer>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <script>
+      document.addEventListener("DOMContentLoaded", function () {
+        // Obtener todos los elementos que pueden abrir el modal
+        const openDialogBtns = document.querySelectorAll(".openEmailDialog");
+        const modal = document.getElementById("emailDialog");
+        const closeBtn = document.getElementById("closeEmailDialog");
+
+        // Agregar event listener a TODOS los elementos con la clase openEmailDialog
+        openDialogBtns.forEach((btn) => {
+          btn.addEventListener("click", function (e) {
+            e.preventDefault();
+            modal.style.display = "block";
+            document.body.style.overflow = "hidden"; // Prevenir scroll del body
+          });
+        });
+
+        // Cerrar modal al hacer clic en la X
+        closeBtn.addEventListener("click", function () {
+          modal.style.display = "none";
+          document.body.style.overflow = "auto"; // Restaurar scroll del body
+        });
+
+        // Cerrar modal si se hace clic fuera del contenido
+        window.addEventListener("click", function (e) {
+          if (e.target === modal) {
+            modal.style.display = "none";
+            document.body.style.overflow = "auto"; // Restaurar scroll del body
+          }
+        });
+
+        // Cerrar modal con la tecla ESC
+        document.addEventListener("keydown", function (e) {
+          if (e.key === "Escape" && modal.style.display === "block") {
+            modal.style.display = "none";
+            document.body.style.overflow = "auto";
+          }
+        });
+      });
+    </script>
+  </body>
+</html>

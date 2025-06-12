@@ -1,0 +1,33 @@
+<div class="main-card">
+  <h2 class="dashboard-title">Mis Pacientes</h2>
+  {% if patients %}
+  <div class="table-container">
+    <table>
+      <thead>
+        <tr>
+          <th>Nombre Completo</th>
+          <th>Email</th>
+          <th>Fecha de Nacimiento</th>
+          <th>Género</th>
+          <th>Celular</th>
+          <th>Acciones</th>
+        </tr>
+      </thead>
+      <tbody>
+        {% for patient in patients %}
+        <tr>
+          <td>{{ patient.first_name }} {{ patient.last_name }}</td>
+          <td>{{ patient.email }}</td>
+          <td>{{ patient.fecha_nac }}</td>
+          <td>{{ patient.genero }}</td>
+          <td>{{ patient.celular }}</td>
+          <td><button class="btn btn-primary">Ver Detalles</button></td>
+        </tr>
+        {% endfor %}
+      </tbody>
+    </table>
+  </div>
+  {% else %}
+  <div class="alert-info"><i class="fas fa-info-circle"></i> No tienes pacientes registrados aún.</div>
+  {% endif %}
+</div>
