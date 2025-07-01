@@ -3,7 +3,7 @@
 
 ---
 
-![version](https://img.shields.io/badge/version-1.0.0-blue) ![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg) ![Status](https://img.shields.io/badge/status-en%20desarrollo-orange) ![Clean Code](https://img.shields.io/badge/code%20style-clean--code-brightgreen) ![Focus](https://img.shields.io/badge/yoga-terapéutico-blueviolet) ![PRs Welcome](https://img.shields.io/badge/PRs-welcome-brightgreen.svg) [![Docker](https://img.shields.io/badge/Docker-2CA5E0?style=flat&logo=docker&logoColor=white)](https://docs.docker.com/) [![Keycloak](https://img.shields.io/badge/Keycloak-2CA5E0?style=flat&logo=keycloak&logoColor=white)](https://www.keycloak.org/)
+![version](https://img.shields.io/badge/version-2.0.0-blue) ![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg) ![Status](https://img.shields.io/badge/status-en%20desarrollo-orange) ![Clean Code](https://img.shields.io/badge/code%20style-clean--code-brightgreen) ![Focus](https://img.shields.io/badge/yoga-terapéutico-blueviolet) ![PRs Welcome](https://img.shields.io/badge/PRs-welcome-brightgreen.svg) [![Docker](https://img.shields.io/badge/Docker-2CA5E0?style=flat&logo=docker&logoColor=white)](https://docs.docker.com/) [![Keycloak](https://img.shields.io/badge/Keycloak-2CA5E0?style=flat&logo=keycloak&logoColor=white)](https://www.keycloak.org/)
 [![Ask DeepWiki](https://deepwiki.com/badge.svg)](https://deepwiki.com/juansuarezb/TheraPose_v1.0)
 
 ---
