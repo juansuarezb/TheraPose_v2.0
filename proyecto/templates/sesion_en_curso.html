@@ -210,6 +210,11 @@
                                 <h3 id="nombrePostura"></h3>
                                 <p class="text-muted" id="nombreSans"></p>
                                 <div class="timer" id="timer">00:00</div>
+                                <div class="mb-3 text-center">
+                                    <button type="button" class="btn btn-warning" id="btnPausa" onclick="togglePausa()">
+                                        <i class="fas fa-pause"></i> Pausar
+                                    </button>
+                                </div>
                                 <div class="progress">
                                     <div class="progress-bar" role="progressbar" style="width: 0%"></div>
                                 </div>
@@ -499,6 +504,8 @@ const detallesPosturas = {
         };
 
         let modalInfoPostura;
+        let enPausa = false;
+        let btnPausa;
 
         document.addEventListener('DOMContentLoaded', function () {
             let posturas = [];
@@ -524,6 +531,7 @@ const detallesPosturas = {
                 });
 
             modalInfoPostura = new bootstrap.Modal(document.getElementById('modalInfoPostura'));
+            btnPausa = document.getElementById('btnPausa');
 
             function iniciarPostura() {
                 if (posturaActual >= posturas.length) {
@@ -572,6 +580,7 @@ const detallesPosturas = {
             }
 
             function actualizarTimer() {
+                if (enPausa) return;
                 if (tiempoRestante <= 0) {
                     clearInterval(timer);
                     posturaActual++;
@@ -625,7 +634,12 @@ const detallesPosturas = {
             modalInfoPostura.show();
         }
 
-
+        function togglePausa() {
+            enPausa = !enPausa;
+            btnPausa.innerHTML = enPausa
+                ? '<i class="fas fa-play"></i> Reanudar'
+                : '<i class="fas fa-pause"></i> Pausar';
+        }
     </script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
 </body>
