@@ -6,330 +6,933 @@
     <title>Actualizar Paciente - TheraPose</title>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" />
+    <link rel="stylesheet" href="../static/css/update_patient.css">
     <style>
-        :root {
-            --color-primary: #8B7355;
-            --color-primary-dark: #6B5943;
-            --color-primary-light: #A0906B;
-            --color-secondary: #F5F2ED;
-            --color-accent: #D4C4A8;
-            --color-warm-gold: #E6D7B8;
-            --color-soft-beige: #F8F5F0;
-            --color-deep-earth: #5A4C3D;
-            --color-sage: #9CAF88;
-            --color-lavender: #B8A8C8;
-            --color-coral: #D4A574;
-            --color-surface: linear-gradient(135deg, #FEFCF8 0%, #F8F5F0 100%);
-            --color-border: #E8E3D8;
-            --color-text: #3A3529;
-            --color-text-secondary: #6B6455;
-            --color-error: #e74c3c;
-            --color-success: #2ecc71;
-            --radius-sm: 12px;
-        }
-        
-        body {
-            font-family: 'Inter', sans-serif;
-            background: var(--color-surface);
-            color: var(--color-text);
-            line-height: 1.6;
-        }
-        
-        .form-container {
-            max-width: 800px;
-            margin: 2rem auto;
-            padding: 2rem;
-            background: white;
-            border-radius: var(--radius-sm);
-            box-shadow: 0 4px 12px rgba(0,0,0,0.1);
-        }
-        
-        .form-title {
-            color: var(--color-primary-dark);
-            margin-bottom: 1.5rem;
-            font-size: 1.5rem;
-            display: flex;
-            align-items: center;
-            gap: 0.5rem;
-        }
-        
-        .form-group {
-            margin-bottom: 1.25rem;
-        }
-        
-        label {
-            display: block;
-            margin-bottom: 0.5rem;
-            font-weight: 500;
-            color: var(--color-primary-dark);
-        }
-        
-        input, select {
-            width: 100%;
-            padding: 0.75rem;
-            border: 1px solid var(--color-border);
-            border-radius: var(--radius-sm);
-            font-family: inherit;
-        }
-        
-        input:focus, select:focus {
-            outline: none;
-            border-color: var(--color-primary);
-            box-shadow: 0 0 0 3px rgba(139, 115, 85, 0.1);
-        }
-        
-        .error-message {
-            color: var(--color-error);
-            font-size: 0.85rem;
-            margin-top: 0.25rem;
-            display: none;
-        }
-        
-        input:invalid, select:invalid {
-            border-color: var(--color-error);
-        }
-        
-        input:valid, select:valid {
-            border-color: var(--color-success);
-        }
-        
-        .form-actions {
-            display: flex;
-            gap: 1rem;
-            margin-top: 2rem;
-        }
-        
-        .btn {
-            padding: 0.75rem 1.5rem;
-            border: none;
-            border-radius: var(--radius-sm);
-            font-weight: 600;
-            cursor: pointer;
-            display: inline-flex;
-            align-items: center;
-            gap: 0.5rem;
-        }
-        
-        .btn-primary {
-            background: var(--color-primary);
-            color: white;
-        }
-        
-        .btn-secondary {
-            background: var(--color-text-secondary);
-            color: white;
-        }
-        
-        .alert {
-            padding: 1rem;
-            border-radius: var(--radius-sm);
-            margin-bottom: 1.5rem;
-            display: flex;
-            align-items: center;
-            gap: 0.5rem;
-        }
-        
-        .alert-success {
-            background: var(--color-sage);
-            color: white;
-        }
-        
-        .alert-error {
-            background: #C29090;
-            color: white;
-        }
+    :root {
+    --color-primary: #8B7355;
+    --color-primary-dark: #6B5943;
+    --color-primary-light: #A0906B;
+    --color-secondary: #F5F2ED;
+    --color-accent: #D4C4A8;
+    --color-warm-gold: #E6D7B8;
+    --color-soft-beige: #F8F5F0;
+    --color-deep-earth: #5A4C3D;
+    --color-sage: #9CAF88;
+    --color-lavender: #B8A8C8;
+    --color-coral: #D4A574;
+    --color-surface: linear-gradient(135deg, #FEFCF8 0%, #F8F5F0 100%);
+    --color-surface-card: linear-gradient(145deg, #FFFFFF 0%, #FEFCF8 100%);
+    --color-surface-elevated: linear-gradient(135deg, #FFFFFF 0%, #F5F2ED 100%);
+    --gradient-primary: linear-gradient(135deg, var(--color-primary) 0%, var(--color-primary-light) 100%);
+    --gradient-secondary: linear-gradient(135deg, var(--color-secondary) 0%, var(--color-warm-gold) 100%);
+    --gradient-accent: linear-gradient(135deg, var(--color-accent) 0%, var(--color-coral) 100%);
+    --gradient-calm: linear-gradient(135deg, var(--color-sage) 0%, var(--color-lavender) 100%);
+    --gradient-warm: linear-gradient(135deg, var(--color-coral) 0%, var(--color-warm-gold) 100%);
+    --overlay-subtle: linear-gradient(135deg, rgba(139, 115, 85, 0.03) 0%, rgba(212, 196, 168, 0.08) 100%);
+    --overlay-glow: radial-gradient(circle at center, rgba(139, 115, 85, 0.1) 0%, transparent 70%);
+    --color-text: #3A3529;
+    --color-text-secondary: #6B6455;
+    --color-text-muted: #9B927F;
+    --color-border: #E8E3D8;
+    --color-border-light: #F0EDE6;
+    --radius: 20px;
+    --radius-sm: 12px;
+    --radius-lg: 28px;
+    --shadow-soft: 0 10px 40px rgba(58, 53, 41, 0.15), 0 4px 12px rgba(58, 53, 41, 0.1);
+    --shadow-glow: 0 0 30px rgba(139, 115, 85, 0.15);
+    --shadow-subtle: 0 4px 12px rgba(58, 53, 41, 0.08), 0 2px 6px rgba(58, 53, 41, 0.06);
+    --spacing-sm: 0.75rem;
+    --spacing-md: 1.25rem;
+    --spacing-lg: 2rem;
+    --spacing-xl: 3rem;
+    --font-main: 'Inter', system-ui, -apple-system, sans-serif;
+  }
+  
+  * {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+  }
+  
+  body {
+    background: var(--color-surface);
+    font-family: var(--font-main);
+    color: var(--color-text);
+    min-height: 100vh;
+    position: relative;
+    line-height: 1.6;
+  }
+  
+  body::before {
+    content: '';
+    position: fixed;
+    inset: 0;
+    background: var(--overlay-subtle);
+    z-index: -1;
+    pointer-events: none;
+  }
+  
+  /* Layout principal que ocupa toda la pantalla */
+  .main-layout {
+    display: grid;
+    grid-template-columns: 1fr;
+    grid-template-rows: auto 1fr;
+    min-height: 100vh;
+    max-width: 100%;
+    padding: 0;
+  }
+  
+  /* Header que se extiende por toda la pantalla */
+  .header {
+    background: var(--color-surface-elevated);
+    border-bottom: 2px solid var(--color-border-light);
+    padding: var(--spacing-lg) var(--spacing-xl);
+    box-shadow: var(--shadow-subtle);
+    position: sticky;
+    top: 0;
+    z-index: 100;
+  }
+  
+  .header-content {
+    max-width: 1400px;
+    margin: 0 auto;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+  
+  .header h1 {
+    margin: 0;
+    font-size: 2rem;
+    font-weight: 700;
+    color: var(--color-primary-dark);
+    display: flex;
+    align-items: center;
+    gap: var(--spacing-sm);
+  }
+  
+  .header h1 i {
+    color: var(--color-primary);
+    font-size: 1.75rem;
+  }
+  
+  .back-btn {
+    text-decoration: none;
+    color: var(--color-text-secondary);
+    font-weight: 600;
+    padding: var(--spacing-md) 1.5rem;
+    border-radius: var(--radius-sm);
+    display: flex;
+    align-items: center;
+    gap: var(--spacing-sm);
+    transition: all 0.3s ease;
+    background: var(--color-surface-card);
+    border: 1px solid var(--color-border);
+  }
+  
+  .back-btn:hover {
+    background: var(--gradient-secondary);
+    color: var(--color-primary-dark);
+    box-shadow: var(--shadow-subtle);
+    transform: translateY(-2px);
+  }
+  
+  /* Contenido principal */
+  .main-content {
+    padding: var(--spacing-xl);
+    max-width: 1400px;
+    margin: 0 auto;
+    width: 100%;
+  }
+  
+  /* Contenedor del formulario  */
+  .form-container {
+    background: var(--color-surface-card);
+    border-radius: var(--radius-lg);
+    box-shadow: var(--shadow-soft);
+    border: 1px solid var(--color-border-light);
+    position: relative;
+    overflow: hidden;
+    width: 100%;
+    max-width: none;
+  }
+  
+  .form-container::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: var(--overlay-glow);
+    z-index: 0;
+    pointer-events: none;
+  }
+  
+  /* Header del perfil  */
+  .profile-header {
+    background: var(--gradient-primary);
+    color: white;
+    padding: var(--spacing-xl);
+    display: flex;
+    align-items: center;
+    gap: var(--spacing-lg);
+    position: relative;
+    z-index: 1;
+  }
+  
+  .profile-avatar {
+    width: 120px;
+    height: 120px;
+    border-radius: 50%;
+    background: rgba(255, 255, 255, 0.2);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.2);
+    border: 3px solid rgba(255, 255, 255, 0.3);
+    backdrop-filter: blur(10px);
+  }
+  
+  .profile-avatar i {
+    font-size: 3.5rem;
+    color: white;
+    filter: drop-shadow(0 4px 8px rgba(0, 0, 0, 0.2));
+  }
+  
+  .profile-info h2 {
+    font-size: 2.5rem;
+    font-weight: 700;
+    margin-bottom: var(--spacing-sm);
+    text-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  }
+  
+  .profile-info p {
+    font-size: 1.1rem;
+    opacity: 0.9;
+    font-weight: 500;
+  }
+  
+  /* Contenido del formulario */
+  .form-content {
+    padding: var(--spacing-xl);
+    position: relative;
+    z-index: 1;
+  }
+  
+  .form-title {
+    background: var(--gradient-primary);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    font-size: 1.75rem;
+    font-weight: 700;
+    margin-bottom: var(--spacing-lg);
+    display: flex;
+    align-items: center;
+    gap: var(--spacing-sm);
+  }
+  
+  /* Grid del formulario mejorado */
+  .form-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: var(--spacing-lg);
+    margin-bottom: var(--spacing-xl);
+  }
+  
+  .form-group {
+    display: flex;
+    flex-direction: column;
+    gap: var(--spacing-sm);
+  }
+  
+  .form-group label {
+    font-weight: 600;
+    color: var(--color-primary-dark);
+    font-size: 1rem;
+    margin-bottom: 0.25rem;
+  }
+  
+  .form-group input,
+  .form-group select {
+    padding: 1rem 1.25rem;
+    border: 2px solid var(--color-border);
+    border-radius: var(--radius-sm);
+    font-size: 1rem;
+    background: var(--color-soft-beige);
+    color: var(--color-text);
+    transition: all 0.3s ease;
+    box-shadow: var(--shadow-subtle);
+    font-family: var(--font-main);
+    font-weight: 500;
+  }
+  
+  .form-group input:focus,
+  .form-group select:focus {
+    outline: none;
+    border-color: var(--color-primary);
+    box-shadow: 0 0 0 3px rgba(139, 115, 85, 0.1), var(--shadow-soft);
+    background: white;
+    transform: translateY(-1px);
+  }
+  
+  /* Acciones del formulario */
+  .form-actions {
+    display: flex;
+    gap: var(--spacing-md);
+    justify-content: flex-start;
+    padding-top: var(--spacing-lg);
+    border-top: 2px solid var(--color-border-light);
+    flex-wrap: wrap;
+  }
+  
+  .btn {
+    padding: 1rem 2rem;
+    border: none;
+    border-radius: var(--radius-sm);
+    font-weight: 600;
+    font-size: 1.1rem;
+    cursor: pointer;
+    display: inline-flex;
+    align-items: center;
+    gap: var(--spacing-sm);
+    transition: all 0.3s ease;
+    box-shadow: var(--shadow-subtle);
+    text-decoration: none;
+    min-width: 180px;
+    justify-content: center;
+  }
+  
+  .btn-primary {
+    background: var(--gradient-primary);
+    color: white;
+    border: 2px solid var(--color-primary);
+  }
+  
+  .btn-primary:hover {
+    transform: translateY(-3px);
+    box-shadow: var(--shadow-glow);
+    background: var(--gradient-accent);
+  }
+  
+  .btn-primary:active {
+    transform: scale(0.98);
+  }
+  
+  .btn-secondary {
+    background: var(--color-text-secondary);
+    color: white;
+    border: 2px solid var(--color-text-secondary);
+  }
+  
+  .btn-secondary:hover {
+    background: var(--gradient-warm);
+    border-color: var(--color-coral);
+    transform: translateY(-2px);
+  }
+  
+  /* Alertas  */
+  .alert-success {
+    background: var(--gradient-calm);
+    color: white;
+    border-radius: var(--radius-sm);
+    padding: 1rem 1.25rem;
+    margin-bottom: var(--spacing-lg);
+    font-weight: 600;
+    font-size: 1rem;
+    box-shadow: var(--shadow-subtle);
+    display: flex;
+    align-items: center;
+    gap: var(--spacing-sm);
+    border-left: 4px solid rgba(255, 255, 255, 0.3);
+  }
+  
+  .alert-modern {
+    background: linear-gradient(135deg, #A67C7C 0%, #C29090 100%);
+    color: white;
+    border-radius: var(--radius-sm);
+    padding: 1rem 1.25rem;
+    margin-bottom: var(--spacing-lg);
+    font-weight: 600;
+    font-size: 1rem;
+    box-shadow: var(--shadow-subtle);
+    display: flex;
+    align-items: center;
+    gap: var(--spacing-sm);
+    border-left: 4px solid rgba(255, 255, 255, 0.3);
+  }
+  
+  /* Animaciones */
+  @keyframes fadeInUp {
+    from { 
+      opacity: 0; 
+      transform: translateY(30px); 
+    }
+    to { 
+      opacity: 1; 
+      transform: translateY(0); 
+    }
+  }
+  
+  @keyframes popIn {
+    0% { 
+      opacity: 0; 
+      transform: scale(0.9); 
+    }
+    100% { 
+      opacity: 1; 
+      transform: scale(1); 
+    }
+  }
+  
+  @keyframes slideInLeft {
+    from {
+      opacity: 0;
+      transform: translateX(-50px);
+    }
+    to {
+      opacity: 1;
+      transform: translateX(0);
+    }
+  }
+  
+  
+  
+  /* Responsive Design */
+  @media (max-width: 1200px) {
+    .main-content {
+      padding: var(--spacing-lg);
+    }
+    
+    .header {
+      padding: var(--spacing-lg);
+    }
+    
+    .form-grid {
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    }
+  }
+  
+  @media (max-width: 768px) {
+    .header-content {
+      flex-direction: column;
+      gap: var(--spacing-md);
+      text-align: center;
+    }
+    
+    .header h1 {
+      font-size: 1.75rem;
+    }
+    
+    .profile-header {
+      flex-direction: column;
+      text-align: center;
+      padding: var(--spacing-lg);
+    }
+    
+    .profile-avatar {
+      width: 100px;
+      height: 100px;
+    }
+    
+    .profile-avatar i {
+      font-size: 3rem;
+    }
+    
+    .profile-info h2 {
+      font-size: 2rem;
+    }
+    
+    .form-content {
+      padding: var(--spacing-lg);
+    }
+    
+    .form-grid {
+      grid-template-columns: 1fr;
+      gap: var(--spacing-md);
+    }
+    
+    .form-actions {
+      flex-direction: column;
+    }
+    
+    .btn {
+      width: 100%;
+      min-width: auto;
+    }
+    
+    .main-content {
+      padding: var(--spacing-md);
+    }
+  }
+  
+  @media (max-width: 480px) {
+    body {
+      font-size: 14px;
+    }
+    
+    .header {
+      padding: var(--spacing-md);
+    }
+    
+    .header h1 {
+      font-size: 1.5rem;
+    }
+    
+    .form-container {
+      border-radius: var(--radius-sm);
+    }
+    
+    .profile-header {
+      padding: var(--spacing-md);
+    }
+    
+    .form-content {
+      padding: var(--spacing-md);
+    }
+  }
     </style>
 </head>
 <body>
-    <div class="form-container">
-        <div class="form-title">
-            <i class="fas fa-user-edit"></i>
-            Actualizar Información del Paciente
-        </div>
-        
-        {% if success %}
-        <div class="alert alert-success">
-            <i class="fas fa-check-circle"></i>
-            {{ success }}
-        </div>
-        {% endif %}
-        
-        {% if error %}
-        <div class="alert alert-error">
-            <i class="fas fa-exclamation-triangle"></i>
-            {{ error }}
-        </div>
-        {% endif %}
-        
-        <form method="POST" action="/instructor/update-patient/{{ patient.id }}" id="updatePatientForm" autocomplete="off">
-            <div class="form-grid">
-                <!-- Email -->
-                <div class="form-group">
-                    <label for="email">
-                        <i class="fas fa-envelope"></i> Correo Electrónico
-                    </label>
-                    <input 
-                        type="email" 
-                        id="email" 
-                        name="email" 
-                        value="{{ patient.email }}" 
-                        required
-                        pattern="^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$"
-                        placeholder="ejemplo@correo.com"
-                    />
-                    <div class="error-message">Ingrese un correo electrónico válido</div>
-                </div>
-                
-                <!-- Nombre -->
-                <div class="form-group">
-                    <label for="firstName">
-                        <i class="fas fa-user"></i> Nombre
-                    </label>
-                    <input 
-                        type="text" 
-                        id="firstName" 
-                        name="firstName" 
-                        value="{{ patient.first_name }}" 
-                        required
-                        pattern="^[a-zA-ZáéíóúÁÉÍÓÚñÑüÜ\s'-]{2,50}$"
-                        placeholder="Ingrese el nombre"
-                    />
-                    <div class="error-message">Solo letras (2-50 caracteres)</div>
-                </div>
-                
-                <!-- Apellido -->
-                <div class="form-group">
-                    <label for="lastName">
-                        <i class="fas fa-user"></i> Apellido
-                    </label>
-                    <input 
-                        type="text" 
-                        id="lastName" 
-                        name="lastName" 
-                        value="{{ patient.last_name }}" 
-                        required
-                        pattern="^[a-zA-ZáéíóúÁÉÍÓÚñÑüÜ\s'-]{2,50}$"
-                        placeholder="Ingrese el apellido"
-                    />
-                    <div class="error-message">Solo letras (2-50 caracteres)</div>
-                </div>
-                
-                <!-- Fecha Nacimiento -->
-                <div class="form-group">
-                    <label for="fecha_nac">
-                        <i class="fas fa-calendar-alt"></i> Fecha de Nacimiento
-                    </label>
-                    <input 
-                        type="date" 
-                        id="fecha_nac" 
-                        name="fecha_nac" 
-                        value="{{ patient.fecha_nac }}" 
-                        required
-                        max="{{ now|date('Y-m-d') }}"
-                    />
-                    <div class="error-message">Ingrese una fecha válida</div>
-                </div>
-                
-                <!-- Género -->
-                <div class="form-group">
-                    <label for="genero">
-                        <i class="fas fa-venus-mars"></i> Género
-                    </label>
-                    <select id="genero" name="genero" required>
-                        <option value="">Seleccione el género</option>
-                        <option value="masculino" {% if patient.genero == 'masculino' %}selected{% endif %}>Masculino</option>
-                        <option value="femenino" {% if patient.genero == 'femenino' %}selected{% endif %}>Femenino</option>
-                        <option value="otro" {% if patient.genero == 'otro' %}selected{% endif %}>Otro</option>
-                    </select>
-                    <div class="error-message">Seleccione un género</div>
-                </div>
-                
-                <!-- Celular -->
-                <div class="form-group">
-                    <label for="celular">
-                        <i class="fas fa-phone"></i> Celular (10 dígitos)
-                    </label>
-                    <input 
-                        type="tel" 
-                        id="celular" 
-                        name="celular" 
-                        value="{{ patient.celular }}" 
-                        required
-                        pattern="^\d{10}$"
-                        maxlength="10"
-                        placeholder="0987654321"
-                    />
-                    <div class="error-message">Ingrese 10 dígitos numéricos</div>
-                </div>
-            </div>
-            
-            <div class="form-actions">
-                <button type="submit" class="btn btn-primary">
-                    <i class="fas fa-save"></i> Actualizar
-                </button>
-                <a href="/instructor/dashboard" class="btn btn-secondary">
-                    <i class="fas fa-times"></i> Cancelar
+    <div class="main-layout">
+        <!-- Header que se extiende por toda la pantalla -->
+        <header class="header">
+            <div class="header-content">
+                <h1>
+                    <i class="fas fa-user-edit"></i> 
+                    Actualizar Información del Paciente
+                </h1>
+                <a href="/instructor/dashboard" class="back-btn">
+                    <i class="fas fa-arrow-left"></i> 
+                    Volver al Dashboard
                 </a>
             </div>
-        </form>
+        </header>
+        
+        <!-- Contenido principal -->
+        <main class="main-content">
+            <div class="form-container">
+                <!-- Header del perfil -->
+                <div class="profile-header">
+                    <div class="profile-avatar">
+                        <i class="fas fa-user-circle"></i>
+                    </div>
+                    <div class="profile-info">
+                        <h2>{{ patient.first_name }} {{ patient.last_name }}</h2>
+                        <p><i class="fas fa-envelope"></i> {{ patient.email }}</p>
+                    </div>
+                </div>
+                
+                <!-- Contenido del formulario -->
+                <div class="form-content">
+                    <!-- Alertas -->
+                    {% if success %}
+                    <div class="alert-success">
+                        <i class="fas fa-check-circle"></i> 
+                        {{ success }}
+                    </div>
+                    {% endif %}
+                    
+                    {% if error %}
+                    <div class="alert-modern">
+                        <i class="fas fa-exclamation-triangle"></i> 
+                        {{ error }}
+                    </div>
+                    {% endif %}
+                    
+                    <!-- Formulario -->
+                    <form method="POST" action="/instructor/update-patient/{{ patient.id }}" class="form-modern" autocomplete="off">
+                        <div class="form-title">
+                            <i class="fas fa-edit"></i> 
+                            Información del Paciente
+                        </div>
+                        
+                        <div class="form-grid">
+                            <div class="form-group">
+                                <label for="email" class="form-label">
+                                    <i class="fas fa-envelope"></i> Correo Electrónico
+                                </label>
+                                <input 
+                                    type="email" 
+                                    id="email" 
+                                    name="email" 
+                                    value="{{ patient.email }}" 
+                                    required 
+                                    class="form-control"
+                                    placeholder="ejemplo@correo.com"
+                                />
+                            </div>
+                            
+                            <div class="form-group">
+                                <label for="firstName" class="form-label">
+                                    <i class="fas fa-user"></i> Nombre
+                                </label>
+                                <input 
+                                    type="text" 
+                                    id="firstName" 
+                                    name="firstName" 
+                                    value="{{ patient.first_name }}" 
+                                    required 
+                                    class="form-control"
+                                    placeholder="Ingrese el nombre"
+                                />
+                            </div>
+                            
+                            <div class="form-group">
+                                <label for="lastName" class="form-label">
+                                    <i class="fas fa-user"></i> Apellido
+                                </label>
+                                <input 
+                                    type="text" 
+                                    id="lastName" 
+                                    name="lastName" 
+                                    value="{{ patient.last_name }}" 
+                                    required 
+                                    class="form-control"
+                                    placeholder="Ingrese el apellido"
+                                />
+                            </div>
+                            
+                            <div class="form-group">
+                                <label for="fecha_nac" class="form-label">
+                                    <i class="fas fa-calendar-alt"></i> Fecha de Nacimiento
+                                </label>
+                                <input 
+                                    type="date" 
+                                    id="fecha_nac" 
+                                    name="fecha_nac" 
+                                    value="{{ patient.fecha_nac }}" 
+                                    required 
+                                    class="form-control"
+                                />
+                            </div>
+                            
+                            <div class="form-group">
+                                <label for="genero" class="form-label">
+                                    <i class="fas fa-venus-mars"></i> Género
+                                </label>
+                                <select id="genero" name="genero" required class="form-control">
+                                    <option value="">Seleccione el género</option>
+                                    <option value="masculino" {% if patient.genero == 'masculino' %}selected{% endif %}>
+                                        Masculino
+                                    </option>
+                                    <option value="femenino" {% if patient.genero == 'femenino' %}selected{% endif %}>
+                                        Femenino
+                                    </option>
+                                    <option value="otro" {% if patient.genero == 'otro' %}selected{% endif %}>
+                                        Otro
+                                    </option>
+                                </select>
+                            </div>
+                            
+                            <div class="form-group">
+                                <label for="celular" class="form-label">
+                                    <i class="fas fa-phone"></i> Celular (10 dígitos)
+                                </label>
+                                <input 
+                                    type="tel" 
+                                    id="celular" 
+                                    name="celular" 
+                                    value="{{ patient.celular }}" 
+                                    pattern="^\d{10}$" 
+                                    maxlength="10" 
+                                    required 
+                                    class="form-control"
+                                    placeholder="0987654321"
+                                />
+                            </div>
+                        </div>
+                        
+                        <div class="form-actions">
+                            <button type="submit" class="btn btn-primary">
+                                <i class="fas fa-save"></i> 
+                                Actualizar Paciente
+                            </button>
+                            <a href="/instructor/dashboard" class="btn btn-secondary">
+                                <i class="fas fa-times"></i> 
+                                Cancelar
+                            </a>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </main>
     </div>
 
     <script>
         document.addEventListener('DOMContentLoaded', function() {
-            const form = document.getElementById('updatePatientForm');
-            const inputs = form.querySelectorAll('input, select');
-            
-            // Validación en tiempo real
-            inputs.forEach(input => {
-                input.addEventListener('input', validateField);
-                input.addEventListener('blur', validateField);
-            });
-            
-            // Validar campo individual
-            function validateField(e) {
-                const field = e.target || e;
-                const formGroup = field.closest('.form-group');
-                const errorMessage = formGroup.querySelector('.error-message');
-                
-                if (field.validity.valid) {
-                    errorMessage.style.display = 'none';
-                } else {
-                    errorMessage.style.display = 'block';
-                    
-                    if (field.validity.valueMissing) {
-                        errorMessage.textContent = 'Este campo es requerido';
-                    } else if (field.validity.patternMismatch) {
-                        if (field.id === 'celular') {
-                            errorMessage.textContent = 'Debe tener 10 dígitos';
-                        } else if (field.id === 'email') {
-                            errorMessage.textContent = 'Correo inválido';
-                        }
-                    }
-                }
-            }
-            
-            // Validar celular (solo números)
+            // Elementos del formulario
+            const form = document.querySelector('.form-modern');
+            const emailInput = document.getElementById('email');
+            const firstNameInput = document.getElementById('firstName');
+            const lastNameInput = document.getElementById('lastName');
+            const fechaNacInput = document.getElementById('fecha_nac');
+            const generoInput = document.getElementById('genero');
             const celularInput = document.getElementById('celular');
-            celularInput.addEventListener('input', function(e) {
-                this.value = this.value.replace(/\D/g, '');
+
+            // Función para mostrar errores
+            function showError(input, message) {
+                const formGroup = input.closest('.form-group');
+                const existingError = formGroup.querySelector('.error-message');
+                
+                if (existingError) {
+                    existingError.remove();
+                }
+                
+                const errorDiv = document.createElement('div');
+                errorDiv.className = 'error-message';
+                errorDiv.innerHTML = `<i class="fas fa-exclamation-circle"></i> ${message}`;
+                errorDiv.style.cssText = `
+                    color: #e74c3c;
+                    font-size: 0.875rem;
+                    margin-top: 0.5rem;
+                    display: flex;
+                    align-items: center;
+                    gap: 0.5rem;
+                    animation: slideIn 0.3s ease;
+                `;
+                
+                formGroup.appendChild(errorDiv);
+                input.style.borderColor = '#e74c3c';
+                input.style.boxShadow = '0 0 0 3px rgba(231, 76, 60, 0.1)';
+            }
+
+            // Función para limpiar errores
+            function clearError(input) {
+                const formGroup = input.closest('.form-group');
+                const errorDiv = formGroup.querySelector('.error-message');
+                
+                if (errorDiv) {
+                    errorDiv.remove();
+                }
+                
+                input.style.borderColor = 'var(--color-border)';
+                input.style.boxShadow = 'none';
+            }
+
+            // Función para validar email
+            function validateEmail(email) {
+                const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+                return emailRegex.test(email);
+            }
+
+            // Función para validar nombre/apellido
+            function validateName(name) {
+                const nameRegex = /^[a-zA-ZáéíóúÁÉÍÓÚñÑ\s]{2,50}$/;
+                return nameRegex.test(name.trim());
+            }
+
+            // Función para validar fecha de nacimiento
+            function validateDateOfBirth(date) {
+                const selectedDate = new Date(date);
+                const today = new Date();
+                const minDate = new Date('1900-01-01');
+                const maxDate = new Date(today.getFullYear() - 13, today.getMonth(), today.getDate());
+                
+                return selectedDate >= minDate && selectedDate <= maxDate;
+            }
+
+            // Función para validar celular
+            function validatePhone(phone) {
+                const phoneRegex = /^\d{10}$/;
+                return phoneRegex.test(phone);
+            }
+
+            // Validación en tiempo real para email
+            emailInput.addEventListener('input', function() {
+                const email = this.value.trim();
+                
+                if (email === '') {
+                    clearError(this);
+                } else if (!validateEmail(email)) {
+                    showError(this, 'Por favor ingrese un email válido');
+                } else {
+                    clearError(this);
+                    this.style.borderColor = 'var(--color-sage)';
+                }
             });
-            
-            // Validar antes de enviar
+
+            // Validación en tiempo real para nombre
+            firstNameInput.addEventListener('input', function() {
+                const name = this.value.trim();
+                
+                if (name === '') {
+                    clearError(this);
+                } else if (!validateName(name)) {
+                    showError(this, 'El nombre debe tener entre 2 y 50 caracteres, solo letras y espacios');
+                } else {
+                    clearError(this);
+                    this.style.borderColor = 'var(--color-sage)';
+                }
+            });
+
+            // Validación en tiempo real para apellido
+            lastNameInput.addEventListener('input', function() {
+                const name = this.value.trim();
+                
+                if (name === '') {
+                    clearError(this);
+                } else if (!validateName(name)) {
+                    showError(this, 'El apellido debe tener entre 2 y 50 caracteres, solo letras y espacios');
+                } else {
+                    clearError(this);
+                    this.style.borderColor = 'var(--color-sage)';
+                }
+            });
+
+            // Validación en tiempo real para fecha de nacimiento
+            fechaNacInput.addEventListener('change', function() {
+                const date = this.value;
+                
+                if (date === '') {
+                    clearError(this);
+                } else if (!validateDateOfBirth(date)) {
+                    showError(this, 'La fecha debe ser válida y el paciente debe tener al menos 13 años');
+                } else {
+                    clearError(this);
+                    this.style.borderColor = 'var(--color-sage)';
+                }
+            });
+
+            // Validación en tiempo real para género
+            generoInput.addEventListener('change', function() {
+                if (this.value === '') {
+                    showError(this, 'Por favor seleccione un género');
+                } else {
+                    clearError(this);
+                    this.style.borderColor = 'var(--color-sage)';
+                }
+            });
+
+            // Validación en tiempo real para celular
+            celularInput.addEventListener('input', function(e) {
+                const value = e.target.value.replace(/\D/g, '');
+                e.target.value = value;
+                
+                if (value === '') {
+                    clearError(this);
+                } else if (!validatePhone(value)) {
+                    showError(this, 'El celular debe tener exactamente 10 dígitos');
+                } else {
+                    clearError(this);
+                    this.style.borderColor = 'var(--color-sage)';
+                }
+            });
+
+            // Validación del formulario al enviar
             form.addEventListener('submit', function(e) {
                 let isValid = true;
                 
-                inputs.forEach(input => {
-                    validateField(input);
-                    if (!input.validity.valid) {
-                        isValid = false;
-                    }
-                });
+                // Validar email
+                const email = emailInput.value.trim();
+                if (email === '' || !validateEmail(email)) {
+                    showError(emailInput, 'Por favor ingrese un email válido');
+                    isValid = false;
+                }
+                
+                // Validar nombre
+                const firstName = firstNameInput.value.trim();
+                if (firstName === '' || !validateName(firstName)) {
+                    showError(firstNameInput, 'Por favor ingrese un nombre válido');
+                    isValid = false;
+                }
+                
+                // Validar apellido
+                const lastName = lastNameInput.value.trim();
+                if (lastName === '' || !validateName(lastName)) {
+                    showError(lastNameInput, 'Por favor ingrese un apellido válido');
+                    isValid = false;
+                }
+                
+                // Validar fecha de nacimiento
+                const fechaNac = fechaNacInput.value;
+                if (fechaNac === '' || !validateDateOfBirth(fechaNac)) {
+                    showError(fechaNacInput, 'Por favor ingrese una fecha de nacimiento válida');
+                    isValid = false;
+                }
+                
+                // Validar género
+                const genero = generoInput.value;
+                if (genero === '') {
+                    showError(generoInput, 'Por favor seleccione un género');
+                    isValid = false;
+                }
+                
+                // Validar celular
+                const celular = celularInput.value;
+                if (celular === '' || !validatePhone(celular)) {
+                    showError(celularInput, 'Por favor ingrese un número de celular válido');
+                    isValid = false;
+                }
                 
                 if (!isValid) {
                     e.preventDefault();
-                    alert('Por favor complete todos los campos correctamente');
+                    
+                    // Mostrar mensaje de error general
+                    const existingAlert = document.querySelector('.alert-error');
+                    if (existingAlert) {
+                        existingAlert.remove();
+                    }
+                    
+                    const alertDiv = document.createElement('div');
+                    alertDiv.className = 'alert-modern alert-error';
+                    alertDiv.innerHTML = `
+                        <i class="fas fa-exclamation-triangle"></i> 
+                        Por favor corrija los errores en el formulario antes de continuar
+                    `;
+                    alertDiv.style.cssText = `
+                        background: linear-gradient(135deg, #ff6b6b 0%, #ee5a52 100%);
+                        color: white;
+                        padding: 1rem 1.5rem;
+                        border-radius: 12px;
+                        margin-bottom: 1.5rem;
+                        display: flex;
+                        align-items: center;
+                        gap: 0.75rem;
+                        box-shadow: 0 4px 12px rgba(231, 76, 60, 0.2);
+                        animation: slideIn 0.3s ease;
+                    `;
+                    
+                    const formContent = document.querySelector('.form-content');
+                    formContent.insertBefore(alertDiv, formContent.firstChild);
+                    
+                    // Scroll al primer error
+                    const firstError = document.querySelector('.error-message');
+                    if (firstError) {
+                        firstError.scrollIntoView({ behavior: 'smooth', block: 'center' });
+                    }
                 }
             });
+
+            // Efectos hover y focus
+            const inputs = document.querySelectorAll('input, select');
+            inputs.forEach(input => {
+                input.addEventListener('focus', function() {
+                    this.parentElement.style.transform = 'translateY(-2px)';
+                    this.style.boxShadow = '0 0 0 3px rgba(139, 115, 85, 0.1)';
+                });
+                
+                input.addEventListener('blur', function() {
+                    this.parentElement.style.transform = 'translateY(0)';
+                    if (!this.classList.contains('error')) {
+                        this.style.boxShadow = 'none';
+                    }
+                });
+            });
+
+            // Animación CSS para los errores
+            const style = document.createElement('style');
+            style.textContent = `
+                @keyframes slideIn {
+                    from {
+                        opacity: 0;
+                        transform: translateY(-10px);
+                    }
+                    to {
+                        opacity: 1;
+                        transform: translateY(0);
+                    }
+                }
+            `;
+            document.head.appendChild(style);
         });
     </script>
 </body>

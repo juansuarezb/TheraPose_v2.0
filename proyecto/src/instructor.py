@@ -6,6 +6,7 @@ from .database import add_patient_to_instructor, get_instructor_patients, add_in
 from .admin import keycloak_admin_call, refresh_keycloak_admin_token
 from keycloak_config import keycloak_admin
 import sqlite3
+import datetime
 
 router = APIRouter()
 templates = Jinja2Templates(directory="proyecto/templates")
@@ -185,10 +186,12 @@ def update_patient_page(request: Request, patient_id: str):
     if not patient:
         return RedirectResponse(url="/instructor/dashboard", status_code=status.HTTP_302_FOUND)
     
+    now = datetime.datetime.now().strftime('%Y-%m-%d')
     return templates.TemplateResponse("update_patient.html", {
         "request": request,
         "user": user_info,
-        "patient": patient
+        "patient": patient,
+        "now": now
     })
 
 @router.post("/instructor/update-patient/{patient_id}")
