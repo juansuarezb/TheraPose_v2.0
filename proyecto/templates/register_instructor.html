@@ -12,7 +12,7 @@
     input {
       cursor: pointer;
     }
-</style>
+    </style>
 </head>
 <body>
     <div id="app">
@@ -38,6 +38,7 @@
               </div>
               {% endif %}
               <form method="POST" action="/register-instructor" autocomplete="off">
+                <!-- Nombre de usuario con validación -->
                 <div class="mb-3">
                   <label class="form-label" for="username">Nombre de usuario</label>
                   <input type="text" 
@@ -48,19 +49,24 @@
                   value="{{ form_data.username if form_data else '' }}" 
                   required
                   pattern="^[a-zA-Z0-9]{4,15}$"
-                  title="El nombre de usuario debe tener entre 4 y 
-                  15 caracteres. Solo se permiten letras y números, 
-                  sin espacios ni símbolos especiales."
+                  title="El nombre de usuario debe tener entre 4 y 15 caracteres. Solo se permiten letras y números, sin espacios ni símbolos especiales."
                   >
                 </div>
+                
+                <!-- Correo electrónico con validación -->
                 <div class="mb-3">
                   <label class="form-label" for="email">Correo electrónico</label>
-                  <input type="email" class="form-control" 
-                  id="email" name="email" 
+                  <input type="email" 
+                  class="form-control" 
+                  id="email" 
+                  name="email" 
                   placeholder="Ej. nombre@tu-dominio.com" 
                   value="{{ form_data.email if form_data else '' }}" 
-                  required>
+                  required
+                  title="Por favor ingresa un correo electrónico válido">
                 </div>
+                
+                <!-- Nombre con validación mejorada -->
                 <div class="mb-3">
                   <label class="form-label" for="firstName">Nombre</label>
                   <input type="text" 
@@ -69,52 +75,81 @@
                   name="firstName" 
                   placeholder="Primer nombre"
                   value="{{ form_data.firstName if form_data else '' }}" 
-                  required>
+                  required
+                  pattern="^[a-zA-ZáéíóúÁÉÍÓÚñÑüÜ\s'-]+$"
+                  title="Solo se permiten letras, espacios y los caracteres especiales ' y -">
                 </div>
+                
+                <!-- Apellido con validación mejorada -->
                 <div class="mb-3">
                   <label class="form-label" for="lastName">Apellido</label>
-                  <input type="text" class="form-control" 
-                  id="lastName" name="lastName" 
+                  <input type="text" 
+                  class="form-control" 
+                  id="lastName" 
+                  name="lastName" 
                   placeholder="Primer apellido" 
                   value="{{ form_data.lastName if form_data else '' }}" 
-                  required>
+                  required
+                  pattern="^[a-zA-ZáéíóúÁÉÍÓÚñÑüÜ\s'-]+$"
+                  title="Solo se permiten letras, espacios y los caracteres especiales ' y -">
                 </div>
+                
+                <!-- Contraseña con validación fuerte -->
                 <div class="mb-3">
                   <label class="form-label" for="password">Contraseña</label>
-                  <input type="password" class="form-control" 
-                  id="password" name="password" 
+                  <input type="password" 
+                  class="form-control" 
+                  id="password" 
+                  name="password" 
                   placeholder="******************"
                   pattern="^(?=.*[A-Z])(?=.*\d)(?=.*[^a-zA-Z0-9])\S{8,}$"
                   title="La contraseña debe tener al menos 8 caracteres, incluyendo una letra mayúscula, un número y un carácter especial. No se permiten espacios." 
                   required>
                 </div>
+                
+                <!-- Fecha de nacimiento con validación -->
                 <div class="mb-3">
                   <label class="form-label" for="fecha_nac">Fecha de nacimiento</label>
-                  <input type="date" class="form-control" 
-                  id="fecha_nac" name="fecha_nac" 
+                  <input type="date" 
+                  class="form-control" 
+                  id="fecha_nac" 
+                  name="fecha_nac" 
                   placeholder="Fecha de Nacimiento" 
                   value="{{ form_data.fecha_nac if form_data else '' }}" 
-                  required>
+                  required
+                  title="Por favor ingresa tu fecha de nacimiento">
                 </div>
+                
+                <!-- Género con validación -->
                 <div class="mb-3">
                   <label class="form-label" for="genero">Género</label>
-                  <select class="form-control" id="genero" name="genero" required>
+                  <select class="form-control" 
+                  id="genero" 
+                  name="genero" 
+                  required
+                  title="Por favor selecciona tu género">
                     <option value="">Selecciona tu género</option>
                     <option value="masculino" {% if form_data and form_data.genero == 'masculino' %}selected{% endif %}>Masculino</option>
                     <option value="femenino" {% if form_data and form_data.genero == 'femenino' %}selected{% endif %}>Femenino</option>
                     <option value="otro" {% if form_data and form_data.genero == 'otro' %}selected{% endif %}>Otro</option>
                   </select>
                 </div>
+                
+                <!-- Celular con validación estricta -->
                 <div class="mb-3">
                   <label class="form-label" for="celular">Celular (10 dígitos)</label>
-                  <input type="tel" class="form-control" id="celular" 
+                  <input type="tel" 
+                  class="form-control" 
+                  id="celular" 
                   name="celular" 
                   pattern="^\d{10}$"
                   maxlength="10" 
                   placeholder="Número de celular (Ej. 099999999)" 
                   value="{{ form_data.celular if form_data else '' }}" 
-                  required>
+                  required
+                  title="Por favor ingresa un número de 10 dígitos (sin espacios ni guiones)">
                 </div>
+                
                 <button type="submit" class="btn btn-primary">Registrarse</button>
               </form>
               <div class="register-link">
@@ -128,4 +163,4 @@
     </div>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
 </body>
-</html> 
+</html>
