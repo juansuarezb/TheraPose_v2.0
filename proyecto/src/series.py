@@ -27,7 +27,7 @@ def create_serie_page(request: Request):
         "request": request,
         "user": user_info,
         "patients": patients,
-        "tipos_terapia": ["Ansiedad", "Depresión", "Dolor de Espalda"]
+        "tipos_terapia": ["Ansiedad", "Depresión", "Dolor de Espalda", "Artritis", "Dolor de Cabeza", "Insomnio", "Mala Postura"]
     })
 
 @router.get("/api/posturas/{tipo_terapia}")
@@ -71,7 +71,7 @@ def create_serie(
             "request": request,
             "user": user_info,
             "patients": patients,
-            "tipos_terapia": ["Ansiedad", "Depresión", "Dolor de Espalda"],
+            "tipos_terapia": ["Ansiedad", "Depresión", "Dolor de Espalda", "Artritis", "Dolor de Cabeza", "Insomnio", "Mala Postura"],
             "error": str(e)
         })
 

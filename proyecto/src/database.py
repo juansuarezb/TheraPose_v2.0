@@ -320,6 +320,9 @@ def create_therapy_tables():
     
     conn.commit()
     conn.close()
+    
+    # Insertar posturas adicionales para los nuevos tipos de terapia
+    insert_additional_posturas()
 
 def update_serie_table():
     """Actualiza la estructura de la tabla serie_terapeutica si es necesario"""
@@ -342,9 +345,13 @@ def update_serie_table():
 # Funciones para manejar series terapéuticas
 def get_posturas_by_tipo_terapia(tipo_terapia):
     posturas_por_tipo = {
-        "Ansiedad": ["Bound Angle Pose", "Boat Pose", "Cobra Pose", "Cat Pose", "Corpse Pose", "Easy Pose"],
-        "Depresión": ["Cat Pose", "Cobra Pose", "Boat Pose", "Bound Angle Pose", "Corpse Pose", "Easy Pose"],
-        "Dolor de Espalda": ["Cat Pose", "Chair Pose", "Cobra Pose", "Bound Angle Pose", "Dolphin Plank Pose", "Downward Facing Dog"]
+        "Ansiedad": ["Bound Angle Pose", "Boat Pose", "Cobra Pose", "Cat Pose", "Corpse Pose", "Easy Pose", "Child's Pose", "Legs Up the Wall", "Seated Forward Bend", "Bridge Pose", "Camel Pose", "Lotus Pose"],
+        "Depresión": ["Cat Pose", "Cobra Pose", "Boat Pose", "Bound Angle Pose", "Corpse Pose", "Easy Pose", "Child's Pose", "Legs Up the Wall", "Seated Forward Bend", "Bridge Pose", "Camel Pose", "Lotus Pose"],
+        "Dolor de Espalda": ["Cat Pose", "Chair Pose", "Cobra Pose", "Bound Angle Pose", "Dolphin Plank Pose", "Downward Facing Dog", "Child's Pose", "Bridge Pose", "Locust Pose", "Camel Pose", "Seated Twist", "Supine Twist"],
+        "Artritis": ["Easy Pose", "Child's Pose", "Cat Pose", "Cobra Pose", "Bound Angle Pose", "Seated Forward Bend", "Bridge Pose", "Legs Up the Wall", "Corpse Pose", "Seated Twist", "Supine Twist", "Lotus Pose"],
+        "Dolor de Cabeza": ["Child's Pose", "Cat Pose", "Cobra Pose", "Easy Pose", "Seated Forward Bend", "Legs Up the Wall", "Corpse Pose", "Seated Twist", "Supine Twist", "Bridge Pose", "Camel Pose", "Lotus Pose"],
+        "Insomnio": ["Child's Pose", "Legs Up the Wall", "Corpse Pose", "Easy Pose", "Seated Forward Bend", "Bound Angle Pose", "Bridge Pose", "Camel Pose", "Lotus Pose", "Seated Twist", "Supine Twist", "Cat Pose"],
+        "Mala Postura": ["Cat Pose", "Cobra Pose", "Chair Pose", "Downward Facing Dog", "Child's Pose", "Bridge Pose", "Locust Pose", "Camel Pose", "Seated Twist", "Supine Twist", "Bound Angle Pose", "Seated Forward Bend"]
     }
     
     conn = sqlite3.connect('proyecto/instructor_patients.db')
@@ -358,6 +365,36 @@ def get_posturas_by_tipo_terapia(tipo_terapia):
     
     conn.close()
     return posturas
+
+def insert_additional_posturas():
+    """Inserta las posturas adicionales para los nuevos tipos de terapia"""
+    conn = sqlite3.connect('proyecto/instructor_patients.db')
+    cursor = conn.cursor()
+    
+    # Lista de posturas adicionales con sus nombres en sánscrito
+    posturas_adicionales = [
+        ("Child's Pose", "Balasana"),
+        ("Legs Up the Wall", "Viparita Karani"),
+        ("Seated Forward Bend", "Paschimottanasana"),
+        ("Bridge Pose", "Setu Bandhasana"),
+        ("Camel Pose", "Ustrasana"),
+        ("Lotus Pose", "Padmasana"),
+        ("Locust Pose", "Salabhasana"),
+        ("Seated Twist", "Ardha Matsyendrasana"),
+        ("Supine Twist", "Supta Matsyendrasana")
+    ]
+    
+    # Verificar si las posturas ya existen
+    for nombre_es, nombre_sans in posturas_adicionales:
+        cursor.execute("SELECT COUNT(*) FROM postura WHERE nombre_es = ?", (nombre_es,))
+        if cursor.fetchone()[0] == 0:
+            cursor.execute('''
+                INSERT INTO postura (nombre_es, nombre_sans)
+                VALUES (?, ?)
+            ''', (nombre_es, nombre_sans))
+    
+    conn.commit()
+    conn.close()
 
 def get_serie_activa(patient_id):
     """Obtiene la serie terapéutica activa de un paciente"""
