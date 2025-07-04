@@ -13,61 +13,6 @@
 
 ---
 
-<details><summary><h1>Prerrequisitos</h1></summary>
--   Bash (De preferencia WSL2 habilitado - Windows 10/11).
--   <b> Docker </b> (Docker Desktop).
--   Git (Clonar el repositorio).
--   Python 3.11+.
-</details>
-
----
-
-<details><summary><h1>Instalación</h1></summary>
-
-### 1. Descargar imagen personalizada de Keycloak en el bash.
-
-```bash
-docker pull bryanhert/keycloak-yoga:26.1.3
-
-```
-
-<img src="https://raw.githubusercontent.com/juansuarezb/TheraPose_v1.0/main/images/paso1.avif" alt="paso1" width="600" height="auto">
-
-### 2. Navega al directorio donde quieres descargar el proyecto y clona el repositorio en tu máquina local. Finalmente, dirígete al proyecto descargado.
-
-```bash
-git clone https://github.com/juansuarezb/TheraPose_v1.0.git
-cd TheraPose_v1.0
-```
-
-<img src="https://raw.githubusercontent.com/juansuarezb/TheraPose_v1.0/main/images/paso2.webp" alt="paso2" width="600" height="auto">
-
-### 3. Levantar los servicios con Docker Compose (dentro del proyecto descargado).
-
-```bash
-docker compose -f docker-compose.yml up -d --build
-```
-
-o
-
-```bash
-docker-compose up -d
-```
-
-<img src="https://raw.githubusercontent.com/juansuarezb/TheraPose_v1.0/main/images/paso3.webp" alt="paso3" width="600" height="auto"/> <br>
-<img src="https://raw.githubusercontent.com/juansuarezb/TheraPose_v1.0/main/images/paso8.avif" alt="paso8" width="600" height="auto">
-
-> [!IMPORTANT]
-> Hasta este punto ya tenemos el entorno para el manejo de usuarios correctamente instalado.  
-> Dirígete a [http://localhost:8080](http://localhost:8080) para acceder a la consola de administración de Keycloak.
-> Ingresa con los credenciales "admin" y "admin" respectivamente y comprueba el acceso al keycloak.
-> <b>Ahora, se procederá a utilizar Ubuntu desde windows para la instalación del backend de la aplicación. </b>
-
-<img src="https://raw.githubusercontent.com/juansuarezb/TheraPose_v1.0/main/images/paso4.webp" alt="paso4" width="600" height="auto"> 
-</details>
-
----
-
 <details><summary><h1>Stack tecnológico</h1></summary>
 
 | Categoría         | Tecnologías                                                                                                                                                                                                                                                                                                                                                                            |
@@ -80,5 +25,4 @@ docker-compose up -d
 </details>
 
 
-<h2><a href="https://youtu.be/YPa1tznM22k">DEMO</a></h2>
 
