@@ -10,6 +10,7 @@ default_admin_tokens = {
 }
 admin_tokens = default_admin_tokens.copy()
 
+
 def refresh_keycloak_admin_token():
     """
     Maneja el refresco del token de administrador:
