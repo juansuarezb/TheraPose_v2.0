@@ -731,6 +731,11 @@ footer p {
   opacity: 0.9;
 }
 
+
+.container-derecha a {
+  text-decoration: none;
+}
+
 /* Animaciones */
 @keyframes fadeInUp {
   from {
