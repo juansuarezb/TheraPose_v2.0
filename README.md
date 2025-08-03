@@ -8,7 +8,7 @@
 
 ---
 
-<a href="https://therapose.panes.top/"><i>TheraPose</i> </a>es una plataforma de software para la gestión de clases de yoga terapéutico. El sistema permitirá a los instructores gestionar a sus pacientes, crear y asignar series terapéuticas, y realizar un seguimiento  del progreso de cada paciente en su práctica de yoga. Los pacientes podrán acceder a las sesiones asignadas y llevar un registro de su experiencia, incluyendo la intensidad del dolor o molestia durante las sesiones.
+<a href="https://therapose.panes.top/"><i>TheraPose</i> </a>es una plataforma de software para la gestión de clases de yoga terapéutico. El sistema permitirá a los instructores gestionar a sus pacientes, crear y asignar series terapéuticas, y realizar un seguimiento  del progreso de cada paciente en su práctica de yoga. Los pacientes podrán acceder a las sesiones asignadas y llevar un registro de su experiencia, incluyendo la intensidad del dolor o molestia durante las sesiones. 
 
 
 ---
